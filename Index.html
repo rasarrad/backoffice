@@ -3,7 +3,7 @@
   <head> 
     <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=0.9">
-      <meta name="theme-color" content="#003156">
+      <meta name="theme-color" content="#bbbbbb">
     <meta name="twitter:widgets:theme" content="dark">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/c6078e9ff6.js"></script>
@@ -37,7 +37,7 @@
     <div class="topoback topoback2"></div> 
     <i class="fa fa-bars menubutton clicable" onclick="javascript: openmenu(this)"></i>
     <span class="noselect toptitle clicable" style="font-family: Helvetica, Roboto, 'Segoe UI', Calibri, sans-serif !important;font-variant-caps: normal !important;" id="toptitle">
-      Lynxmind Backoffice
+      Backoffice
       </span>
       <i id="addtweet" class="fa fa-plus-square clicable"></i>
       <i id="settings" class="fa fa-cog clicable"></i>
@@ -78,8 +78,10 @@
 <input type="hidden" id="maxid" value="100000">
 <input type="hidden" id="selectedcattext" value="All Links">
 <input type="hidden" id="recordspersearch" value="500000000"> 
-<div id="backdiv" onclick="openMainSettingsPopup();" class="pobj" style="position: fixed;width: 100%;height: calc(100% - 52px);background: #00000099;top: 52px;z-index: -1;background-image: linear-gradient(to bottom, #00a1ff , #00000099);background: transparent;background-image: linear-gradient(rgb(0, 104, 165), rgb(0, 139, 222));overflow: auto;">
-  <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+<div id="backdiv" class="pobj" style="position: fixed;width: 100%;height: calc(100% - 52px);background: #00000099;top: 52px;z-index: -1;background-image: linear-gradient(to bottom, #00a1ff , #00000099);background: transparent;background-image: linear-gradient(rgb(0, 104, 165), rgb(0, 139, 222));overflow: auto;top: 15px;">
+  <div class="container col-sm-4 col-md-7 col-lg-4 mt-5" style="
+  display: none;
+">
     <div class="card" style="max-width: 997px;position: relative;margin: auto;">
         <h3 class="card-header" id="monthh3"></h3>
         <h3 class="card-header" id="yearh3"></h3>
@@ -110,47 +112,9 @@
             </select>
             <label for="year"></label>
             <select class="form-control col-sm-4" name="year" id="year" onchange="jump()" style="display: inline-block;">
-                <option value="1990">1990</option>
-                <option value="1991">1991</option>
-                <option value="1992">1992</option>
-                <option value="1993">1993</option>
-                <option value="1994">1994</option>
-                <option value="1995">1995</option>
-                <option value="1996">1996</option>
-                <option value="1997">1997</option>
-                <option value="1998">1998</option>
-                <option value="1999">1999</option>
-                <option value="2000">2000</option>
-                <option value="2001">2001</option>
-                <option value="2002">2002</option>
-                <option value="2003">2003</option>
-                <option value="2004">2004</option>
-                <option value="2005">2005</option>
-                <option value="2006">2006</option>
-                <option value="2007">2007</option>
-                <option value="2008">2008</option>
-                <option value="2009">2009</option>
-                <option value="2010">2010</option>
-                <option value="2011">2011</option>
-                <option value="2012">2012</option>
-                <option value="2013">2013</option>
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
                 <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
-                <option value="2027">2027</option>
-                <option value="2028">2028</option>
-                <option value="2029">2029</option>
-                <option value="2030">2030</option>
             </select>
             <i class="fa fa-arrow-circle-right" id="next" onclick="next()"></i>
           </form>
@@ -194,6 +158,8 @@
 
     </div>
 </div>
+<i class="fa fa-folder-open logo" style="">
+</i>
 </div>
 <!-- <iframe id="backdiv" class="pobj" src="cal/index.html" style="position: fixed;width: 100%;height: calc(100% - 52px);top: 52px;z-index: -1;">
 </iframe> -->
@@ -1414,14 +1380,14 @@
     </div>
   </div>
 
-  <div id="mainmenu" style="top: -391px; background: transparent;display: none;" class="newLayout pobj" onclick="closeMenuPopup()">
-    <div style="position: relative;top: 0px !important;display: block;max-height: calc(100% - 26px) !important;margin-top: 0px !important;border-top: 1px solid var(--soft-color);border-top-left-radius: 0px;border-top-right-radius: 0px;padding-bottom: 0px;max-height: calc(100% - 4px) !important;">
+  <div id="mainmenu" style="top: 0px; transition: all 1.7s ease 0s; height: calc(100%); background: var(--soft-transp-color); opacity: 1; display: none;" class="newLayout pobj" onclick="closeMenuPopup()">
+    <div style="position: relative;top: 0px !important;display: block;max-height: calc(100% - 26px) !important;margin-top: 0px !important;border-top: 1px solid var(--soft-color);border-top-left-radius: 0px;border-top-right-radius: 0px;padding-bottom: 8px;max-height: calc(100% - 4px) !important;">
         <table class="titletable buttonstable">
             <tbody>
               <tr class="cursordefault">
                   <td colspan="3" class="firsttd" style="width: 164px;">
                       <i onclick="javascript: zoom()" class="fa fa-bars"></i>
-                      <b>CATEGORY</b>
+                      <b>Menu</b>
                   </td>
                   <td style="padding-top: 4px;vertical-align: initial;">
                     <i onclick="closeMenuPopup(this)" class="fa fa-window-close clicable"></i>
@@ -1431,107 +1397,89 @@
               </tr>
             </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow firstsettable">
+        <table class="sectiontitletable sectionexpandable defaulttablerow firstsettable" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('all')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle">All Links</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter"  id="all2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle">Receipts</span>
+                  <div onclick="" class="menuitemcounter" id="all2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
+        <table class="sectiontitletable sectionexpandable defaulttablerow" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('tvn')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-tvn">New / Ongoing</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tvn2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tvn">Contract</span>
+                  <div onclick="" class="menuitemcounter" id="tvn2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
+        <table class="sectiontitletable sectionexpandable defaulttablerow" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('trn')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="javascript: openTimesheet()" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-trn">Hot / Trending</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="trn2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle cat-trn">Monthly Timesheet</span>
+                  <div onclick="" class="menuitemcounter" id="trn2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
+        <table class="sectiontitletable sectionexpandable defaulttablerow" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('tvi')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-tvi">To Watch</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tvi2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tvi">Curriculum Vitae</span>
+                  <div onclick="" class="menuitemcounter" id="tvi2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
+        <table class="sectiontitletable sectionexpandable defaulttablerow" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('tvl')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-tvl">Documentaries / Films</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tvl2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tvl">Gamification</span>
+                  <div onclick="" class="menuitemcounter" id="tvl2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
+        <table class="sectiontitletable sectionexpandable defaulttablerow" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('tre')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-tre">Fast Reading</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tre2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tre">Reports</span>
+                  <div onclick="" class="menuitemcounter" id="tre2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
+        <table class="sectiontitletable sectionexpandable defaulttablerow" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('trl')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-trl">Long Reading</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="trl2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle cat-trl">Vacation Map</span>
+                  <div onclick="" class="menuitemcounter" id="trl2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
+        <table class="sectiontitletable sectionexpandable defaulttablerow" style="max-height: 36px;">
           <tbody>
-            <tr onclick="javascript: clickmenu('tke')" class="cursorpointer hover" style="padding-bottom: 15px;">
+            <tr onclick="" class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-tke">Important / To Keep</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tke2"></div>
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tke">Other Documents</span>
+                  <div onclick="" class="menuitemcounter" id="tke2"></div>
               </td>                                                                   
             </tr>   
            </tbody>
         </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
-          <tbody>
-            <tr onclick="javascript: clickmenu('imp')" class="cursorpointer hover" style="padding-bottom: 15px;">
-              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-imp">Shocking Truth</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="imp2"></div>
-              </td>                                                                   
-            </tr>   
-           </tbody>
-        </table>
-        <table class="sectiontitletable sectionexpandable defaulttablerow">
-          <tbody>
-            <tr onclick="javascript: clickmenu('cli')" class="cursorpointer hover" style="padding-bottom: 15px;">
-              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
-                  <span style="padding-left: 6px;" class="sectiontitle cat-cli">VictoryWillCome Tweets</span>
-                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="cli2"></div>
-              </td>                                                                   
-            </tr>   
-           </tbody>
-        </table>
-        <table class="sectiontitletable sectionexpandable emptyvalue" style="z-index: 1;position: sticky; bottom: 0px; max-height: 26px; width: 477px; margin: 0px; padding: 0px; display: table-cell; background: var(--dark-color);">
+        
+        
+        <table class="sectiontitletable sectionexpandable emptyvalue" style="z-index: 1;position: sticky;bottom: 0px;max-height: 26px;width: 477px;margin: 0px;padding: 0px;display: table-cell;background: var(--dark-color);display: none;">
           <tbody>
             <tr class="cursorpointer hover" style="padding-bottom: 15px;">
               <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
@@ -1745,7 +1693,7 @@
 
 <div id="tooltip" onclick="javascript: closeTooltip()" style="position: absolute;top: 4px;left: 176px;z-index: 2147483647;background: var(--high-color);padding: 2px 10px;border: 1px solid var(--dark-color);color: var(--dark-color);border-radius: 3px;transform: translate(-50%, 0px);left: calc(50% - 0px) !important;display: none;">
 </div>
-
+<div class="logo"></div>
 <div style="
     position: fixed;
     bottom: 0px;
