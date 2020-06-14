@@ -3365,15 +3365,19 @@ function showCalendar(month, year) {
                 else {
                     elem.append("<div class='value novalue' cvalue='-'>-</div>");
                 }
-                elem.append("<div class='buttons'>"
-                            +
-                            "<i onclick='javascript: markDay(this, event)' class='fa fa-calendar-check-o' title='Add an 8 hours working day'></i>"
-                            +
-                            "<i onclick='javascript: markDay(this, event)' class='fa fa-calendar-o' title='Add vacation day'></i>"
-                            +
-                            "<i onclick='javascript: markDay(this, event)' class='fa fa-calendar-times-o' title='Remove time'></i>"
-                            +
-                            "</div>");
+                
+                if (!isMobile) {
+                    elem.append("<div class='buttons'>"
+                    +
+                    "<i onclick='javascript: markDay(this, event)' class='fa fa-calendar-check-o' title='Add an 8 hours working day'></i>"
+                    +
+                    "<i onclick='javascript: markDay(this, event)' class='fa fa-calendar-o' title='Add vacation day'></i>"
+                    +
+                    "<i onclick='javascript: markDay(this, event)' class='fa fa-calendar-times-o' title='Remove time'></i>"
+                    +
+                    "</div>");
+                }
+
             }
             else {
                 elem.attr("day", elem.text());
