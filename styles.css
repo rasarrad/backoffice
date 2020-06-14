@@ -7346,15 +7346,6 @@ color: var(--high-color) !important;
   background: transparent !important;
 }
 
-#calendar-body td:not(.weekend):hover {
-  background: var(--soft-color);
-  border-color: var(--high-color);
-}
-
-#calendar-body td.weekend:hover {
-  background: #9e9c9c;
-  background: var(--text-color);
-}
 
 .container.col-sm-4 h3 {
   /* text-align: center; */
@@ -7439,14 +7430,6 @@ color: var(--high-color) !important;
   margin-top: 3px;
 } 
 
-.card .fa:not(.fa-th-large):hover {
-  background: var(--text-color);
-}
-
-
-.card .buttons .fa:not(.fa-th-large):hover {
-  background: transparent;
-}
 
 
 .card .fa.fa-arrow-circle-right {
@@ -7497,9 +7480,6 @@ color: var(--high-color) !important;
   text-align: center;
 }
 
-.card select:hover {
-  background: var(--text-color);
-}
 
 .table-responsive-sm .value {
   text-align: center;
@@ -7508,7 +7488,7 @@ color: var(--high-color) !important;
   top: calc(50% - 22px);
   font-weight: bold;
   font-size: 18px;
-  transition: all 0.7s;
+  transition: all 0.4s;
   color: var(--dark-color);
 }
 
@@ -7531,23 +7511,22 @@ color: var(--high-color) !important;
 
 .table-responsive-sm .buttons {
   text-align: center;
-  top: 28px;
+  top: 1px;
   position: absolute;
   width: 100%;
   /* background: var(--soft-color); */
   left: 0px;
+  display: none;
   opacity: 0;
-  transition: opacity 1.2s;
+  transition: all 0.4s;
   height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* opacity: 1; */
 }
 .table-responsive-sm.multiselect .buttons {
 display:none;
-}
-.table-responsive-sm:not(.multiselect) td:hover .buttons {
-  opacity: 1;
 }
 
 .table-responsive-sm .day {
@@ -7612,57 +7591,13 @@ display:none;
   color: var(--text-color);
 }
 
-.table-responsive-sm .buttons .fa:hover {
-color: var(--high-color);
-/* transform: scale(1.05); */
-}
 
-.table-responsive-sm .buttons span:hover .fa {
-color: var(--text-color);
-}
-
-
-.table-responsive-sm:not(.multiselect) td:hover .value {
-  color: var(--high-color);
-  top: calc(50% - -2px);
-}
-
-.table-responsive-sm:not(.multiselect) td:hover .value.novalue {
-  color: var(--text-color);
-}
-
-
-.table-responsive-sm:not(.multiselect) td:hover .value.V {
-    top: calc(50% - -6px);
-}
-
-.table-responsive-sm:not(.multiselect) td:hover .value .fa-plane {
-   opacity: 0 !important;
-   display: none;
-}
-
-.table-responsive-sm td:not(.weekend):hover .day {
-color: var(--high-color);
-background: transparent;
-border-color: transparent;
-top: -4px;
-left: calc(100% - 22px);
-}
 
 .table-responsive-sm.multiselect td {
 transition: background 0.6s !important;
 }
 
-.table-responsive-sm.multiselect td:not(.weekend):hover {
-background: var(--softdark-color) !important;
-border: 2px solid #ef7d11 !important;
-height: calc(11vh - 4px) !important;
-}
 
-.table-responsive-sm.multiselect td.cellselected:hover {
-background: var(--dark-color) !important;
-border: 2px solid #00a200 !important;
-}
 
 .table-responsive-sm td.cellselected:not(.weekend) .day {
 color: var(--high-color);
@@ -7680,28 +7615,17 @@ left: calc(100% - 22px);
   transition: all 0.6s;
 }
 
-.card #previous:hover {
-  color: var(--text-color);
-}
-.card #next:hover {
-  color: var(--text-color);
-
-}
-
 .card #calendar-body td.selected {
   background: var(--soft-color);
   border-color: var(--high-color);
 }
 
 .card #calendar-body td.cellselected {
-  border: 2px solid #00a200 !important;
-  height: calc(11vh - 4px) !important;
+  border: 1px solid #00a200 !important;
+  /* height: calc(11vh - 4px) !important; */
   background: var(--dark-color);
 }
 
-.card #calendar-body td.cellselected:hover {
-  border: 2px solid #ef7d11 !important;
-}
 
 
 .table-responsive-sm td.selected .value {
@@ -7774,6 +7698,7 @@ transition: opacity .7s;
       padding: 4px 0px;
       padding-bottom: 4px;
       overflow: hidden;
+      padding-top: 2px;
 }
 
 .multidiv > div > div {
@@ -7792,7 +7717,7 @@ padding-bottom: 1px;
 
 cursor: pointer;
 
-border: 2px solid #ff9f44;
+border: 1px solid #ff9f44;
 
 margin-right: 0px;
 
@@ -7800,14 +7725,10 @@ border-color: transparent;
 
 transition: all 0.8s;
 
-height: 19px;
+height: 21px;
 }
 
-.multidiv > div > div:hover {
-    background: var(--soft-color);
 
-
-}
 
 .multidiv > div > div.innerbuttons {
 
@@ -7826,19 +7747,21 @@ margin-left: 0px;
 background: var(--text-color) !important;
 }
 
+body .multidiv.hasvalue > div > div.innerbuttons {
+  width: 93px;
+}
+
+  
 body.ismobile .multidiv.hasvalue > div > div.innerbuttons {
 
 width: 93px;
 }
 
 
-.multidiv > div > div.innerbuttons:hover {
-  background: transparent;
-}
- 
+
 .card .multidiv > div > div i {
     position: relative;
-    top: -1px;
+    top: 0px;
     font-size: 17px;
     padding-top: 0px;
     padding-bottom: 4px;
@@ -7848,17 +7771,17 @@ width: 93px;
 
 .card .multidiv > div > div span {
 
-top: -4px;
+top: -2px;
 
 margin-left: 3px;
 
-font-size: 15px;
+font-size: 14px;
 
 transition: all 0.6s;
 
 font-weight: bold;
 
-text-transform: lowercase;
+text-transform: uppercase;
 
 cursor: pointer;
 
@@ -7889,28 +7812,20 @@ margin-left: 2px;
   position: absolute;
   transition: all 0.8s;
   padding: 0;
-  top: 2px;
+  top: 4px;
   padding-bottom: 0 !important;
   color: var(--softdark-color);
 }
 
 .card .multidiv.inmulti.hasvalue > div > div:not(.innerbuttons) {
-   border: 2px solid #00a200 !important;
+   border: 1px solid #00a200 !important;
 }
 
-.card .multidiv > div > div i:not(.fa-th-large):hover {
-  
 color: var(--dark-color) !important;
 }
 
-.card .multidiv > div > div:hover span {
 
 color: var(--text-color);
-}
-
-.card .multidiv.inmulti .multiitems:hover {
-  color: var(--softdark-color);
-background: transparent;
 }
 
 
@@ -7934,6 +7849,8 @@ div.inmulti div.innerbuttons {
 .container.col-sm-4 h3 {
     margin-left: 7px;
     margin-top: 4px;
+    font-size: 26px;
+    /* font-size: 37px; */
 }
 
 .card > div {
@@ -7943,7 +7860,7 @@ div.inmulti div.innerbuttons {
 
 .card > div:nth-of-type(2) {
     right: -16px;
-    top: 46px;
+    top: 39px;
 }
 
 .table-responsive-sm {
@@ -7952,11 +7869,15 @@ div.inmulti div.innerbuttons {
 }
 
 #calendar-body td {
-    height: 8vh;
+    height: 7vh;
+    max-height: 7vh;
+    min-height: 30px;
 }
 
 .card select {
   width: 83px;
+  height: 18px !important;
+  padding-top: 0px !important;
 }
 
 .table-responsive-sm td .day {
@@ -7971,5 +7892,240 @@ div.inmulti div.innerbuttons {
     top: -6px !important;
     left: calc(100% - 18px) !important;
 }
+
+.table-responsive-sm .value {
+  position: absolute;
+  transform: translate(0px, 5%);
+  top: calc(50% - 8px);
+  font-weight: bold;
+  font-size: 13px;
+  width: 45px;
+}
+
+.card span {height: 25px;width: 24px;position: relative;top: -1px;font-size: 9px;}
+
+
+div.value .fa-plane {font-size: 12px;}
+.container.col-sm-4 h3#yearh3 {
+  font-size: 34px;
+}
+
+#workhours {
+  font-size: 35px;
+  position: relative;
+  top: -2px;
+  transition: opacity .7s;
+  color: var(--text-color);
+}
+
+.whlabel {font-weight: bold;text-transform: lowercase;margin-left: 7px;font-size: 14px;transition: opacity .7s;padding-top: 1.5px;}
+
+#vacationdays {font-size: 35px;position: relative;top: -2px;margin-left: 19px;color: var(--text-color);transition: opacity .7s;}
+
+.vdlabel {font-weight: bold;text-transform: lowercase;margin-left: 7px;font-size: 14px;margin-right: 3px;transition: opacity .7s;padding-top: 1.5px;}
+
+.card .fa.fa-arrow-circle-right {
+  padding-left: 6px;
+  margin-right: 0px;
+  display: block;
+  font-size: 20px;
+  background: transparent;
+}
+
+
+.card > div:not(.multidiv) .fa.fa-arrow-circle-left {
+  padding-right: 6px;
+  margin-right: 0px;
+  display: block;
+  font-size: 20px;
+  background: transparent;
+}
+
+.table-responsive-sm thead th {
+  padding-bottom: 1px;
+  padding-top: 4px;
+  text-transform: lowercase;
+  font-size: 14px;
+}
+
+.card > div.multidiv > div {
+  height: 35px;
+}
+.card > div.multidiv > div > div {
+  /* height: 35px; */
+  margin-left: 7px;
+}
+
+.card .multidiv > div > div span {
+
+top: 0px;
+
+font-size: 15px;
+
+text-transform: uppercase;
+}
+
+.card .multidiv > div > div i {
+    position: relative;
+    top: 1.5px;
+    font-size: 17px;
+    padding-top: 0px;
+    padding-bottom: 4px;
+    padding-left: 0px;
+    color: var(--text-color);
+}
+
+div.inmulti.hasvalue div.innerbuttons {
+
+width: 121px !important;
+}
+.card .multidiv i.multiitems {
+  display: block;
+  width: 0px;
+  height: 0;
+  margin: 0;
+  /* display: inline-flex !important; */
+  position: absolute;
+  transition: all 0.8s;
+  padding: 0;
+  font-size: 22px;
+  left: 10px !important;
+  top: 5px;
+  padding-bottom: 0 !important;
+  color: var(--softdark-color);
+}
+
+.multidiv > div > div {
+height: 23px;
+}
+
+.card .multidiv i.multiitems:nth-of-type(2) {
+  left: 46px !important;
+}
+.card .multidiv i.multiitems:nth-of-type(3) {
+  left: 83px !important;
+}
+  }
+
+
+  @media (min-width: 1025px) {
+
+#calendar-body td:not(.weekend):hover {
+  background: var(--soft-color);
+  border-color: var(--high-color);
+}
+
+#calendar-body td.weekend:hover {
+  background: #9e9c9c;
+  background: var(--text-color);
+}
+
+
+.card .fa:not(.fa-th-large):hover {
+  background: var(--text-color);
+}
+
+
+.card .buttons .fa:not(.fa-th-large):hover {
+  background: transparent;
+}
+
+.card select:hover {
+  background: var(--text-color);
+}
+
+.table-responsive-sm:not(.multiselect) td:hover .buttons {
+  opacity: 1;
+  display: flex;
+  top: 28px;
+}
+
+
+.table-responsive-sm .buttons .fa:hover {
+color: var(--high-color);
+/* transform: scale(1.05); */
+}
+
+.table-responsive-sm .buttons span:hover .fa {
+color: var(--text-color);
+}
+
+
+.table-responsive-sm:not(.multiselect) td:hover .value {
+  color: var(--high-color);
+  top: calc(50% - -2px);
+}
+
+
+.table-responsive-sm:not(.multiselect) td:hover .value.novalue {
+  color: var(--text-color);
+}
+
+
+.table-responsive-sm:not(.multiselect) td:hover .value.V {
+    top: calc(50% - -6px);
+}
+
+.table-responsive-sm:not(.multiselect) td:hover .value .fa-plane {
+   opacity: 0 !important;
+   display: none;
+}
+
+.table-responsive-sm td:not(.weekend):hover .day {
+color: var(--high-color);
+background: transparent;
+border-color: transparent;
+top: -4px;
+left: calc(100% - 22px);
+}
+
+
+.table-responsive-sm:not(.multiselect) td:not(.weekend):hover {
+  background: var(--softdark-color) !important;
+  height: calc(11vh - 4px) !important;
+}
+
+.table-responsive-sm.multiselect td:not(.weekend):hover {
+  border: 1px solid #ef7d11 !important;
+}
+
+.table-responsive-sm.multiselect td.cellselected:hover {
+background: var(--dark-color) !important;
+border: 1px solid #00a200 !important;
+}
+.card #previous:hover {
+  color: var(--text-color);
+}
+.card #next:hover {
+  color: var(--text-color);
+
+}
+
+.card #calendar-body td.cellselected:hover {
+  border: 1px solid #ef7d11 !important;
+}
+
+.multidiv > div > div:hover {
+    background: var(--soft-color);
+}
+
+
+.multidiv > div > div.innerbuttons:hover {
+  background: transparent;
+}
+ 
+.card .multidiv > div > div i:not(.fa-th-large):hover {
+  
+}
+.card .multidiv > div > div:hover span {
+
+}
+
+
+    .card .multidiv.inmulti .multiitems:hover {
+  color: var(--softdark-color);
+background: transparent;
+}
+
 
   }
