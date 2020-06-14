@@ -85,10 +85,14 @@ $( document ).ready(function() {
 
     isMobile = window.mobileAndTabletCheck();
 
-    isMobile = true;
+    //isMobile = true;
 
     if (isMobile) {
         $('body').addClass('ismobile');
+        $( "table.table-responsive-sm" ).addClass('multiselect');
+        $(".multidiv > div > div > span").text("Selected (0)");
+        $(".multidiv").addClass('inmulti');
+        configureMobileMultiselectMode();
     }
 
 
@@ -3367,7 +3371,9 @@ var multiselectcounter = 0;
 
 function cellClick(obj, e) {
     e.stopPropagation();
+    console.log(isMobile)
     if (multiselect || isMobile) {
+        
         if ($(obj).hasClass('cellselected')) {
             multiselectcounter--;
             $(obj).removeClass('cellselected');
@@ -3388,35 +3394,25 @@ function cellClick(obj, e) {
                 $(".multidiv").removeClass('hasvalue');
         }
 
-        $(".multidiv > div > div > span").text("Multi Select (" + multiselectcounter + ")" );
+        if (isMobile) 
+            $(".multidiv > div > div > span").text("Selected (" + multiselectcounter + ")" );
+        else
+            $(".multidiv > div > div > span").text("Multi Select (" + multiselectcounter + ")" );
     }
     else {
         //alert($(obj).attr("day"));
     }
 }
 
-function changeMultiselectMode(e) {
+function changeMultiselectMode(e, flag) {
     if (e)
         e.stopPropagation();
     
+    if (isMobile && !flag)
+        return false;
+
     if (multiselect) {
-        $( "table.table-responsive-sm" ).removeClass('multiselect');
-        $( "table.table-responsive-sm td" ).each( function( index, element ){
-            $(element).removeClass('cellselected');
-        });
-        multiselectcounter = 0;
-        
-        multiselect = false;
-
-        if ($(".multidiv").hasClass('inmulti')) {
-            $(".multidiv").removeClass('inmulti');
-            $(".multidiv").removeClass('hasvalue');
-            $(".multidiv > div > div > span").text("Multi Select");
-        }
-
-        $(".multidiv .multiitems").hide();
-
-        fadeObj($(".multidiv"));
+        cleanMultiselect();
     }
     else {
         $( "table.table-responsive-sm" ).addClass('multiselect');
@@ -3425,36 +3421,50 @@ function changeMultiselectMode(e) {
 
         if (!$(".multidiv").hasClass('inmulti')) {
             $(".multidiv").addClass('inmulti');
-            $(".multidiv > div > div > span").text("Multi Select (0)");
+            
+            if (isMobile) 
+                $(".multidiv > div > div > span").text("Selected (0)" );
+            else
+                $(".multidiv > div > div > span").text("Multi Select (0)" );
         }
-
-        $(".multidiv .multiitems").show();
 
         fadeObj($(".multidiv"));
     }
 }
 
 function cleanMultiselect() {
-    if (multiselect) {
+
+    if (isMobile) {
         $( "table.table-responsive-sm" ).removeClass('multiselect');
-        $( "table.table-responsive-sm td" ).each( function( index, element ){
-            $(element).removeClass('cellselected');
-        });
-
-        multiselectcounter = 0;
-
-        multiselect = false;
-
-        if ($(".multidiv").hasClass('inmulti')) {
-            $(".multidiv").removeClass('inmulti');
-            $(".multidiv").removeClass('hasvalue');
-            $(".multidiv > div > div > span").text("Multi Select");
-        }
-
-        $(".multidiv .multiitems").hide();
-
-        fadeObj($(".multidiv"));
     }
+    else {
+        $( "table.table-responsive-sm" ).removeClass('multiselect');
+        multiselect = false;
+    }
+    $( "table.table-responsive-sm td" ).each( function( index, element ){
+        $(element).removeClass('cellselected');
+    });
+
+    multiselectcounter = 0;
+
+    if ($(".multidiv").hasClass('inmulti')) {
+        $(".multidiv").removeClass('hasvalue');            
+        if (isMobile) {
+            $(".multidiv > div > div > span").text("Selected (0)" );
+
+        } 
+        else {
+            $(".multidiv > div > div > span").text("Multi Select" );
+
+            $(".multidiv").removeClass('inmulti');
+        }
+    }
+
+
+    fadeObj($(".multidiv"));
+}
+
+function configureMobileMultiselectMode() {
 }
 
 function multiselectEightHours(obj, e) {
