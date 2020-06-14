@@ -406,9 +406,9 @@ body.big .gradiantback {
 body > div > i.fa-folder-open {
     color: var(--high-color);
     font-size: 156px;
-    position: relative;
-    top: calc(50% - 151px);
-    left: calc(50% - 136px);
+    position: absolute;
+    top: calc(50% - 216px);
+    left: calc(50% - 126px);
     border: 10px solid var(--high-color) !important;
     padding-left: 8px;
     padding-top: 5px;
@@ -445,7 +445,7 @@ body > div > i.fa-folder-open {
 }
 
 body.big .menubutton {
-    padding: 6px 11px;
+    padding: 8px 11px;
 }
 
 body.big .menubutton {
@@ -622,6 +622,7 @@ body.big #zoomin {
     font-size: 21px;
     top: 22px;
     right: 89px;
+    display: none;
 }
 
 #settings {
@@ -1024,9 +1025,11 @@ body.big #recoilback {
 }
 
 body.big #backdiv {
-  top: 0px !important;
-  height: calc(100% - 0px) !important;
+  top: 66px !important;
+  height: calc(100% - -66px) !important;
   z-index: 9999999999 !important;
+  /* margin-bottom: 150px; */
+  /* padding-bottom: 61px !important; */
 } 
 #main {
       margin-top: 79px !important;
@@ -1053,6 +1056,7 @@ body.big .newLayout > div {
 } 
 body.big .newLayout {
     margin-top: 0px !important;
+    z-index: 9999999999;
     /* height: calc(100% - 49px) !important; */
 }
 
@@ -1078,13 +1082,14 @@ body.big .newLayout {
 }
 
 body.big .toptitle {
-  top: 27px;
-  font-size: 29px;
+  top: 29px;
+  font-size: 28px;
   width: 470px;
   line-height: 15px;
   left: calc(50% - 235px) !important;
   opacity: 1 !important;
   cursor: default !important;
+  text-transform: uppercase;
 }
 #settings {
   font-size: 15px;
@@ -1098,6 +1103,7 @@ body.big #settings {
   top: 22px;
   right: 51px;
   padding-left: 3px;
+  display: none;
  }  
 #addtweet {
   font-size: 22px;
@@ -1107,6 +1113,7 @@ body.big #addtweet {
   font-size: 26px;
   top: 21px;
   right: 20px;
+  display: none;
 }  
 
 .tweet .innertweet {
@@ -3685,7 +3692,7 @@ body.big #editinfodiv.newLayout > div .titletable tr:first-child .firsttd {top: 
         top: 20px;
     }
       #backdiv {
-        background-image: linear-gradient(var(--softdark-color) 0%, var(--soft-color) 45%, var(--dark-color) 99%) !important;
+        /* background-image: linear-gradient(var(--softdark-color) 0%, var(--soft-color) 45%, var(--dark-color) 99%) !important; */
       }
   
     ::-webkit-scrollbar {
@@ -3896,10 +3903,10 @@ body.big #editinfodiv.newLayout > div .titletable tr:first-child .firsttd {top: 
         margin-top: 113px !important;
     }
     body > div > i.fa-folder-open {
-        font-size: 86px;
-        height: 85px;
-        top: calc(50% - 92px);
-        left: calc(50% - 55px);
+        /* font-size: 86px; */
+        /* height: 85px; */
+        /* top: calc(50% - 92px); */
+        /* left: calc(50% - 55px); */
     }
     .tweet iframe {
         position: relative;
@@ -4031,11 +4038,12 @@ body.big #editinfodiv.newLayout > div .titletable tr:first-child .firsttd {top: 
       color: #7ba8ca;
   }  
    body.big .toptitle {
-      top: 20px;
-      font-size: 20px;
-      width: 100px;
+      top: 29px;
+      font-size: 21px;
+      width: 111px;
+      text-transform: uppercase;
       line-height: 15px;
-      left: calc(50% - 61px) !important;
+      left: calc(50% - 64px) !important;
   }   
     
         #openadd {
@@ -4880,7 +4888,7 @@ body.big #editinfodiv.newLayout .fa-file-text {
 }
 body.big .topoback2 {
     left: 66px;
-    width: calc(100% - 78px);
+    width: calc(100% - 133px);
     top: 11px;
     height: 45px;
 }
@@ -5860,7 +5868,7 @@ body.big #mainsettings #theme td:first-child {
     }
 
   ::-webkit-scrollbar {
-	  width: 5px;
+	  width: 6px;
   }
   ::-webkit-scrollbar-track {
       background-color: var(--softdark-color);
@@ -5868,8 +5876,8 @@ body.big #mainsettings #theme td:first-child {
 
   ::-webkit-scrollbar-thumb {
       background-color: var(--soft-color);
-      border-top: 1px solid var(--dark-color);	
-      border-bottom: 1px solid var(--dark-color);	
+      border-top: 1px solid var(--soft-color);	
+      border-bottom: 1px solid var(--soft-color);	
       cursor: pointer !important;
   }
 
@@ -7640,9 +7648,7 @@ top: -4px;
 left: calc(100% - 22px);
 }
 
-#recoilback {
-display: none !important;
-}
+#recoilback {/* display: none !important; */}
 
 div.value .fa-plane {font-size: 17px;}
 
@@ -7755,6 +7761,8 @@ body .multidiv.hasvalue > div > div.innerbuttons {
 body.ismobile .multidiv.hasvalue > div > div.innerbuttons {
 
 width: 93px;
+
+background: var(--high-color) !important;
 }
 
 
@@ -7902,6 +7910,9 @@ div.inmulti div.innerbuttons {
   width: 45px;
 }
 
+.table-responsive-sm .value[cvalue=V] {
+  top: calc(50% - 17px);
+}
 .card span {height: 25px;width: 24px;position: relative;top: -1px;font-size: 9px;}
 
 
@@ -7949,11 +7960,15 @@ div.value .fa-plane {font-size: 12px;}
 }
 
 .card > div.multidiv > div {
-  height: 35px;
+  height: 34px;
+  background: var(--high-color);
 }
 .card > div.multidiv > div > div {
   /* height: 35px; */
-  margin-left: 7px;
+  margin-left: 6px;
+  /* background: var(--high-color) !important; */
+  position: relative;
+  left: 2px;
 }
 
 .card .multidiv > div > div span {
@@ -7978,7 +7993,11 @@ text-transform: uppercase;
 div.inmulti.hasvalue div.innerbuttons {
 
 width: 121px !important;
+
+background: var(--high-color) !important;
 }
+
+.innerbuttons {}
 .card .multidiv i.multiitems {
   display: block;
   width: 0px;
@@ -7990,7 +8009,7 @@ width: 121px !important;
   padding: 0;
   font-size: 22px;
   left: 10px !important;
-  top: 5px;
+  top: 6px;
   padding-bottom: 0 !important;
   color: var(--softdark-color);
 }
@@ -8005,7 +8024,19 @@ height: 23px;
 .card .multidiv i.multiitems:nth-of-type(3) {
   left: 83px !important;
 }
+body.ismobile .multidiv > div > div.innerbuttons {
+    background: var(--high-color) !important;
+}
+
+#backdiv .container {
+      margin-top: 24px;
+}
+
   }
+
+
+
+
 
 
   @media (min-width: 1025px) {
@@ -8127,5 +8158,36 @@ border: 1px solid #00a200 !important;
 background: transparent;
 }
 
+#backdiv .container {
+      height: 780px;
+      margin-top: 16px;
+}
 
   }
+
+
+body > div.logo {
+    color: var(--high-color);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border: 10px solid var(--high-color) !important;
+    padding-left: 8px;
+    padding-top: 5px;
+    padding-right: 0px;
+    height: 142px;
+    border-radius: 0px;
+    border-style: solid !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    border-width: 4px !important;
+    background: url(lynx.png);
+    color: transparent;
+    border-color: transparent !important;
+    height: 62px;
+    background-size: 100%;
+    width: 55px;
+    z-index: 999999999;
+    /* border: 1px solid red !important; */
+    border-right-width: 0px !important;
+}
