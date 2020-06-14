@@ -85,6 +85,7 @@ $( document ).ready(function() {
 
     isMobile = window.mobileAndTabletCheck();
 
+    
     //isMobile = true;
 
     if (isMobile) {
@@ -1995,7 +1996,7 @@ function changetheme(type, desc) {
 
 
             soft_transp_color = "#3c3c3cbd"; 
-            document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#999');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content',  '##bbb');
             $('#mainsettings .currenttheme').html('Shades Of Gray'); 
             break;
 
@@ -3446,6 +3447,7 @@ function cleanMultiselect() {
     });
 
     multiselectcounter = 0;
+    multiselectmap = new Map();
 
     if ($(".multidiv").hasClass('inmulti')) {
         $(".multidiv").removeClass('hasvalue');            
@@ -3675,6 +3677,13 @@ function markDay(obj, e) {
 }
 
 
+function openTimesheet(obj, e) {
+    closeMenuPopup();
+
+    $(".fa-folder-open.logo").fadeOut(700);
+
+    $("#backdiv .container").fadeIn(1100);
+}
 
 
 
