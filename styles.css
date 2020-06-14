@@ -7852,25 +7852,44 @@ div.inmulti div.innerbuttons {
 
 #monthh3.partial {
   background: #f9b25a;
-    left: -2px;
-    position: relative;
-    padding-top: 2px;
-    padding-left: 5px;
-    padding-bottom: 0px;
-    height: 29px;
-    padding-right: 7px;
-    border-radius: 3px;
-    width: fit-content;
-    background: #61b761;
+  left: -2px;
+  position: relative;
+  padding-top: 0px;
+  padding-left: 5px;
+  padding-bottom: 0px;
+  height: 31px;
+  padding-right: 7px;
+  border-radius: 3px;
+  width: fit-content;
+  margin-bottom: 3px;
 }
 
 #monthh3.complete {
-    background: #61b761;
+      left: -2px;
+      position: relative;
+      padding-top: 0px;
+      padding-left: 5px;
+      padding-bottom: 0px;
+      height: 31px;
+      padding-right: 6px;
+      border-radius: 3px;
+      width: fit-content;
+      background: #76ce76;
+      margin-bottom: 3px;
 }
 
 
   @media (max-width: 480px) {
 
+#monthh3.partial {
+    padding-top: 2px;
+    height: 29px;
+}
+
+#monthh3.complete {
+    padding-top: 2px;
+    height: 29px;
+}
 
 .container.col-sm-4 h3 {
     margin-left: 25px;
