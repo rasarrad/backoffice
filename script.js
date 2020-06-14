@@ -50,7 +50,7 @@ var clWorker;
 /* 
     xyz startcode
     xyz fakepass
-    xyz splash 
+    xyz splash
 */
 
 
@@ -95,25 +95,28 @@ $( document ).ready(function() {
         $(".multidiv").addClass('inmulti');
         configureMobileMultiselectMode();
     }
+    else {
+        monthArray[1] = 8;
+        monthArray[2] = 8;
+        monthArray[3] = 8;
+        monthArray[4] = 8;
+        monthArray[5] = 8;
+        
+        monthArray[8] = "V";
+        monthArray[9] = "V";
+        monthArray[10] = "V";
+        monthArray[11] = "V";
+        monthArray[12] = "V";
+        
+        monthArray[16] = 8;
+        monthArray[23] = 8;
+        monthArray[24] = 8;
+        monthArray[25] = 8;
+        monthArray[26] = 8;
+    }
 
 
-monthArray[1] = 8;
-monthArray[2] = 8;
-monthArray[3] = 8;
-monthArray[4] = 8;
-monthArray[5] = 8;
 
-monthArray[8] = "V";
-monthArray[9] = "V";
-monthArray[10] = "V";
-monthArray[11] = "V";
-monthArray[12] = "V";
-
-monthArray[16] = 8;
-monthArray[23] = 8;
-monthArray[24] = 8;
-monthArray[25] = 8;
-monthArray[26] = 8;
 
     //changeMultiselectMode();
 
@@ -131,6 +134,7 @@ monthArray[26] = 8;
     showCalendar(currentMonth, currentYear);
 
 
+    openTimesheet();
  /* 
  localStorage.clear();
 
@@ -1996,7 +2000,7 @@ function changetheme(type, desc) {
 
 
             soft_transp_color = "#3c3c3cbd"; 
-            document.querySelector('meta[name="theme-color"]').setAttribute('content',  '##bbb');
+            document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#bbb');
             $('#mainsettings .currenttheme').html('Shades Of Gray'); 
             break;
 
