@@ -3218,6 +3218,24 @@ function executeCountersEffect(totalHoursChanged, totalVacationChanged) {
             }, 550);  
         }, 600); 
     }
+
+    //alert(allworkingdays + "-" + filledworkingdays);
+    if (filledworkingdays > 0) {
+        if (allworkingdays == filledworkingdays) {
+            $("#monthh3").removeClass('partial');
+            if (!$("#monthh3").hasClass('complete')) 
+                $("#monthh3").addClass('complete');
+        }
+        else {
+            $("#monthh3").removeClass('complete');
+            if (!$("#monthh3").hasClass('partial')) 
+                $("#monthh3").addClass('partial');
+        }
+    }
+    else {
+        $("#monthh3").removeClass('complete').removeClass('partial');
+    }
+           
     //$("#workhours").delay(100).fadeOut('slow').delay(50).fadeIn('slow');
 }
 
@@ -3226,6 +3244,9 @@ function executeCountersEffect(totalHoursChanged, totalVacationChanged) {
 function daysInMonthCount (month, year) { 
     return new Date(year, month, 0).getDate(); 
 } 
+
+var allworkingdays = 0;
+var filledworkingdays = 0;
 
 function showCalendar(month, year) {
 
@@ -3331,8 +3352,10 @@ function showCalendar(month, year) {
                 elem.html("");
     
                 elem.append("<div class='day'>" + pad(elem.attr("day"), 2) + "</div>");
-    
+                allworkingdays++;
+
                 if (cellvalue) {
+                    filledworkingdays++;
                     elem.addClass("selected");
                     if (cellvalue != "V")
                         elem.append("<div class='value hashours' cvalue='" + cellvalue + "' title='" + cellvalue + " hours worked'>" + cellvalue + "h</div>");
@@ -3370,6 +3393,18 @@ function showCalendar(month, year) {
         }
     
     });
+    if (filledworkingdays > 0) {
+        if (allworkingdays == filledworkingdays) {
+            $("#monthh3").removeClass('partial');
+            if (!$("#monthh3").hasClass('complete')) 
+                $("#monthh3").addClass('complete');
+        }
+        else {
+            $("#monthh3").removeClass('complete');
+            if (!$("#monthh3").hasClass('partial')) 
+                $("#monthh3").addClass('partial');
+        }
+    }
 }
 
 var multiselectcounter = 0;
@@ -3395,6 +3430,7 @@ function cellClick(obj, e) {
                 $(".multidiv").addClass('hasvalue');
         }
         else {
+
             if ($(".multidiv").hasClass('hasvalue'))
                 $(".multidiv").removeClass('hasvalue');
         }
@@ -3522,6 +3558,8 @@ function markDay8Hours(obj, day) {
     else if (displayValue.attr("cvalue") != "8") {
         totalHours = totalHours + 8;
         globalTotalHoursChanged = true;
+
+        filledworkingdays++; 
     }
     displayValue.html("8h");
     displayValue.attr("cvalue", "8");
@@ -3532,7 +3570,7 @@ function markDay8Hours(obj, day) {
         displayValue.addClass("hashours");
 
     if(!table.hasClass("selected"))
-        table.addClass("selected");
+        table.addClass("selected");   
 }
 
 function multiselectRemoveDay(obj, e) {
@@ -3559,7 +3597,7 @@ function multiselectRemoveDay(obj, e) {
     }
 
     executeCountersEffect(localTotalHoursChanged, localVacationChanged);
-    
+
     cleanMultiselect();
 }
 
@@ -3579,10 +3617,13 @@ function markRemoveDay(obj, day) {
     if (displayValue.attr("cvalue") == "V") {
         totalVacation--;
         globalVacationChanged = true;
+        filledworkingdays--;
     }
     else if (displayValue.attr("cvalue") == "8") {
         totalHours = totalHours - 8;
         globalTotalHoursChanged = true;
+        
+        filledworkingdays--;
     }
     displayValue.html("-");
     displayValue.attr("cvalue", "-");
@@ -3645,6 +3686,8 @@ function markDayVacations(obj, day) {
     else if (displayValue.attr("cvalue") == "-") {
         totalVacation++;
         globalVacationChanged = true;
+
+        filledworkingdays++; 
     }
     
     displayValue.html("<i class='fa fa-plane'></i><span>vacations</span>");
