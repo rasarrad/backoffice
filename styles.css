@@ -7727,7 +7727,7 @@ border: 1px solid #ff9f44;
 
 margin-right: 0px;
 
-border-color: transparent;
+border-color: #656565;
 
 transition: all 0.8s;
 
@@ -7762,7 +7762,7 @@ body.ismobile .multidiv.hasvalue > div > div.innerbuttons {
 
 width: 93px;
 
-background: var(--high-color) !important;
+background: #777777 !important;
 }
 
 
@@ -7826,7 +7826,7 @@ margin-left: 2px;
 }
 
 .card .multidiv.inmulti.hasvalue > div > div:not(.innerbuttons) {
-   border: 1px solid #00a200 !important;
+   /* border: 1px solid #00a200 !important; */
 }
 
 color: var(--dark-color) !important;
@@ -7850,30 +7850,48 @@ div.inmulti div.innerbuttons {
 }
 */
 
+#monthh3.partial {
+  background: #f9b25a;
+    left: -2px;
+    position: relative;
+    padding-top: 2px;
+    padding-left: 5px;
+    padding-bottom: 0px;
+    height: 29px;
+    padding-right: 7px;
+    border-radius: 3px;
+    width: fit-content;
+    background: #61b761;
+}
+
+#monthh3.complete {
+    background: #61b761;
+}
+
 
   @media (max-width: 480px) {
 
 
 .container.col-sm-4 h3 {
-    margin-left: 7px;
+    margin-left: 25px;
     margin-top: 4px;
     font-size: 26px;
     /* font-size: 37px; */
 }
 
 .card > div {
-    right: 8px;
+    right: 24px;
     top: 46px;
 }
 
 .card > div:nth-of-type(2) {
-    right: -16px;
+    right: 1px;
     top: 39px;
 }
 
 .table-responsive-sm {
-    width: calc(100% - 6px);
-    padding: 1px 3px;
+    width: calc(100% - 20px);
+    padding: 12px 10px;
 }
 
 #calendar-body td {
@@ -7883,7 +7901,7 @@ div.inmulti div.innerbuttons {
 }
 
 .card select {
-  width: 83px;
+  width: 87px;
   height: 18px !important;
   padding-top: 0px !important;
 }
@@ -7907,7 +7925,8 @@ div.inmulti div.innerbuttons {
   top: calc(50% - 8px);
   font-weight: bold;
   font-size: 13px;
-  width: 45px;
+  left: 3px;
+  width: 44px;
 }
 
 .table-responsive-sm .value[cvalue=V] {
@@ -7961,7 +7980,8 @@ div.value .fa-plane {font-size: 12px;}
 
 .card > div.multidiv > div {
   height: 34px;
-  background: var(--high-color);
+  background: #777777;
+  border: 1px solid #6d6d6d;
 }
 .card > div.multidiv > div > div {
   /* height: 35px; */
@@ -8009,9 +8029,9 @@ background: var(--high-color) !important;
   padding: 0;
   font-size: 22px;
   left: 10px !important;
-  top: 6px;
+  top: 7px;
   padding-bottom: 0 !important;
-  color: var(--softdark-color);
+  color: var(--text-color);
 }
 
 .multidiv > div > div {
@@ -8025,11 +8045,11 @@ height: 23px;
   left: 83px !important;
 }
 body.ismobile .multidiv > div > div.innerbuttons {
-    background: var(--high-color) !important;
+    background: #777777 !important;
 }
 
 #backdiv .container {
-      margin-top: 24px;
+      margin-top: 28px;
 }
 
   }
@@ -8191,3 +8211,4 @@ body > div.logo {
     /* border: 1px solid red !important; */
     border-right-width: 0px !important;
 }
+
