@@ -4883,14 +4883,14 @@ body.big #editinfodiv.newLayout .fa-file-text {
     height: 34px;
     border-radius: 5px;
     border: 2px solid #707070;
-    border: 2px solid var(--dark-color);
+    border: 1px solid #757575;
     background: var(--dark-color);
 }
 body.big .topoback2 {
     left: 66px;
-    width: calc(100% - 133px);
+    width: calc(100% - 131px);
     top: 11px;
-    height: 45px;
+    height: 47px;
 }
 
 
@@ -7629,7 +7629,7 @@ left: calc(100% - 22px);
 }
 
 .card #calendar-body td.cellselected {
-  border: 1px solid #00a200 !important;
+  border: 1px solid #0ce00c !important;
   /* height: calc(11vh - 4px) !important; */
   background: var(--dark-color);
 }
@@ -7723,7 +7723,7 @@ padding-bottom: 1px;
 
 cursor: pointer;
 
-border: 1px solid #ff9f44;
+border: 1px solid #ff9f4400;
 
 margin-right: 0px;
 
@@ -7762,7 +7762,7 @@ body.ismobile .multidiv.hasvalue > div > div.innerbuttons {
 
 width: 93px;
 
-background: #777777 !important;
+background: #929292 !important;
 }
 
 
@@ -7820,7 +7820,7 @@ margin-left: 2px;
   position: absolute;
   transition: all 0.8s;
   padding: 0;
-  top: 4px;
+  top: 5px;
   padding-bottom: 0 !important;
   color: var(--softdark-color);
 }
@@ -7854,20 +7854,21 @@ div.inmulti div.innerbuttons {
   background: #f9b25a;
   left: -2px;
   position: relative;
-  padding-top: 0px;
+  padding-top: 1px;
   padding-left: 5px;
   padding-bottom: 0px;
   height: 31px;
   padding-right: 7px;
   border-radius: 3px;
   width: fit-content;
-  margin-bottom: 3px;
+  margin-bottom: 0px;
+  border: 1px solid #ff930c;
 }
 
 #monthh3.complete {
       left: -2px;
       position: relative;
-      padding-top: 0px;
+      padding-top: 1px;
       padding-left: 5px;
       padding-bottom: 0px;
       height: 31px;
@@ -7875,20 +7876,21 @@ div.inmulti div.innerbuttons {
       border-radius: 3px;
       width: fit-content;
       background: #76ce76;
-      margin-bottom: 3px;
+      margin-bottom: 0px;
+      border: 1px solid #59af59;
 }
 
 
   @media (max-width: 480px) {
 
 #monthh3.partial {
-    padding-top: 2px;
-    height: 29px;
+    padding-top: 0px;
+    height: 28px;
 }
 
 #monthh3.complete {
-    padding-top: 2px;
-    height: 29px;
+padding-top: 0px;
+    height: 28px;
 }
 
 .container.col-sm-4 h3 {
@@ -7998,16 +8000,17 @@ div.value .fa-plane {font-size: 12px;}
 }
 
 .card > div.multidiv > div {
-  height: 34px;
-  background: #777777;
+  height: 29.5px;
+  background: #929292;
   border: 1px solid #6d6d6d;
 }
 .card > div.multidiv > div > div {
   /* height: 35px; */
-  margin-left: 6px;
-  /* background: var(--high-color) !important; */
+  margin-left: 3px;
+  background: #cccccc !important;
   position: relative;
   left: 2px;
+  top: -2px;
 }
 
 .card .multidiv > div > div span {
@@ -8048,7 +8051,7 @@ background: var(--high-color) !important;
   padding: 0;
   font-size: 22px;
   left: 10px !important;
-  top: 7px;
+  top: 6px;
   padding-bottom: 0 !important;
   color: var(--text-color);
 }
@@ -8064,7 +8067,7 @@ height: 23px;
   left: 83px !important;
 }
 body.ismobile .multidiv > div > div.innerbuttons {
-    background: #777777 !important;
+    background: #929292 !important;
 }
 
 #backdiv .container {
@@ -8111,10 +8114,7 @@ body.ismobile .multidiv > div > div.innerbuttons {
 }
 
 
-.table-responsive-sm .buttons .fa:hover {
-color: var(--high-color);
-/* transform: scale(1.05); */
-}
+.table-responsive-sm .buttons .fa:hover {color: #636363;/* transform: scale(1.05); */}
 
 .table-responsive-sm .buttons span:hover .fa {
 color: var(--text-color);
@@ -8193,8 +8193,8 @@ border: 1px solid #00a200 !important;
 
 
     .card .multidiv.inmulti .multiitems:hover {
-  color: var(--softdark-color);
-background: transparent;
+  color: #f3f3f3;
+  background: transparent;
 }
 
 #backdiv .container {
@@ -8208,7 +8208,7 @@ background: transparent;
 body > div.logo {
     color: var(--high-color);
     position: absolute;
-    top: 0px;
+    top: -1px;
     right: 0px;
     border: 10px solid var(--high-color) !important;
     padding-left: 8px;
