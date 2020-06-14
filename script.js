@@ -134,7 +134,7 @@ $( document ).ready(function() {
     showCalendar(currentMonth, currentYear);
 
 
-    openTimesheet();
+    //openTimesheet();
  /* 
  localStorage.clear();
 
