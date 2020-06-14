@@ -8202,6 +8202,10 @@ border: 1px solid #00a200 !important;
       margin-top: 16px;
 }
 
+.multidiv.inmulti > div > div {
+  border-color: #0ce00c; 
+}
+
   }
 
 
