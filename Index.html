@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html style="overscroll-behavior-y: contain;">
+  <head> 
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=0.9">
+      <meta name="theme-color" content="#003156">
+    <meta name="twitter:widgets:theme" content="dark">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/c6078e9ff6.js"></script>
+    <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="./calendar/vanilla-calendar.css">
+    <script src="./calendar/vanilla-calendar.js"></script>
+
+    <!-- <link rel="stylesheet" media="screen and (max-width: 100px)" href="./stylesMob.css" />
+    <link rel="stylesheet" media="screen and (min-width: 100px)" href="./styles.css" />
+    -->
+    <link rel="stylesheet" href="./styles.css" />
+
+    <script src="./script.js"></script>
+    <script src="./settings.js"></script>
+    <script src="./add.js"></script>
+    <script src="./searchDetail.js"></script>
+    <script src="./change.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="shortcut icon" type="image/png" href="./bookmarks.png"/>
+    <link rel="icon" type="image/png" href="./favicon.png"/>
+
+    <title>Lynxmind Backoffice</title>
+    <!--<meta name="twitter:widgets:theme" content="dark">-->
+
+  </head>
+<body id="body" class="notransit pobj body" style="margin: 0;font-family: sans-serif;background-image: linear-gradient(to bottom, var(--soft-color), var(--soft-color));background-repeat: no-repeat;height: 100%;display: block;background-size: 100% 120%;background-attachment: fixed;border-top:0x solid black;">
+  <div id="recoilback" style="display: block; position: fixed; width: 100%; z-index: 99999999; top: 0px; left: 0px; background: var(--softdark-color); border-bottom: 0px solid var(--dark-color);">
+    <div class="topoback" style="background-image: linear-gradient(to bottom, var(--softdark-color)88%, #00000000 100%); height: 58px;height: 52px;background: var(--softdark-color);"></div> 
+    <div class="topoback topoback2"></div> 
+    <i class="fa fa-bars menubutton clicable" onclick="javascript: openmenu(this)"></i>
+    <span class="noselect toptitle clicable" style="font-family: Helvetica, Roboto, 'Segoe UI', Calibri, sans-serif !important;font-variant-caps: normal !important;" id="toptitle">
+      Lynxmind Backoffice
+      </span>
+      <i id="addtweet" class="fa fa-plus-square clicable"></i>
+      <i id="settings" class="fa fa-cog clicable"></i>
+      <i id="zoomin" onclick="javascript: zoom(this)" class="fa fa-search-plus clicable"></i>
+  </div>
+  <div id="tweetcount" class="pobj" style="font-weight: bold; padding: 0px 4px; position: fixed; bottom: 54px; right: 25px; background: var(--high-color); border: 2px solid var(--soft-color); border-radius: 4px; color: var(--dark-color); line-height: 20px; text-align: center; transition: all 0.8s ease 0s; font-size: 14px; z-index: 12; opacity: 0.52;display:none;">
+      <div class="noselect" id="tcnumber"></div><span id="tccateg" class="noselect"></span>
+      <div style="margin-top: 4px;display: block;position: relative;left: -2px;" class="noselect">
+        <i id="typeT" class="fa fa-twitter-square noselect" style="font-size: 19px;border: 0px solid transparent;padding: 0px 4px;border-radius: 4px;"></i>
+        <div class="noselect" id="tct" style="display: inline-block;position: relative;left: -3px;top: 0px !important;font-size: 13px;text-align: left;"></div>
+        <i id="typeY" class="fa fa-youtube-square noselect" style="font-size: 19px;border: 0px solid transparent;padding: 0px 4px;border-radius: 4px;"></i>
+        <div class="noselect" id="tcy" style="display: inline-block;position: relative;left: -1px;top: -2px;font-size: 13px;text-align: left;"></div>
+        <i id="typeH" class="fa fa-internet-explorer noselect" style="font-size: 17px;border: 2px solid transparent;padding: 0px;border-radius: 4px;position: relative;left: 2px;top: -2px;"></i>
+        <div class="noselect" id="tch" style="display: inline-block;position: relative;left: 2px;top: -3px;font-size: 13px;text-align: left;"></div>
+        <i id="countfilter" class="fa fa-filter noselect" style="font-size: 17px;position: absolute;right: -13px;top: -54px;border: 2px solid transparent;padding: 2px 4px;border-radius: 4px;display: none;"></i>
+    </div>
+    <i onmouseover="javascript: gotop(event)" onclick="javascript: gotop(event)" id="gotop" class="fa fa-angle-up"></i>
+      </div>
+
+<input id="pasteinput" style="position: absolute;width: 89px;top: 11px;left: 56px;height: 28px;border: 0;cursor: default;background: transparent;">
+<div id="openadd" style="position: absolute;width: 56px;top: 11px;right: 108px;height: 28px;border: 0;cursor: default;background: transparent;"></div>
+
+<span class="label text top">Text</span>
+<input type="text" class="top" style="margin-right: 10px;width: 80px;" id="filtertext2"></input>
+<span class="label tag top">Tag</span>
+<input type="text" class="top" style="width: 80px; margin-right: 10px;" id="filtertag2" value="dailyshow gun usa moto"></input>
+<span class="label author top">Author</span>
+<input type="text" class="top" style="width: 80px;margin-right: 10px;" id="filterauthor2"></input>
+<span class="label date top">Date</span>
+<input type="text" class="top" id="filterdate12" style="width: 40px;"></input>
+<input type="text" class="top" id="filterdate22" style="width: 40px;margin-right: 10px;"></input>
+<span class="label id top">ID</span>
+<input type="text" class="top" style="width: 30px;" id="filterid"></input>
+<button id="btnsearch" class="top noeffect" style="position: relative;top: -8px;margin-left: 38px;">Search<i class="fa fa-search"></i></button>
+<button id="btnreset" class="top noeffect" style="position: relative;top: -8px;margin-left: 10px;display:none;">Reset<i class="fa fa-eraser"></i></button>
+
+<input type="hidden" id="selectedcat" value="all">
+<input type="hidden" id="maxid" value="100000">
+<input type="hidden" id="selectedcattext" value="All Links">
+<input type="hidden" id="recordspersearch" value="500000000"> 
+<div id="backdiv" onclick="openMainSettingsPopup();" class="pobj" style="position: fixed;width: 100%;height: calc(100% - 52px);background: #00000099;top: 52px;z-index: -1;background-image: linear-gradient(to bottom, #00a1ff , #00000099);background: transparent;background-image: linear-gradient(rgb(0, 104, 165), rgb(0, 139, 222));">
+  <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
+    <div class="card" style="max-width: 997px;position: relative;margin: auto;">
+        <h3 class="card-header" id="monthh3"></h3>
+        <h3 class="card-header" id="yearh3"></h3>
+        <div class="div2">
+          <form class="form-inline" style="display: flex;align-items: unset;justify-content: flex-end;">
+            <div id="workhours">0</div>
+            <div class="whlabel">Worked<br>Hours</div>
+            <div id="vacationdays">0</div>
+            <div class="vdlabel">vacation<br>days</div>
+          </form>
+        </div>
+        <div>
+          <form class="form-inline" style=" display: flex; align-items: center;justify-content: center;">
+            <i class="fa fa-arrow-circle-left" id="previous" onclick="previous()"></i>
+            <select class="form-control col-sm-4" name="month" id="month" onchange="jump()" style="display: inline-block;">
+                <option value="0">Jan</option>
+                <option value="1">Feb</option>
+                <option value="2">Mar</option>
+                <option value="3">Apr</option>
+                <option value="4">May</option>
+                <option value="5">Jun</option>
+                <option value="6">Jul</option>
+                <option value="7">Aug</option>
+                <option value="8">Sep</option>
+                <option value="9">Oct</option>
+                <option value="10">Nov</option>
+                <option value="11">Dec</option>
+            </select>
+            <label for="year"></label>
+            <select class="form-control col-sm-4" name="year" id="year" onchange="jump()" style="display: inline-block;">
+                <option value="1990">1990</option>
+                <option value="1991">1991</option>
+                <option value="1992">1992</option>
+                <option value="1993">1993</option>
+                <option value="1994">1994</option>
+                <option value="1995">1995</option>
+                <option value="1996">1996</option>
+                <option value="1997">1997</option>
+                <option value="1998">1998</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+            </select>
+            <i class="fa fa-arrow-circle-right" id="next" onclick="next()"></i>
+          </form>
+        </div>       
+        <table class="table table-bordered table-responsive-sm" id="calendar">
+            <thead>
+            <tr>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+                <th>Sun</th>
+            </tr>
+            </thead>
+
+            <tbody id="calendar-body">
+
+            </tbody>
+        </table>
+        <div class="multidiv">
+          <div>
+            <div title="Toggle multi select mode" onclick="changeMultiselectMode(event)">
+                <i class="fa fa-th-large" id="changemultiselect">
+                </i>
+                <span>Multi Select</span>
+            </div>
+            <div class="innerbuttons">
+                <i class="fa fa-calendar-check-o multiitems" title="Add an 8 hours working day on the selected days" id="add8" onclick="multiselectEightHours(this, event)" style="display: inline; left: 10px;">
+                </i>
+                <i class="fa fa fa-calendar-o multiitems" title="Add vacation day on selected the days" id="addVac" onclick="multiselectVacations(this, event)" style="display: inline; left: 37px;">
+                </i>
+                <i class="fa fa fa-calendar-times-o multiitems" title="Remove time from the selected days" id="remDay" onclick="multiselectRemoveDay(this, event)" style="display: inline; left: 64px;">
+                </i>
+            </div>
+            <!-- <i class="fa fa-times multiitems" title="Cancel multi select" id="closeMultiselect" onclick="cleanMultiselect(this, event)">
+            </i> -->
+          </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- <iframe id="backdiv" class="pobj" src="cal/index.html" style="position: fixed;width: 100%;height: calc(100% - 52px);top: 52px;z-index: -1;">
+</iframe> -->
+<div id="dialog-confirm-upload" title="Upload links?" style="display: none;">
+  <p>If you upload a file with links the current ones will be erased. Are you sure?</p>
+</div>
+
+<div id="dialog-confirm-delete" title="Delete the link forever?" style="display: none;">
+  <p>This link will be deleted forever. Are you sure? (Press restore to unmark for deletion)</p>
+</div>
+
+<div id="dialog-confirm-deleteall" title="Delete all links forever?" style="display: none;">
+  <p>All links marked as deleted will be removed forever. Are you sure?</p>
+</div>
+
+<div id="main" class="pobj" style="overscroll-behavior-y: contain;margin-bottom: 67px;background: var(--dark-color);color: white;border-top: 0px solid black;margin-top: -3px;">
+    
+</div>
+
+<div class="addpopup" id="addpopup" style="display: none;">
+  <i id="closepopup" class="fa fa-remove"></i>
+  <i class="fa fa-gavel"></i>
+  <i class="fa fa-remove"></i>
+    <span style="margin-left: auto;margin-right: auto;width: 100%;display: block;text-align: center;font-size: 20px; height: 32px; padding-top: 3px;">Add new</span>
+    Link <input style="width: 45px;" type="text">
+    Date <input style="width: 61px;" type="text">
+    Id <input style="display: inline; width: 28px;" id="tweetid" type="text"> 
+    Posted by <input type="text" style="display: inline;text-overflow: clip;width: 246px;"></input>
+    <div style="display: inline;position: absolute;right: 172px;">
+      <i id="typeTT" class="fa fa-twitter-square" style="font-size: 28px;position: absolute;left: 20px; top: -19px; border: 2px solid white; padding: 2px 4px; border-radius: 4px;"></i>
+      <i id="typeYY" class="fa fa-youtube-square" style=" font-size: 28px; position: absolute; left: 62px;top: -19px; border: 2px solid white; padding: 2px 4px; border-radius: 4px;"></i>
+      <i id="typeHH" class="fa fa-internet-explorer" style="font-size: 28px; position: absolute;left: 103px;top: -19px; border: 2px solid white; padding: 2px; border-radius: 4px;"></i>
+    </div>
+
+    <br><br>
+    Categories 
+    <!--
+<div style="float: right;position: absolute;right: 457px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">View Now</div>
+<input type="checkbox" style="float: right;position: absolute;right: 489px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" onclick="javascript: clickCheckCat(this, 'tvn')" id="cattvn">
+<div style="float: right;position: absolute;right: 395px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">Trend</div>
+<input type="checkbox" style="float: right;position: absolute;right: 436px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="cattrn" onclick="javascript: clickCheckCat(this, 'trn')">
+<div style="float: right;position: absolute;right: 350px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">View</div>
+<input type="checkbox" style="float: right;position: absolute;right: 396px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="cattvi" onclick="javascript: clickCheckCat(this, 'tvi')">
+<div style="float: right;position: absolute;right: 314px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">View Long</div>
+<input type="checkbox" style="float: right;position: absolute;right: 346px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="cattvl" onclick="javascript: clickCheckCat(this, 'tvl')">
+<div style="float: right;position: absolute;right: 248px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">Read</div>
+<input type="checkbox" style="float: right;position: absolute;right: 293px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="cattre" onclick="javascript: clickCheckCat(this, 'tre')">
+<div style="float: right;position: absolute;right: 206px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">Read Long</div>
+<input type="checkbox" style="float: right;position: absolute;right: 234px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="cattrl" onclick="javascript: clickCheckCat(this, 'trl')">
+<div style="float: right;position: absolute;right: 139px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">Keep</div>
+<input type="checkbox" style="float: right;position: absolute;right: 184px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="cattke" onclick="javascript: clickCheckCat(this, 'tke')">
+<div style="float: right;position: absolute;right: 99px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">Impor</div>
+<input type="checkbox" style="float: right;position: absolute;right: 141px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="catimp" onclick="javascript: clickCheckCat(this, 'imp')">
+<div style="float: right;position: absolute;right: 56px;top: 66px;height: 19px;width: 78px;color: #0082cd;font-size: 11px;font-weight: bold;">Clima</div>
+<input type="checkbox" style="float: right;position: absolute;right: 98px;top: 78px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="catcli" onclick="javascript: clickCheckCat(this, 'cli')">--><input style="width: 155px;margin-right: 455px;" type="text">Class <input style="width: 13px;" value="0" type="text">
+
+    <br><br>
+    Tags <input style="width: 172px;padding-left: 469px;" id="tags" type="text">
+    <div style="position: relative;height: 36px;width: 486px;display: grid;background: white;top: -26px;padding-right: 20px;">
+        <ul id="tagsulxxx" style="width: 532px;background: white;height: 253px;max-width: 490px;padding-left: 3px;padding-top: 3px;border: 2px solid #006ba9;overflow-y: auto;z-index: 99;display: block;margin-top: 6px;margin-bottom: 0;">
+
+        </ul>
+    </div>
+
+    <select style="width: 96px;float: right;position: absolute;right: 14px;top: 109px;height: 19px;" id="tagsselectxxxx"></select><br><br>
+    <span style="margin-left: auto;margin-right: auto;width: 100%;display: block;font-size: 16px;height: 32px;padding-top: 3px;text-align: left;position: relative;top: 241px;">Result</span>
+    <div style="float: right;position: absolute;right: 460px;top: 150px;height: 19px;width: 163px;color: #0082cd;">Preview And Include</div>
+    <input type="checkbox" style="float: right;position: absolute;right: 389px;top: 148px;height: 19px;width: 112px;color: #484848;" id="preview" checked="checked">
+    <div style="float: right;position: absolute;right: 337px;top: 150px;height: 19px;width: 78px;color: #0082cd;">Is secret</div><input type="checkbox" style="float: right;position: absolute;right: 308px;top: 148px;height: 19px;width: 33px;color: #0082cd;background: #0082cd;border: 1px solid #0082cd;" id="ishidden">
+    <div style="float: right;position: absolute;right: 178px;top: 150px;height: 19px;width: 112px;color: #0082cd;">Add one more</div><input type="checkbox" style="float: right;position: absolute;right: 106px;top: 148px;height: 19px;width: 112px;color: #484848;" id="onemore" checked="">
+    <button style="cursor: pointer;float: right;position: absolute;right: 11px;top: 146px;height: 28px;width: 112px;font-size: 16px;" id="create">Create</button>
+    <textarea style="width: 282px;height: 161px;color: white;font-weight: bold;background: #007cc391;border: 1px solid #007dc5;padding-left: 4px;padding-right: 4px;position: relative;font-size: 15px;top: -35px;left: 506px;" id="info" type="text"></textarea>
+    <textarea style="width: 784px;height: 67px;margin-top: 23px;border: 1px solid #00629a;color: white;font-weight: bold;background: #007cc391;border: 1px solid #007dc5;padding-left: 4px;padding-right: 4px;" id="result" type="text"></textarea>
+    <span style="right: 203px;width: 100%;display: block;font-size: 17px;height: 32px;padding-top: 3px;text-align: right;position: relative;top: -333px;">Extra info</span>
+</div>
+
+<!-- <div id="mask" style="position: fixed;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.81);top: 0px;z-index: 99999;display: none;"><i class="fa fa-circle-o-notch fa-spin"></i></div>
+-->
+
+
+<div id="mask" style="position: fixed;width: 100%;height: 100%;top: 0px;z-index: 999999999999;font-size: 11px;background-image: linear-gradient(to bottom, #a9a9a9 -24%, #000000 97%);background-image: linear-gradient(to bottom, var(--softdark-color), var(--dark-color));display:none;">
+  <i class="fa fa-circle-o-notch fa-spin" style="font-size: 43px;top: calc(50% - 44px);left: calc(50% - 21px);color: var(--high-color);position: absolute;width: auto;height: auto;z-index: 999;display: inline-block;background: transparent !important;text-rendering: auto;-webkit-font-smoothing: antialiased; display: none;">
+  </i>
+  <i class="fa fa-folder-open" style="font-size: 43px;top: calc(50% - 250px);left: calc(50% - 29px);width: 43px;height: 43px;color: white;border-color: white !important;border: 3px solid #ffffff00 !important;border-left-color: transparent !important;border-right-color: transparent !important;padding-bottom: 2px;position: absolute;display: none;">
+  </i>
+  <div>
+      <div style="font-size: 43px;top: calc(50% - 55px);left: calc(50% - 29px);width: 42.9989px;position: absolute;height: 42.657px;z-index: 999;padding: 10px; background-image: linear-gradient(to bottom, #a9a9a9 -24%, #000000 97%);background-image: linear-gradient(to bottom, #4d4d4d, #404040); background: transparent;"></div><i class="fa fa-circle-o-notch fa-spin" style="font-size: 43px;top: calc(50% - 57px);left: calc(50% - 29px);color: white;width: auto;position: absolute;height: auto;padding: 10px;z-index: 999;display: inline-block;background: transparent !important;text-rendering: auto;-webkit-font-smoothing: antialiased;">
+      </i>
+  </div>
+  <div style="position: absolute;color: white;text-align: center;font-size: 37px;font-weight: bold;left: calc(50% - 175px);top: calc(50% - 102px);width: 350px;">
+    bookmarks
+    <span style="font-style: italic;display: inherit;font-weight: normal;margin-top: 33px;border-top: 3px solid transparent;padding-top: 0px;line-height: 96px;font-size: 35px;">
+      station
+    </span>
+  </div>  
+  <div class="noselect" style="position: fixed;z-index: -1;width: 100%;text-align: center;bottom: 3px;font-size: 12px;cursor: default;color: white;font-weight: bold;">
+    &copy; <span style="font-size: 11px;">2015</span>LYNXMIND - All Rights Reserved
+  </div>
+</div>
+
+<div id="changetags" style="position: fixed;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.6);top: 0px;z-index: 999;display: none;" currid="2"><div class="tagtext"><i onclick="javascript: closetagpopup()" class="fa fa-remove" style="display: block;position: absolute;top: 4px;right: 5px;font-size: 21px;background: transparent;padding-left: 6px;padding-right: 6px;border-radius: 4px;color: white;cursor: pointer;height: 22px;"></i><i onclick="javascript: undotag(this)" class="fa fa-undo clicable" style="display: block;position: absolute;top: 36px;right: 41px;font-size: 18px;background: white;padding-left: 6px;padding-right: 5px;border-radius: 4px;color: #007dc5;cursor: pointer;height: 20px;padding-top: 2px;"></i><i onclick="javascript: acceptTag(this)" class="fa fa-check" style="display: block;position: absolute;top: 36px;right: 5px;font-size: 21px;background: white;padding-left: 4px;padding-right: 4px;border-radius: 4px;color: #007dc5;cursor: pointer;height: 22px;"></i><span class="poptitle" style="position: relative;top: 3px;"></span><br><input style="width: 450px;color: #004871;margin-top: 14px;margin-left: -70px;"></div></div>
+
+<div id="stripmessage" currid="9" iscat="no">
+  <div class="striptext" style="top: calc(0% - 95px);">
+    <i class="fa" style="position: absolute;left: 11px;top: calc(50% - 10px);font-size: 16px;display: none;"></i>
+    <span class="poptitle"></span>
+    <span id="stripfunc" style="position: absolute;font-size: 13px;right: 5px;text-decoration: underline;top: calc(50% - 10px);background: green;color: white;padding: 1px 3px;padding-bottom: 2px;border-radius: 3px;">
+    </span>
+  </div>
+</div>
+
+<textarea style="width: 200px;height: 100px;position: fixed;left: -242px;" id="linkresult" type="text"></textarea>
+
+
+<div id="linkChange" style="display: block;height: calc(100%) !important;position: fixed !important; margin-top: 0px !important;display: none;" class="newLayout pobj" onclick="closeSettingsPopup()" cid="">
+  <div style="position: relative;top: -1px !important;display: block;max-height: calc(100% - 10px) !important;margin-top: 0px !important;border-top: 1px solid var(--soft-color);border-radius: 0px;">        
+      <table class="titletable buttonstable newlinktable">
+          <tbody>
+            <tr class="cursordefault">
+                <td colspan="4" class="firsttd">
+                    <i id="seticon" class=""></i>
+                    <!-- <b>id </b>
+                    <span class="id smallrem"></span>-->
+                    <b style="margin-left: -1px;">author </b>
+                    <span class="author" onclick="showAuthor(this)"></span>
+                    <input type="text" additionalAttributes="{autocomplete: 'none'}" autocomplete=none id="postedby" class="authorinput" style="display:none;" value="">
+                    <div class="authorbuttons" style="display: none;">
+                      <i class="fa fa-undo clicable" onclick="undoAuthor(this)"></i>
+                      <i class="fa fa-times clicable" onclick="closeAuthor(this)"></i>
+                      <i class="fa fa-check clicable" onclick="saveAuthor(this)"></i>
+                    </div>
+                    <br class="brsep">
+                    <b class="datespan" style="margin-left: 5px;">date </b>
+                    <span onclick="showDate(this)" style="cursor: pointer;" class="date smallrem"></span>
+                    <input type="text" id="date" class="dateinput" style=" width: 40px;">
+                    <input type="text" id="datetoshow" class="datetoshow" style=" width: 40px;">
+                </td>            
+            </tr>
+            <tr class="buttonstr" style="text-align: center;">
+              <td onclick="removetweet(this)" style="position: relative;left: -2px;">
+                  <i id="removetweetp2" class="fa fa-eraser fa-flip-horizontal"></i>
+              </td>
+              <td class="buttontdtohide" onclick="externallinkcopy(this)" style="position: relative;left: -1px; padding-top: 6px;">
+                  <i id="internallinkp" class="fa logo fa-files-o"></i>
+              </td>
+              <td class="buttontdtohide" onclick="externallinkopen(this)" style="position: relative;left: 0px;">
+                  <i id="externallinkp" class="fa fa-external-link"></i>
+              </td>
+              <td onclick="closeSettingsPopup(this)" style="position: relative;left: 1px;">
+                  <i id="closepopupp" class="fa fa-window-close"></i><div style="position: absolute; height: 41px; width: 2px; top: 0px; right: -1px; background: var(--dark-color);"></div>
+              </td>                
+            </tr>
+          </tbody>
+        </table>
+        <table id="linktable" class="sectiontitletable sectionexpandable defaulttablerow nocol">
+              <tbody>
+                <tr class="cursorpointer" style="padding-bottom: 15px;">
+                    <td class="sectionicontd" style="width: 7px !important;display: inline-block;white-space: nowrap;cursor: default;">
+                        <i class="fa fa-link"></i>
+                        <span class="sectiontitle">Link</span>
+                    </td>    
+                    <td class="sectionicontd el ellipsis" style="cursor: default;width: 96%;padding-left: 5px;">
+                        <input id="tweet" type="text">
+                    </td>                         
+                                                             
+                </tr>    
+              </tbody>
+            </table>  
+            <table id="previewtable" class="sectiontitletable sectionexpandable newlinktable nocol" style="transition: max-height 0.5s ease 0s;max-height: 1908px;margin-top: 80px;display: none;">
+                  <tbody>
+                    <tr class="cursorpointer" style="padding-bottom: 15px;">
+                        <td class="sectionicontd" style="width: 7px !important;display: inline-block;white-space: nowrap;cursor: default;">
+                            <i class="fa fa-desktop" style="font-size: 14px;position: relative;top: 0px;left: -4px;"></i><span style="padding-left: 6px;position: relative;top: -2px;left: -1px;" class="sectiontitle">Preview</span>
+                        </td>    
+                        <td class="sectionicontd el ellipsis" style="cursor: default;width: 96%;padding-left: 5px;">   
+                        </td>                                                                     
+                    </tr>
+                    <tr>  
+                          <td colspan="3" id="previewtd" style="width: calc(100% - 220px);padding-left: 0px;padding-bottom: 0px;">
+                          </td>                                          
+                      </tr>   
+                  </tbody>
+                </table>                      
+    <table id="editTags" cmaxheight="233px" cmaxheightbig="260px" class="sectiontitletable sectionexpandable" style="margin-top: 77px;">
+        <tbody>
+          <tr class="cursorpointer" onclick="editSetting(event,this)" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="width: 48px;display: inline-block;white-space: nowrap;">
+                <i class="fa fa-tags"></i><span style="padding-left: 6px;" class="sectiontitle">Tags</span>
+            </td>    
+            <td class="sectionicontd el ellipsis">
+                <span class="currenttags titletext slicename"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-angle-down"></i>
+            </td>                                        
+        </tr>   
+        <tr class="trcontent">  
+            <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;">
+                <input id="tagsinput" style="margin-left: 3px;display:none;" ctags="">
+                <input id="addtaginput" type="text" style="margin-left: 3px;">
+                <i class="fa fa-plus-square mainbutton" onclick="javascript: addTextTag(this)" style="font-size: 17px;padding-left: 4px;position: relative;top: 2px;padding-right: 10px;"></i>
+                <select id="tagsselect"><option value="notag">All Tags</option><option value="Assange">Assange</option><option value="John">John</option><option value="Julian">Julian</option><option value="Pilger">Pilger</option><option value="bernie">bernie</option><option value="climate">climate</option><option value="corbyn">corbyn</option><option value="coronel">coronel</option><option value="coup">coup</option><option value="dailyshow">dailyshow</option><option value="failed">failed</option><option value="fakenews">fakenews</option><option value="fox">fox</option><option value="funny">funny</option><option value="gun">gun</option><option value="hannity">hannity</option><option value="hongkong">hongkong</option><option value="israel">israel</option><option value="joe">joe</option><option value="maduro">maduro</option><option value="max">max</option><option value="moto">moto</option><option value="nunes">nunes</option><option value="palestine">palestine</option><option value="racism">racism</option><option value="rogan">rogan</option><option value="sanders">sanders</option><option value="syria">syria</option><option value="usa">usa</option><option value="venezuela">venezuela</option><option value="west">west</option><option value="ww2">ww2</option></select> </td>                                          
+        </tr>  
+      <tr class="trcontent">  
+          <td colspan="3" style="position: relative;">
+              <ul id="tagsul"></ul>
+              <div style="height: 7px;width: 100%;position: relative;top: -4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);"></div>
+              <i id="expandedittags" class="fa fa-chevron-down" onclick="javascript: expandsection(this, event)"></i>
+          </td>                                        
+      </tr>    
+      <tr class="cursordefault originaltr trcontent">
+        <td id="originaltagtd" colspan="3" style="padding: 4px;padding-top: 0px;">
+            <span class="boldtitle">Original tags</span><i class="fa fa-undo mainbutton clicable" onclick="javascript: undoTags(event, this)" style="font-size: 14px;padding-left: 8px;position: relative;top: 1px;display: none;"></i>
+            <span class="originaltags titletext" style="margin-left: 6px;"></span>
+        </td>                                   
+      </tr>
+    </tbody>
+  </table>  
+
+
+  <table id="editCats" cmaxheight="254px" cmaxheightbig="254px" cheight="232px" class="sectiontitletable sectionexpandable">
+    <tbody>
+      <tr class="cursorpointer" onclick="editSetting(event,this)" style="padding-bottom: 15px;">
+        <td class="sectionicontd" style="width: 87px;display: inline-block;white-space: nowrap;padding-top: 0;">
+            <i class="fa fa-bookmark"></i><span class="sectiontitle">Categories</span>
+        </td>   
+        <td class="sectionicontd el ellipsis">
+            <span class="currentcats titletext slicename"></span>
+        </td>             
+        <td class="sectionedittd">
+            <i class="fa fa-angle-down"></i>
+        </td>                                        
+    </tr>   
+    <tr class="trcontent">  
+        <td colspan="3" style="width: calc(100% - 220px);padding-left: 6px;padding-bottom: 6px;">
+            <input id="catsinput" style="margin-left: 3px;margin-top: -12px;visibility: hidden;height: 0;display: block;">
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'tvn')" id="cattvn">
+                <label for="cattvn" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-tvn text">New / Ongoing</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'trn')" id="cattrn">
+                <label for="cattrn" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-trn text">Hot / Trending</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'tvi')" id="cattvi">
+                <label for="cattvi" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-tvi text">To Watch</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'tvl')" id="cattvl">
+                <label for="cattvl" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-tvl text">Documentaries / Films</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'tre')" id="cattre">
+                <label for="cattre" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-tre text">Fast Reading</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'trl')" id="cattrl">
+                <label for="cattrl" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-trl text">Long Reading</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'tke')" id="cattke">
+                <label for="cattke" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-tke text">Important / To Keep</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'imp')" id="catimp">
+                <label for="catimp" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-imp text">Shocking Truth</span>
+                    
+                </label>
+            </div>
+            <div class="checkstyleddiv">                  
+                <input type="checkbox" onclick="javascript: clickCheckCat(this, 'cli')" id="catcli">
+                <label for="catcli" style="position: relative;top: -7px;">
+                    <span><i class="fa fa-square"></i></span>
+                    <span class="cat-cli text">VictoryWillCome Tweets</span>
+                </label>
+            </div>
+        </td>                                          
+    </tr>    
+    <tr class="cursordefault originaltr trcontent">
+      <td id="originalcattd" colspan="3" style="padding: 4px;padding-top: 0px;">
+          <span class="boldtitle">Original categories</span><i class="fa fa-undo mainbutton" onclick="javascript: undoCats(event, this)" style="font-size: 14px;padding-left: 8px;position: relative;top: 1px;display: none;"></i>
+          <span class="originalcats titletext"></span>
+      </td>                                   
+    </tr>
+  </tbody>
+</table>  
+
+
+<table id="editClassif" cmaxheight="112px" cmaxheightbig="112px" cheight="232px" class="sectiontitletable sectionexpandable">
+    <tbody>
+      <tr class="cursorpointer" onclick="editSetting(event,this)" style="padding-bottom: 15px;">
+        <td class="sectionicontd" style="padding-top: 0;width: 107px;display: inline-block;white-space: nowrap;">
+            <i class="fa fa-star-half-o"></i><span class="sectiontitle">Classification</span>
+        </td>   
+        <td class="sectionicontd el ellipsis">
+            <span class="currentclassif titletext slicename" style="text-align: left;padding-left: 0;"></span>
+        </td>             
+        <td class="sectionedittd">
+            <i class="fa fa-angle-down"></i>
+        </td>                                        
+    </tr>   
+    <tr class="trcontent">  
+        <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;padding-bottom: 5px;">
+            <input id="classifinput" style="margin-left: 3px;display:none;">
+            <ul id="classiful">
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                1</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                2</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                3</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                4</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                5</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                6</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                7</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                8</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                9</li>
+                <li onclick="javascript: clickLiClassif(event, this)" class="litags">
+                10</li>
+            </ul>   
+            
+          </td>
+    </tr>   
+
+    <tr class="cursordefault originaltr trcontent">
+      <td id="originalclassiftd" colspan="3" style="padding: 4px;padding-top: 0px;">
+          <span class="boldtitle">Original classification</span><i class="fa fa-undo mainbutton clicable" onclick="javascript: undoClassif(event, this)" style="font-size: 14px;padding-left: 8px;position: relative;top: 1px;display: none;"></i>
+          <span class="originalclassif titletext"></span>
+      </td>                                   
+    </tr>
+  </tbody>
+</table>  
+
+<table id="editInfo" cmaxheight="159px" cmaxheightbig="159px" cheight="232px" class="sectiontitletable sectionexpandable">
+    <tbody>
+      <tr class="cursorpointer" onclick="editSetting(event,this)" style="padding-bottom: 15px;">
+        <td class="sectionicontd" style="width: 34px;display: inline-block;white-space: nowrap;">
+            <i class="fa fa-file-text"></i><span style="padding-left: 8px;" class="sectiontitle">Info</span>
+        </td>   
+        <td class="sectionicontd el ellipsis">
+            <span class="currentinfo titletext slicename" style="top: -1px;text-align: left;padding-left: 0;">
+            </span>
+        </td>             
+        <td class="sectionedittd">
+            <i class="fa fa-angle-down"></i>
+        </td>                                        
+    </tr>   
+    <tr class="trcontent">  
+        <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;">
+          <textarea id="infoinput" style="width: calc(100% - 16px);height: 84px;"></textarea>
+         
+    </tr>  
+
+    <tr class="cursordefault originaltr trcontent">
+      <td id="originalinfotd" colspan="3" style="padding: 4px;padding-top: 0px;">
+          <span class="boldtitle">Original info</span><i class="fa fa-undo mainbutton clicable" onclick="javascript: undoInfo(event, this)" style="font-size: 14px;padding-left: 8px;position: relative;top: 1px;display: none;"></i>
+          <span class="originalinfo titletext"></span>
+      </td>                                   
+    </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+  
+       
+<div id="searchpopup" style="display: block;height: calc(100%) !important;position: fixed !important; margin-top: 0px !important;display: none;" class="newLayout pobj" onclick="closeSearchPopup()" cid="">
+  <div>    
+      <table class="titletable buttonstable" style="overflow: visible;">
+          <tbody>
+            <tr class="cursordefault">
+                <td colspan="4" class="firsttd" style="padding-top: 3px;padding-bottom: 9px;vertical-align: super;">
+                      <!--<i class="fa fa-search clicable" style="margin-right: 12px;font-size: 19px;position: relative;top: -1px;"></i>-->
+                      <b>Search</b>
+                      <i id="sear" onclick="javascript: getInformation(1)" class="fa fa-search clicable"></i>  
+                </td>            
+            </tr>
+            <tr class="buttonstr" style="text-align: center;">
+              <td onclick="resetFields(true, this)" style="position: relative;left: -1px;">
+                  <i id="removetweetp" class="fa fa-eraser fa-flip-horizontal"></i>
+              </td>
+              <td onclick="javascript: showTooltip(event, this, true, 'The functionality load a search is not implemented')" style="position: relative;left: 0px; padding-top: 6px;">
+                  <i id="opensearch" class="fa fa-folder-open"></i>
+              </td>
+              <td onclick="javascript: showTooltip(event, this, true, 'The functionality save a search is not implemented')" style="position: relative;left: 1px;">
+                <i id="savesearch" class="fa fa-floppy-o"></i>
+              </td>
+              <td onclick="closeSearchPopup(this)" style="position: relative;left: 2px;">
+                  <i id="closepopupp" class="fa fa-window-close"></i><div style="position: absolute; height: 41px; width: 2px; top: 0px; right: -1px; background: var(--dark-color);display:none;"></div>
+              </td>                
+            </tr>
+          </tbody>
+        </table>                  
+    <table id="searchtags" cmaxheight="227px" cmaxheightbig="254px" cheight="136" class="sectiontitletable sectionexpandable emptyvalue" style="margin-top: 80px;">
+        <tbody>
+          <tr class="cursorpointer" onclick="changecriteria(event,this, 'searchtags')" style="padding-bottom: 15px;">
+            <td class="sectionicontd firsticon" style="width: 31px;display: inline-block;white-space: nowrap;">
+              <i class="fa fa-tags"></i><span style="padding-left: 6px;" class="sectiontitle">Tag</span>
+            </td>    
+            <td class="sectionicontd el ellipsis">
+                <span class="currenttagsearch emptyvalue titletext slicename">all</span>
+            </td>            
+            <td class="sectionedittd">
+                <i class="fa fa-angle-down"></i>
+            </td>           
+        </tr> 
+        <tr>  
+            <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center; position: relative;">
+              <input type="text" id="filtertag" style="margin-left: 1px;width: calc(100% - 115px);margin-top: 0px;float: left;">
+              <select id="tagsearchselect" style="position: absolute;top: 1px;right: 3px;width: 100px;"></select>
+            </td>                                          
+        </tr>  
+      <tr>  
+          <td colspan="3" style="position: relative;">
+              <ul class="togglepos" id="tagsearchul" style="position: absolute;"></ul>
+              <i id="expandsearchtags" class="fa fa-chevron-down" onclick="javascript: expandtags(event,this, 'searchtags')"></i>  
+          </td>                                        
+      </tr>     
+    </tbody>
+  </table>  
+  <table id="searchinfo" cmaxheight="65px" cmaxheightbig="76px" class="sectiontitletable sectionexpandable emptyvalue">
+      <tbody>
+        <tr class="cursorpointer" onclick="changecriteria(event,this)" style="padding-bottom: 15px;">
+          <td class="sectionicontd firsticon" style="width: 34px;display: inline-block;white-space: nowrap;">
+              <i class="fa fa-file-text" style="top: 1px;"></i><span style="padding-left: 6px;" class="sectiontitle">Info</span>
+          </td>    
+          <td class="sectionicontd el">
+              <span class="currentinfosearch emptyvalue titletext slicename">all</span>
+          </td>            
+          <td class="sectionedittd">
+              <i class="fa fa-angle-up"></i>
+          </td>           
+      </tr> 
+      <tr>  
+          <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;">
+            <input type="text" id="filtertext" style="margin-left: 1px;width: calc(100% - 72px);margin-top: 0px;float: left;position: relative;top: -1px;margin-bottom: 5px;" ctags="">
+          </td>                                          
+      </tr>  
+        
+  </tbody>
+</table>  
+  <table id="searchtypes" cmaxheight="89px" cmaxheightbig="99px" cheight="12" class="sectiontitletable sectionexpandable emptyvalue" 
+      style="position: relative;overflow: hidden;">
+    <tbody>
+      <tr class="cursorpointer" onclick="changecriteria(event,this)" style="padding-bottom: 15px;">
+        <td class="sectionicontd firsticon" style="width: 66px;display: inline-block;white-space: nowrap;">
+            <i class="fa fa-external-link-square" style="top: 1px;"></i><span style="padding-left: 6px;" class="sectiontitle">Link type</span>
+        </td>    
+        <td class="sectionicontd el ellipsis">
+            <span class="currenttype emptyvalue titletext slicename">all</span>
+        </td>            
+        <td class="sectionedittd">
+            <i class="fa fa-angle-down"></i>
+        </td>           
+    </tr> 
+
+    <tr>  
+        <td colspan="3">
+            <ul class="iconul" style="text-align: center;overflow: hidden;margin-bottom: 10px;">
+              <li id="alltypesoption" class="selected" onclick="changesearchtype(event, this, 'all', 'All')">
+                  <i class="fa fa-twitter" style="opacity: 0;"></i>
+                  <div>All</div>
+              </li>
+              <li onclick="changesearchtype(event, this, 'T', 'twitter')">
+                  <i class="fa fa-twitter"></i>
+              </li>
+              <li onclick="changesearchtype(event, this, 'H', 'html')">
+                  <i class="fa fa-internet-explorer"></i>
+              </li>
+              <li onclick="changesearchtype(event, this, 'Y', 'youtube')">
+                  <i class="fa fa-youtube-play"></i>
+              </li>
+            </ul>
+            <input type="hidden" id="selectedtype" value="all">
+        </td>                                        
+    </tr> 
+</tbody>
+</table>  
+<table id="searchdate" cmaxheight="78px" cmaxheightbig="87px" cheight="6" class="sectiontitletable sectionexpandable emptyvalue">
+    <tbody>
+      <tr class="cursorpointer" onclick="changecriteria(event,this)" style="padding-bottom: 15px;">
+        <td class="sectionicontd firsticon" style="width: 48px;display: inline-block;white-space: nowrap;">
+            <i class="fa fa-calendar" style="top: 1px;"></i><span style="padding-left: 6px;" class="sectiontitle">Date</span>
+        </td>    
+        <td class="sectionicontd el ellipsis">
+            <span class="currentdate emptyvalue titletext slicename">all</span>
+        </td>            
+        <td class="sectionedittd">
+            <i class="fa fa-angle-up"></i>
+        </td>           
+    </tr> 
+    <tr>  
+      <td class="datetd" colspan="3" style="width: 80%;width: calc(100% - 220px);padding-bottom: 9px;padding-left: 10px;">
+        <span class="to">From </span><input type="text" id="filterdate1display" style="margin-left: 9px;margin-top: 7px;margin-bottom: 3px;display: inline;margin-right: 4px;">
+        <i class="fa fa-times-circle" onclick="cleandate1(event,this)" style="top: 1px;cursor:pointer;margin-left: -2px;display: none;" id="filterdate1clean"></i>
+        <span class="to">To </span><input type="text" id="filterdate2display" style="margin-left: 9px;/* width: calc(50% - 90px); */margin-top: 1px;margin-bottom: 3px;display: inline;">
+        <i class="fa fa-times-circle" onclick="cleandate2(event,this)" style="top: 1px;cursor:pointer;display: none;" id="filterdate2clean"></i>
+        <input type="text" id="filterdate1" style="display: none;">
+        <input type="text" id="filterdate2" style="display: none;">
+      </td>                                        
+    </tr>   
+</tbody>
+</table>
+<table id="searchclassif" cmaxheight="101px" cmaxheightbig="123px" cheight="4" class="sectiontitletable sectionexpandable emptyvalue" style="position: relative; overflow: hidden;">
+  <tbody>
+    <tr class="cursorpointer" onclick="changecriteria(event,this)" style="padding-bottom: 15px;">
+      <td class="sectionicontd firsticon" style="width: 48px;display: inline-block;white-space: nowrap;">
+          <i class="fa fa-star-half-o" style="top: 1px;"></i><span style="padding-left: 3px;" class="sectiontitle">Classification</span>
+      </td>    
+      <td class="sectionicontd el ellipsis">
+          <span class="currentsearchclassif emptyvalue titletext slicename">all</span>
+      </td>            
+      <td class="sectionedittd">
+          <i class="fa fa-angle-up"></i>
+      </td>           
+  </tr> 
+
+  <tr>  
+      <td colspan="3" style="text-align: center; position: relative;">
+          <select id="classifselect" class="togglepos" style="width: 125px;margin-top: 0px; position: absolute;"><option value="=">Equal</option><option value=">">Greater than</option><option value="<">Less than</option></select>
+      </td>                                        
+  </tr>    <tr>  
+      <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;padding-bottom: 5px;">
+          <ul id="classifsearchul" style="margin-bottom: 10px;">
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              1</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              2</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              3</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              4</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              5</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              6</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              7</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              8</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              9</li>
+              <li onclick="javascript: clickSearchLiClassif(event, this)" class="litags">
+              10</li>
+          </ul>   
+          <input type="hidden" id="selectedclassif" value="all">
+        </td>
+    </tr>   
+  </tbody>
+  </table>
+  <table id="searchauthor" cmaxheight="65px" cmaxheightbig="76px" class="sectiontitletable sectionexpandable emptyvalue">
+      <tbody>
+        <tr class="cursorpointer" onclick="changecriteria(event,this)" style="padding-bottom: 15px;">
+          <td class="sectionicontd firsticon" style="width: 48px;display: inline-block;white-space: nowrap;">
+              <i class="fa fa-user-circle" style="top: 1px;"></i><span style="padding-left: 4px;" class="sectiontitle">Author</span>
+          </td>    
+          <td class="sectionicontd el ellipsis">
+              <span class="currentauthorsearch emptyvalue titletext slicename">all</span>
+          </td>            
+          <td class="sectionedittd">
+              <i class="fa fa-angle-up"></i>
+          </td>           
+      </tr> 
+      <tr>  
+          <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;">
+            <input type="text" id="filterauthor" style="margin-left: 1px;width: calc(100% - 72px);margin-top: 0px;float: left;position: relative;top: -1px;margin-bottom: 5px;" ctags="">
+          </td>                                          
+      </tr>  
+    </tbody>
+  </table>
+  <table class="sectiontitletable sectionexpandable emptyvalue" style="z-index: 1;position: sticky; bottom: 0px; max-height: 26px; width: 477px; margin: 0px; padding: 0px; display: table-cell; background: var(--dark-color);">
+    <tbody>
+      <tr>
+        <td colspan="3" class="sectionicontd firsticon" style="/* width: 48px; */display: inline-block;/* white-space: nowrap; */height: 36px;">
+          <div class="checkstyleddiv showdeleted">                  
+            <input onclick="toggleShowDeleted()" type="checkbox" id="showdeleted" spellcheck="false" autocomplete="none" additionalattributes="{autocomplete: 'none'}">
+                <label for="showdeleted" style="position: relative;top: -15px;/* font-size: 12px; */">
+                        <span>
+                          <i class="fa fa-square"></i>
+                        </span>
+                        <div class="incdeltext">Include deleted
+                        </div>
+                </label>
+        </div>
+        <span id="titlesearch">
+          <span><span class="span1">In</span>
+          <span class="span2" onclick="openmenu(this, true)">VictoryWillCome Tweets</span></span>
+        </span>
+      </td>           
+    </tr> 
+  </tbody>
+</table>
+
+  </div>
+</div>
+
+  <div id="mainsettings" style="display: block;height: calc(100%) !important;position: fixed !important; margin-top: 0px !important;display: none;" class="newLayout mainsettings pobj" onclick="closeMainSettingsPopup(this)" cid="">
+    <div style="position: relative;top: -1px !important;display: block;max-height: calc(100% - 10px) !important;margin-top: 0px !important;border-top: 1px solid var(--soft-color);border-radius: 0px;">    
+        <table class="titletable buttonstable">
+            <tbody>
+              <tr class="cursordefault">
+                  <td colspan="3" class="firsttd" style="width: 164px;">
+                      <i class="fa fa-cog" style="font-size: 18px;position: absolute;left: 9px;top: 6px;"></i>
+                      <b style="position: relative;top: -4px;font-size: 15px;">Settings</b>
+                  </td><td style="padding-top: 4px;vertical-align: initial;">
+                    <i onclick="closeMainSettingsPopup(this)" class="fa fa-window-close" style="font-size: 16px;margin-top: 0px;cursor: pointer;position: relative;right: -3px;"></i><div style="position: absolute; height: 41px; width: 2px; top: 0px; right: -1px; background: var(--dark-color);"></div>
+                </td>            
+              </tr>
+              <tr class="buttonstr" style="text-align: center;overflow: visible;">               
+              </tr>
+            </tbody>
+        </table>  
+        
+        <table cmaxheight="297px" cmaxheightbig="396px" cheight="290px" class="sectiontitletable expd sectionexpandable firstsettable" style="margin-top: 41px; max-height: 100px;">
+          <tbody>
+            <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                  <i class="fa fa-user-circle-o"></i><span style="padding-left: 6px;" class="sectiontitle">About me</span>
+              </td>    
+              <td class="sectionicontd el ellipsis">
+                  <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+              </td>                         
+              <td class="sectionedittd">
+                  <i class="fa fa-angle-down"></i>
+              </td>                                         
+            </tr>     
+            <tr>  
+                <td colspan="3" style="position: relative;">
+                    
+                  <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;display: inline-grid;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);height: auto;">
+                    I'm an IT professional with 16 years of experience in software projects. The architectures of those projects were manly java but also include C# .NET and others. A great focus as software analyst and managing its techniques/tools also.
+                    <br><span style="display: block;height: 8px;"></span>
+                      As a developer I have got an extensive expirence in WEB projects and the mastering of its core front-end technologies HTML, CSS and JavaScript.
+                    <br><span style="display: block;height: 8px;"></span>
+                      Based on the professional experience and in personal projects I have become a UX specialist both in ergonomics and design.
+                      <br><span style="display: block;height: 8px;"></span>
+                    <div>Email <a href="mailto:victorywiilcome@gmail.com" style="color: var(--text-color);">victorywiilcome@gmail.com</a></div>
+                        <span style="display: block;height: 8px;"></span>
+                        <div>Twitter <a href="https://twitter.com/victorywiilcome" style="color: var(--text-color);">twitter.com/victorywiilcome</a></div>
+                        <!-- <span style="display: block;height: 8px;"></span>
+                      <div>Website <a href="https://www.victorywillcome.com/" style="color: var(--text-color);">www.victorywillcome.com/</a></div>
+                        <span style="display: block;height: 8px;"></span>
+                      <div style="padding-bottom: 6px;">LinkedIn <a href="https://www.linkedin.com/in/victorywillcome/" style="color: var(--text-color);">www.linkedin.com/in/victorywillcome/</a></div>    -->
+                  </div>
+                    
+                </td>                                        
+            </tr>    
+          </tbody>
+        </table>
+
+        <table cmaxheight="217px" cmaxheightbig="298px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;">
+          <tbody>
+            <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                <i class="fa fa-folder-open" style="border-right-color: transparent !important;border-left-color: transparent !important;padding-left: 2px;"></i>
+                <span style="padding-left: 6px;" class="sectiontitle">About the App</span>
+              </td>    
+              <td class="sectionicontd el ellipsis">
+                  <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+              </td>                         
+              <td class="sectionedittd">
+                  <i class="fa fa-angle-down"></i>
+              </td>                                         
+            </tr>     
+            <tr>  
+                <td colspan="3" style="position: relative;">
+                  <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;display: inline-grid;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);height: auto;">
+                    This is an web application and allows the user to organize tweets, youtube videos and weblinks.
+                    <br><span style="display: block;height: 8px;"></span>
+                    The user can add, change and organize these links and can browse them in very easy and intuitive way.
+                    <br><span style="display: block;height: 8px;"></span>
+                    At the moment there is no centralized storage for the user created links, so they will be stored in local browser cookies. It is recommendable to make frequent backups (Settings > Download Links).
+                      <br><span style="display: block;height: 8px;"></span>
+                      The application has an instructions page in settings and help icons throughout the application to make it easy to use.
+                      <br><span style="display: block;height: 8px;"></span>
+                  </div>  
+                </td>                                        
+            </tr>    
+          </tbody>
+        </table>   
+
+        <table cmaxheight="70px" cmaxheightbig="80px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="">
+          <tbody>
+            <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                  <i class="fa fa-info-circle"></i><span style="padding-left: 6px;" class="sectiontitle">App Instructions</span>
+              </td>    
+              <td class="sectionicontd el ellipsis">
+                  <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+              </td>                         
+              <td class="sectionedittd">
+                  <i class="fa fa-angle-down"></i>
+              </td>                                         
+            </tr>     
+            <tr>  
+                <td colspan="3" style="position: relative;">
+                    
+                  <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);text-align: center;padding-top: 7px;">
+                    Under construction!
+                    <br><span style="display: block;height: 8px;">
+                  </div>
+                    
+                </td>                                        
+            </tr>    
+          </tbody>
+        </table>
+        <!-- xyz splash - inserido display: none; no fim do style -->
+        <table cmaxheight="171px" cmaxheightbig="196px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;display: none;">
+          <tbody>
+            <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                  <i class="fa fa-credit-card-alt"></i><span style="padding-left: 6px;" class="sectiontitle">Donate</span>
+              </td>    
+              <td class="sectionicontd el ellipsis">
+                  <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+              </td>                         
+              <td class="sectionedittd">
+                  <i class="fa fa-angle-down"></i>
+              </td>                                         
+            </tr>     
+            <tr>  
+                <td colspan="3" style="position: relative;">
+                  <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;display: inline-grid;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);height: auto;">
+                    To stop seeing the about screen make a donation above 1,5 Euros.
+                    <br><span style="display: block;height: 8px;"></span>
+                    Make a transfer to the IBAN and put your email in the transfer notes and you will receive a code to activate the Premium features forever.
+                    <br><span style="display: block;height: 8px;"></span>
+                    If you can't add your email to the transfer email me the transfer receipt.
+                      <br><span style="display: block;height: 8px;"></span>
+                    <div>IBAN <a href="" style="color: var(--text-color);">PT50 0000 0000 0000 0000 0000 0</a></div>
+                  </div>
+                    
+                </td>                                        
+            </tr>    
+          </tbody>
+        </table> 
+
+        <table id="colortable" cmaxheight="73px" cmaxheightbig="86px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;">
+          <tbody>
+            <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                  <i class="fa fa-paint-brush"></i><span style="padding-left: 6px;" class="sectiontitle">Colors</span>
+              </td>    
+              <td class="sectionicontd el ellipsis">
+                  <span id="colordisplay" class="titletext slicename" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+              </td>                         
+              <td class="sectionedittd">
+                  <i class="fa fa-angle-down"></i>
+              </td>                                         
+            </tr>     
+            <tr>  
+              <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;padding-bottom: 5px;position: relative;">
+                  <ul id="colorul">
+                      <li onclick="javascript: clickLiColors(event, this)" class="litags">
+                      Minimal</li>
+                      <li onclick="javascript: clickLiColors(event, this)" class="litags">
+                      Medium</li>
+                      <li onclick="javascript: clickLiColors(event, this)" class="litags">
+                      All</li>
+                  </ul>   
+                  <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'colors')" style="position: absolute;right: 3px;bottom: 3px;"></i>  
+                </td>
+          </tr>   
+          </tbody>
+        </table>   
+        <table id="theme" cmaxheight="665px" cmaxheightbig="682px" cheight="232px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 2450px;">
+          <tbody>
+            <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                  <i class="fa fa-picture-o"></i><span style="padding-left: 6px;" class="sectiontitle">Theme</span>
+              </td>    
+              <td class="sectionicontd el ellipsis">
+                  <span class="currenttheme titletext slicename" style="top: -1px;text-align: left;padding-left: 0px;">Twitter Lines</span>
+              </td>                         
+              <td class="sectionedittd">
+                  <i class="fa fa-angle-down"></i>
+              </td>                                        
+          </tr>   
+          <tr id="default" class="theme">  
+              <td colspan="3">
+                  <div class="themebox" style="background-image: url('./JPGs/default_theme.jpg');">
+                      <div class="themetitle">
+                          Twitter Lines
+                      </div>
+                      <i class="fa fa-check clicable" onclick="javascript: changetheme('default', 'Twitter Lines')" id="generate" style="cursor: pointer;color: var(--softdark-color);background: var(--high-color);width: 19px;border-radius: 3px;height: 18px;position: absolute;font-size: 14px;bottom: 11px;padding-left: 5px;padding-top: 3px;right: 11px;top: auto !important;"></i>
+                  </div>   
+              </td>                                        
+          </tr>   
+          <tr id="red" class="theme">  
+              <td colspan="3">
+                  <div class="themebox" style="background-image: url('./JPGs/red_theme.jpg');">
+                      <div class="themetitle">
+                        Red Tide
+                      </div>
+                      <i class="fa fa-check clicable" onclick="javascript: changetheme('red', 'Red Tide')" id="generate" style="cursor: pointer;color: var(--softdark-color);background: var(--high-color);width: 19px;border-radius: 3px;height: 18px;position: absolute;font-size: 14px;bottom: 11px;padding-left: 5px;padding-top: 3px;right: 11px;top: auto !important;"></i>
+                  </div>   
+              </td>                                        
+          </tr>    
+          <tr id="gray" class="theme">  
+              <td colspan="3">
+                  <div class="themebox"  style="background-image: url('./JPGs/gray_theme.jpg');">
+                      <div class="themetitle">
+                          Shades Of Gray
+                      </div>
+                      <i class="fa fa-check clicable" onclick="javascript: changetheme('gray', 'Shades Of Gray')" id="generate" style="cursor: pointer;color: var(--softdark-color);background: var(--high-color);width: 19px;border-radius: 3px;height: 18px;position: absolute;font-size: 14px;bottom: 11px;padding-left: 5px;padding-top: 3px;right: 11px;top: auto !important;"></i>
+                  </div>   
+              </td>                                        
+          </tr>    
+          <tr id="green" class="theme">  
+              <td colspan="3">
+                  <div class="themebox"  style="background-image: url('./JPGs/green_theme.jpg');">
+                      <div class="themetitle">
+                        Green Army
+                      </div>
+                      <i class="fa fa-check clicable" onclick="javascript: changetheme('green', 'Green Army')" id="generate" style="cursor: pointer;color: var(--softdark-color);background: var(--high-color);width: 19px;border-radius: 3px;height: 18px;position: absolute;font-size: 14px;bottom: 11px;padding-left: 5px;padding-top: 3px;right: 11px;top: auto !important;"></i>
+                  </div>   
+              </td>                                        
+          </tr>   
+        </tbody>
+      </table>  
+    
+      <table id="swipestable" cmaxheight="73px" cmaxheightbig="86px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;">
+        <tbody>
+          <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                <i class="fa fa-arrows "></i><span style="padding-left: 6px;" class="sectiontitle">Swipes</span>
+            </td>    
+            <td class="sectionicontd el ellipsis">
+                <span id="swipedisplay" class="titletext slicename" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-angle-down"></i>
+            </td>                                         
+          </tr>     
+          <tr>  
+            <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;padding-bottom: 5px; position: relative;">
+                <ul id="swipeul">
+                    <li onclick="javascript: clickLiSwipes(event, this)" class="litags">
+                    Yes</li>
+                    <li onclick="javascript: clickLiSwipes(event, this)" class="litags">
+                    No</li>
+                </ul> 
+                <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'swipe')" style="position: absolute;right: 3px;bottom: 3px;"></i>  
+              </td>
+        </tr>   
+        </tbody>
+      </table>   
+
+      <table id="svwc" cmaxheight="73px" cmaxheightbig="86px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;">
+        <tbody>
+          <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                <i class="fa fa-star"></i><span style="padding-left: 6px;" class="sectiontitle">Show VictoryWillCome Links</span>
+            </td>    
+            <td class="sectionicontd el ellipsis">
+                <span id="VWCdisplay" class="titletext slicename" style="top: -1px;text-align: left;padding-left: 0px; margin-right: 13px;"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-angle-down"></i>
+            </td>                                         
+          </tr>     
+          <tr>  
+            <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;padding-bottom: 5px; position: relative;">
+                <ul id="VWCul">
+                    <li onclick="javascript: clickLiVWC(event, this)" class="litags">
+                    Yes</li>
+                    <li onclick="javascript: clickLiVWC(event, this)" class="litags">
+                    No</li>
+                </ul>  
+                <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'vwc')" style="position: absolute;right: 3px;bottom: 3px;"></i> 
+              </td>
+        </tr>   
+        </tbody>
+      </table>   
+
+      <table cmaxheight="173px" cmaxheightbig="213px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 173px; overflow-y: hidden; display: block;">
+        <tbody style="display: table;width: 100%;">
+          <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;/* cursor: default !important; */">
+            <td style="display: inline-block;white-space: nowrap;width: 100% !important;" class="sectionicontd">
+                <i class="fa fa-expand" style="font-size: 17px;left: -4px; position: relative; top: 2px;"></i>
+                <span style="padding-left: 6px;" class="sectiontitle">Fullscreen</span>
+            </td>
+            <td>
+            </td>
+            <td class="sectionedittd" style="min-width: 87px;">
+                  <i class="fa fa-angle-up"></i>
+            </td>                                         
+          </tr>     
+          
+        <tr>  
+          <td class="otherOptText" valign="middle" colspan="2">Double click/long press opens the link in fullscreen inside the app?&nbsp;&nbsp;<i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'doublefs')" style="position: relative;top: 1px;/* left: 9px; */"></i></td><td style="width: 77px;text-align: right;padding-bottom: 5px;position: relative;height: 31px;padding-right: 12px;padding-left: 14px;">
+              <ul id="linksinsideul" style="display: table-row;">
+                  <li onclick="javascript: clickLiLinksinside(event, this)" class="litags selectedtag" style="display: table-cell;height: 17px;padding-bottom: 0; max-height: 12px;">
+                  Yes</li>
+                  <li onclick="javascript: clickLiLinksinside(event, this)" class="litags" style="display: table-cell;position: relative;left: 5px;">
+                  No</li>
+              </ul>    
+          </td>
+        </tr>
+        <tr id="maximumfstr" style="opacity: 0.5;">  
+          <td class="otherOptText" valign="middle" colspan="2">Use maximum available space in fullscreen?&nbsp;&nbsp;<i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'doublefs')" style="position: relative;top: 1px;"></i></td><td style="width: 77px;text-align: right;padding-bottom: 5px;position: relative;height: 31px;padding-right: 12px;padding-left: 14px;">
+              <ul id="maximumfsul" style="display: table-row;">
+                  <li onclick="javascript: clickLiMaximumfs(event, this)" class="litags selectedtag disable" style="display: table-cell;height: 17px;padding-bottom: 0;max-height: 12px;">
+                  Yes</li>
+                  <li onclick="javascript: clickLiMaximumfs(event, this)" class="litags disable" style="display: table-cell;position: relative;left: 5px;">
+                  No</li>
+              </ul>    
+          </td>
+        </tr><tr>  
+          <td class="otherOptText" valign="middle" colspan="2">Change click/press and double click/long press functions?&nbsp;&nbsp;<i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'doublefs')" style="position: relative;top: 1px;/* left: 9px; */"></i></td><td style="width: 77px;text-align: right;padding-bottom: 5px;position: relative;height: 31px;padding-right: 12px;padding-left: 14px;">
+              <ul id="doublefsul" style="display: table-row;float: right;">
+                  <li onclick="javascript: clickLiDoublefs(event, this)" class="litags selectedtag" style="display: table-cell;height: 17px;padding-bottom: 0;max-height: 12px;">
+                  Yes</li>
+                  <li onclick="javascript: clickLiDoublefs(event, this)" class="litags" style="display: table-cell;position: relative;left: 5px;">
+                  No</li>
+              </ul>    
+          </td>
+        </tr> 
+        </tbody>
+      </table>
+
+      <table cmaxheight="268px" cmaxheightbig="268px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px;max-height: 268px;overflow-y: hidden;display: block;">
+        <tbody style="display: table;width: 100%;">
+          <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;/* cursor: default !important; */">
+            <td style="display: inline-block;white-space: nowrap;width: 100% !important;" class="sectionicontd">
+                <i class="fa fa-th-list" style="font-size: 17px;left: -4px; position: relative; top: 2px;"></i>
+                <span style="padding-left: 6px;" class="sectiontitle">Other Options</span>
+            </td>
+            <td>
+            </td>
+            <td class="sectionedittd" style="min-width: 93px;">
+                  <i class="fa fa-angle-up"></i>
+            </td>                                         
+          </tr>     
+          <tr>  
+            <td class="otherOptText" valign="middle" colspan="3">
+                Choose the top menu visibility?&nbsp;&nbsp;
+                <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'topmenu')"></i></td>
+        </tr>
+        
+        <tr>  
+          <td colspan="3" style="width: 155px;text-align: center;padding-bottom: 5px;position: relative;height: 31px;padding-right: 5px;">
+              <ul id="topmenuul" style="position: relative; top: -11px;">
+                  <li onclick="javascript: clickLiTopmenu(event, this)" class="litags">Visible</li>
+                  <li onclick="javascript: clickLiTopmenu(event, this)" class="litags">Fixed On Top</li>
+                  <li onclick="javascript: clickLiTopmenu(event, this)" class="litags selectedtag">Auto Hide</li>
+              </ul>    
+          </td>
+        </tr><tr>  
+            <td class="otherOptText" valign="middle" colspan="2" style="padding-bottom: 10px;">
+                Show links counter when displaying the links?&nbsp;&nbsp;
+                <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'linkscounter')"></i></td><td style="width: 155px;text-align: right;padding-bottom: 5px;position: relative;height: 31px;padding-right: 5px;">
+                <ul id="linkscounterul">
+                    <li onclick="javascript: clickLiLinkscounter(event, this)" class="litags selectedtag">
+                     Yes</li>
+                    <li onclick="javascript: clickLiLinkscounter(event, this)" class="litags">
+                    No</li>
+                </ul>    
+            </td>
+        </tr><tr>  
+          <td class="otherOptText" valign="middle" colspan="2" style="padding-bottom: 10px;">
+              Show GoTop button when displaying the links?&nbsp;&nbsp;
+              <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'gotop')"></i></td><td style="width: 155px;text-align: right;padding-bottom: 5px;position: relative;height: 31px;padding-right: 5px;">
+              <ul id="gotopul">
+                  <li onclick="javascript: clickLiGotop(event, this)" class="litags">
+                  Yes</li>
+                  <li onclick="javascript: clickLiGotop(event, this)" class="litags selectedtag">
+                  No</li>
+              </ul>    
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table id="uploadtable" cmaxheight="170px" cmaxheightbig="180px" cheight="190px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;">
+        <tbody>
+          <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                <i class="fa fa-upload"></i><span style="padding-left: 6px;" class="sectiontitle">Upload Links</span>
+            </td>    
+            <td class="sectionicontd el ellipsis">
+                <span id="" class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-angle-down"></i>
+            </td>                                         
+          </tr>     
+          <tr>  
+              <td colspan="3" style="position: relative;padding-bottom: 18px;">
+                  
+                <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;padding-left: 4px;height: 37px;">
+                  <input type="file" id="files" name="files[]" style="width: calc(100% - 17px);margin-top: 4px;background: var(--high-color);height: 24px;padding-top: 4px;color: var(--dark-color);padding-left: 6px;" />
+                  <div class="triggerUpload" onclick="triggerUpload()" style="position: relative;top: -26px;background: var(--dark-color); left: 5px;width: 87px; text-align: center;padding-top: 2px;height: 17px;border: 1px solid var(--soft-color);">
+                      Choose File
+                  </div>
+                </div>
+                <div id="filedrop" class="splashtext aboutme" style="width: calc(100% - 10px);position: relative;top: 0px;margin-left: 4px;border: 1px dashed;height: 34px;text-align: center;padding-top: 20px;background: var(--soft-color);opacity: 0.8;cursor: default; margin-bottom: 5px;">
+                  Drop Here
+                </div>
+                <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'upload')" style="font-size: 16px;position: absolute;right: 14px;bottom: 12px;"></i>             
+              </td>                                        
+          </tr>    
+        </tbody>
+      </table>  
+
+      <table id="downloadtable" class="sectiontitletable generatetablerow defaulttablerow single" style="margin-top: 6px;max-height: 18px;display: block;width: calc(100% - 14px);">
+        <tbody>
+          <tr style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: default;position: relative;">
+                <i class="fa fa-download" id="generateicon" ></i><span style="padding-left: 6px;position: relative;top: -1px;" class="sectiontitle">Download Links<i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'download')" style="font-size: 13px;position: absolute;left: 113px;top: 1px;"></i></span>
+            </td>    
+            <td class="sectionicontd el" style="cursor: default;">
+                <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;cursor: default;cursor: default !important;"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-check clicable" onclick="javascript: generate(this)" id="generate" style="font-size: 16px;color: var(--softdark-color);background: var(--high-color);width: 16px;top: -3px;border-radius: 3px;padding-left: 0px;height: 16px;padding-right: 0px;"></i>
+            </td>                                        
+          </tr>   
+         </tbody>
+      </table>
+
+      <table id="purgetable" class="sectiontitletable generatetablerow defaulttablerow single" style="margin-top: 6px;max-height: 18px;display: block;width: calc(100% - 14px);">
+        <tbody>
+          <tr style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: default;">
+                <i class="fa fa-times-circle" style="font-size: 13px;position: relative;top: 0px;left: -4px;"></i>
+                <span style="padding-left: 6px;position: relative;top: -1px;" class="sectiontitle">Purge deleted links<i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'purge')" style="font-size: 13px;position: absolute;left: 113px;top: 1px;"></i></span>
+            </td>    
+            <td class="sectionicontd el" style="cursor: default;">
+                <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;cursor: default;cursor: default !important;"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-check clicable" onclick="javascript: eraseAllDeleted(this)" style="font-size: 16px;color: var(--softdark-color);background: var(--high-color);width: 16px;top: -3px;border-radius: 3px;padding-left: 0px;height: 16px;padding-right: 0px;"></i>
+            </td>                                        
+          </tr>   
+         </tbody>
+      </table>
+
+      
+      <table id="helptable" cmaxheight="73px" cmaxheightbig="86px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;">
+        <tbody>
+          <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                <i class="fa fa-question-circle ashow"></i><span style="padding-left: 6px;" class="sectiontitle">Help</span>
+            </td>    
+            <td class="sectionicontd el ellipsis">
+                <span id="helpdisplay" class="titletext slicename" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-angle-down"></i>
+            </td>                                         
+          </tr>     
+          <tr>  
+            <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;padding-bottom: 5px; position: relative;">
+                <ul id="helpul">
+                    <li onclick="javascript: clickLiHelp(event, this)" class="litags">
+                    Yes</li>
+                    <li onclick="javascript: clickLiHelp(event, this)" class="litags">
+                    No</li>
+                </ul> 
+                <i class="fa fa-question-circle ashow pointeropacity" onclick="javascript: openHelp(this, 'help')" style="position: absolute;right: 3px;bottom: 3px;"></i>  
+              </td>
+        </tr>   
+        </tbody>
+      </table>  
+      
+      <!-- xyz splash - inserido display: none; no fim do style -->
+      <table id="unlocktable" cmaxheight="73px" cmaxheightbig="86px" cheight="90px" class="sectiontitletable expd sectionexpandable" style="margin-top: 6px; max-height: 100px;display: none;">
+        <tbody>
+          <tr class="cursorpointer" onclick="editSetting(event,this, true)" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap;">
+                <i class="fa fa-unlock"></i><span style="padding-left: 6px;" class="sectiontitle">Unlock Premium</span>
+            </td>    
+            <td class="sectionicontd el ellipsis">
+                <span id="unlockdisplay" class="titletext slicename" style="top: -1px;text-align: left;padding-left: 0px;">Locked</span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-angle-down"></i>
+            </td>                                         
+          </tr>     
+          <tr>  
+            <td colspan="3" style="width: 80%;width: calc(100% - 220px);text-align: center;padding-bottom: 5px;position: relative;">
+              <input id="unlockinput" value="" type="text" style="position: relative;top: -3px;width: 84px;padding-top: 2px;">  
+              <i class="fa fa-check clicable pointeropacity" onclick="javascript: unl()" style="font-size: 16px;color: var(--softdark-color);background: var(--high-color);width: 18px;border-radius: 0px;padding-left: 0px;height: 18px;padding-right: 0px;position: relative;"></i>
+              <i class="fa fa-question-circle pointeropacity" onclick="javascript: openHelp(this, 'unlock')" style="font-size: 16px;position: absolute;right: 4px;bottom: 3px;"></i>  
+            </td>
+        </tr>   
+        </tbody>
+      </table>  
+
+        <table id="cleandatatable" class="sectiontitletable generatetablerow defaulttablerow ismy single" style="transition: max-height 0.5s ease 0s;max-height: 18px;">
+            <tbody>
+              <tr class="cursorpointer" style="padding-bottom: 15px;">
+                <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: default;">
+                    <i class="fa fa-eraser" style="font-size: 14px;position: relative;top: 0px;left: -4px;"></i><span style="padding-left: 6px;position: relative;top: -1px;left: -1px;" class="sectiontitle">Clean data</span>
+                </td>    
+                <td class="sectionicontd el" style="cursor: default;">
+                    <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;cursor: default;">current temp data</span>
+                </td>                         
+                <td class="sectionedittd">
+                    <i class="fa fa-check clicable" id="undogenerate" onclick="javascript: undogenerate(this)" style="font-size: 16px;color: var(--softdark-color);background: var(--high-color);width: 16px;top: -3px;border-radius: 3px;padding-left: 0px;height: 16px;padding-right: 0px;"></i>
+                </td>                                        
+            </tr>   
+        </tbody>
+      </table id="cleandatatable">  
+      <table class="sectiontitletable generatetablerow defaulttablerow ismy single" style="transition: max-height 0.5s ease 0s; max-height: 18px;">
+        <tbody>
+          <tr class="cursorpointer" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="width: 49px !important;display: inline-block;white-space: nowrap;cursor: default;">
+                <i class="fa fa-hashtag" style="font-size: 14px;position: relative;top: -1px;left: -4px;"></i><span style="padding-left: 6px;position: relative;top: -1px;left: -1px;" class="sectiontitle">Current ID</span>
+            </td>    
+            <td class="sectionicontd el ellipsis" style="cursor: default;">
+                <input id="maxidinput" value="100000" type="text" style="position: relative;top: -3px;width: 84px;left: 46px;">
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-check" id="updatemaxid" style="font-size: 16px;color: var(--softdark-color);background: var(--high-color);width: 16px;top: -3px;border-radius: 3px;padding-left: 0px;height: 16px;padding-right: 0px;"></i>
+            </td>                                         
+            </tr>   
+        </tbody>
+    </table>    
+    <table class="sectiontitletable generatetablerow defaulttablerow ismy single" style="transition: max-height 0.5s ease 0s; max-height: 18px;">
+      <tbody>
+        <tr class="cursorpointer" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="width: 43px !important;display: inline-block;white-space: nowrap;cursor: default;">
+                <i class="fa fa-plus-square" style="font-size: 14px;position: relative;top: -1px;left: -4px;"></i><span style="padding-left: 6px;position: relative;top: -2px !important;left: -1px;" class="sectiontitle">New links</span>
+            </td>    
+            <td class="sectionicontd el ellipsis" style="cursor: default;">
+                <input id="removetmpinput" type="text" style="position: relative;top: -3px;width: 84px;left: 46px;">
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-check" id="removetmp" style="font-size: 16px;color: var(--softdark-color);background: var(--high-color);width: 16px;top: -3px;border-radius: 3px;padding-left: 0px;height: 16px;padding-right: 0px;"></i>
+            </td>                                         
+        </tr>   
+      </tbody>
+    </table>
+
+
+    </div>
+  </div>
+
+
+  <div id="helppop" style="background: var(--soft-transp-color);margin-top: 0px !important;position: fixed !important;display: block; display: none;" class="newLayout mainsettings pobj" onclick="closeHelpPopup(this)" cid="">
+    <div style="background: var(--softdark-color);position: relative;transform: translate(0px, -50%);top: calc(50% - 0px) !important;max-height: calc(100% - 11px) !important;margin-top: -2px !important;">    
+        <table class="titletable buttonstable" style="max-width: calc(100% - 11px);height: 22px;">
+            <tbody>
+              <tr class="cursordefault" style="max-width: calc(100% - 56px);">
+                  <td colspan="3" class="firsttd" style="min-width: 158px;">
+                      <i class="fa fa-question-circle ashow" style="font-size: 17px;position: absolute;left: 10px;top: 6px; right: auto !important;"></i>
+                      <b style="position: relative;top: -4px;font-size: 15px;">Help</b>
+                  </td><td style="padding-top: 4px;vertical-align: initial;">
+                    <i onclick="closeHelpPopup(this)" class="fa fa-window-close pointeropacity" style="font-size: 16px;margin-top: 0px;cursor: pointer;position: relative;right: -3px;"></i><div style="position: absolute; height: 41px; width: 2px; top: 0px; right: -1px; background: var(--dark-color);"></div>
+                </td>            
+              </tr>
+              <tr class="buttonstr" style="text-align: center;overflow: visible;">               
+              </tr>
+            </tbody>
+        </table>       
+          
+      <table cmaxheight="170px" cmaxheightbig="180px" cheight="190px" class="sectiontitletable helpinner sectionexpandable" style="margin-top: 6px;overflow-y: hidden;margin-top: 40px;">
+        <tbody>
+          <tr class="cursorpointer" style="padding-bottom: 15px;">
+            <td class="sectionicontd" style="display: inline-block;white-space: nowrap; padding-bottom: 9px;">
+                <i id="helpicon" class="fa fa-upload"></i><span id="helptitle" style="padding-left: 6px;" class="sectiontitle"></span>
+            </td>    
+            <td class="sectionicontd el">
+                <span id="" class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+            </td>                         
+            <td class="sectionedittd">
+                <i class="fa fa-angle-up" style="display: none;"></i>
+            </td>                                         
+          </tr>     
+          <tr>  
+              <td colspan="3" style="position: relative;">
+                  
+                <div id="helpcontent" class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);padding-bottom: 3px; height: auto;">
+                </div>
+                  
+              </td>                                        
+          </tr>    
+        </tbody>
+      </table>  
+    </div>
+  </div>
+
+  <div id="mainmenu" style="top: -391px; background: transparent;display: none;" class="newLayout pobj" onclick="closeMenuPopup()">
+    <div style="position: relative;top: 0px !important;display: block;max-height: calc(100% - 26px) !important;margin-top: 0px !important;border-top: 1px solid var(--soft-color);border-top-left-radius: 0px;border-top-right-radius: 0px;padding-bottom: 0px;max-height: calc(100% - 4px) !important;">
+        <table class="titletable buttonstable">
+            <tbody>
+              <tr class="cursordefault">
+                  <td colspan="3" class="firsttd" style="width: 164px;">
+                      <i onclick="javascript: zoom()" class="fa fa-bars"></i>
+                      <b>CATEGORY</b>
+                  </td>
+                  <td style="padding-top: 4px;vertical-align: initial;">
+                    <i onclick="closeMenuPopup(this)" class="fa fa-window-close clicable"></i>
+                  </td>            
+              </tr>
+              <tr class="buttonstr" style="text-align: center;overflow: visible;">               
+              </tr>
+            </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow firstsettable">
+          <tbody>
+            <tr onclick="javascript: clickmenu('all')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle">All Links</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter"  id="all2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('tvn')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tvn">New / Ongoing</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tvn2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('trn')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-trn">Hot / Trending</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="trn2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('tvi')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tvi">To Watch</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tvi2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('tvl')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tvl">Documentaries / Films</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tvl2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('tre')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tre">Fast Reading</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tre2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('trl')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-trl">Long Reading</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="trl2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('tke')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-tke">Important / To Keep</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="tke2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('imp')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-imp">Shocking Truth</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="imp2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable defaulttablerow">
+          <tbody>
+            <tr onclick="javascript: clickmenu('cli')" class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                  <span style="padding-left: 6px;" class="sectiontitle cat-cli">VictoryWillCome Tweets</span>
+                  <div onclick="javascript: clickMenuTooltip(this, event)" class="menuitemcounter" id="cli2"></div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable emptyvalue" style="z-index: 1;position: sticky; bottom: 0px; max-height: 26px; width: 477px; margin: 0px; padding: 0px; display: table-cell; background: var(--dark-color);">
+          <tbody>
+            <tr class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer; position: relative;">
+                      <div class="checkstyleddiv showdeleted">                  
+                        <input onclick="toggleShowDeleted2()" type="checkbox" id="showdeleted2" spellcheck="false" autocomplete="none" additionalattributes="{autocomplete: 'none'}">
+                            <label for="showdeleted" style="position: relative;top: -15px;/* font-size: 12px; */">
+                                    <span>
+                                      <i class="fa fa-square"></i>
+                                    </span>
+                                    <div class="incdeltext">Include deleted
+                                    </div>
+                            </label>
+                    </div>                      
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+    </div>
+  </div>
+
+  <div id="calendardiv" style="background: var(--soft-transp-color);margin-top: 0px !important;position: fixed !important;display: block;display: none;" class="newLayout pobj" onclick="closeCalendarPopup(event)" targetobj="filterdate1">
+    <div style="background: var(--softdark-color);position: relative;transform: translate(0px, -50%);top: calc(50%) !important;margin-top: 0px !important;max-height: calc(100% - 105px) !important;">        
+        <table class="titletable buttonstable" style="width: 355px; background: var(--softdark-color); overflow: hidden;">
+            <tbody>
+              <tr class="cursordefault">
+                  <td colspan="3" class="firsttd" style="width: 164px;/* min-width: 322px !important; */">
+                      <i class="fa fa-calendar" style="margin-right: 6px;"></i>
+                      <b>calendar</b>
+                      <div style="transform: translate(-50%, 0px);left: calc(50%);position: relative;width: 100%;">
+                        <i class="fa fa-times-circle clicable" onclick="resetCalendar(event)" style="margin-right: 6px;font-size: 15px;margin-top: 9px;"></i>
+                        <i class="fa fa-undo clicable" onclick="undoCalendar(event)" style="margin-right: 6px;font-size: 15px;margin-left: 2px;margin-top: 9px;position: relative;top: 1px;"></i>
+                        <span class="currdate" style="font-size: 11px;text-transform: uppercase;position: relative;top: 0px;color: var(--text-color);">Current: 07/03/2020</span>
+                      </div>
+                  </td>
+                  <td style="padding-top: 4px;vertical-align: initial;">
+                    <i onclick="closeCalendarPopup(event)" class="fa fa-window-close" style="position: relative;right: 22px; top: -2px;"></i>
+                  </td>            
+              </tr>
+              <tr class="buttonstr" style="text-align: center;overflow: visible;">               
+              </tr>
+            </tbody>
+        </table>
+        <table class="sectiontitletable sectionexpandable" style="background: transparent;/* max-height: 18px; */padding: 0;width: 100%;margin-left: 0;">
+          <tbody>
+            <tr class="cursorpointer hover" style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="display: inline-block;white-space: nowrap;cursor: pointer;position: relative;padding: 0 !important;width: 100%;">
+                <div id="myCalendar" class="vanilla-calendar" style="margin-left: 0px;border-radius: 0;">
+                </div>
+              </td>                                                                   
+            </tr>   
+           </tbody>
+        </table>
+    </div>
+  </div>
+
+
+
+  <div id="splash" class="newLayout new" style="margin-top: 0 !important; background: #0000006e; display: none;">
+    <div>        
+      <table class="titletable buttonstable">
+          <tbody>
+            <tr class="cursordefault">
+                <td colspan="4" class="firsttd" style="background: transparent;">
+                    <b style="margin-left: -1px;">BOOKMARKS <i style="font-weight: normal;">STATION</i></b>   
+                </td>            
+            </tr>
+            <tr class="cursordefault secondrow">
+              <td colspan="4" class="firsttd" style="background: transparent;">
+                <div>
+                  <i class="fa fa-chrome" style="margin-right: 5px;"></i>
+                  Google chrome recommended (mobile &amp; desktop)
+                </div>
+              </td>            
+          </tr>
+          </tbody>
+        </table>  
+        <table class="sectiontitletable sectionexpandable firstTable">
+          <tbody>
+            <tr style="padding-bottom: 15px;">
+              <td class="sectionicontd" style="width: 48px;display: inline-block;white-space: nowrap;">
+                  <i class="fa fa-user-circle-o"></i><span style="padding-left: 6px;" class="sectiontitle">About me</span>
+              </td>    
+              <td class="sectionicontd el ellipsis">
+                  <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+              </td>                         
+              <td class="sectionedittd">
+                  
+              </td>                                        
+          </tr>   
+            
+        <tr>  
+            <td colspan="3" style="position: relative;">
+              <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;display: inline-grid;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);height: auto;">
+                I'm an IT professional with 16 years of experience in software projects. The architectures of those projects were manly java but also include C# .NET and others. A great component as software analyst and managing its related tools too.
+                <br><span style="display: block;height: 8px;"></span>
+                  As a developer I have a great focus on WEB projects, mastering of its core front-end technologies HTML, CSS and JavaScript.
+                <br><span style="display: block;height: 8px;"></span>
+                  Based on the professional experience and in personal projects I have become a UX specialist both in ergonomics and design.
+                  <br><span style="display: block;height: 8px;"></span>
+                <div>Email <a href="mailto:victorywiilcome@gmail.com" style="color: var(--text-color);">victorywiilcome@gmail.com</a></div>
+                    
+                    <span style="display: block;height: 8px;"></span>
+                  <div>Twitter <a href="https://twitter.com/victorywiilcome" style="color: var(--text-color);">twitter.com/victorywiilcome</a></div>
+<!--                   <span style="display: block;height: 8px;"></span>
+                  <div>Website <a href="https://www.victorywillcome.com/" style="color: var(--text-color);">www.victorywillcome.com/</a></div> 
+                  <span style="display: block;height: 8px;"></span>
+                  <div style="padding-bottom: 6px;">LinkedIn <a href="https://www.linkedin.com/in/victorywillcome/" style="color: var(--text-color);">www.linkedin.com/in/victorywillcome/</a></div>    -->
+              </div>
+            </td>                                        
+        </tr>    
+      </tbody>
+      </table>  
+
+        <table class="sectiontitletable sectionexpandable" style="margin-top: -1px;padding-top: 7px;">
+            <tbody>
+              <tr style="padding-bottom: 15px;">
+                <td class="sectionicontd" style="width: 48px;display: inline-block;white-space: nowrap;">
+                    <i onclick="javascript: zoom(this)" class="fa fa-folder-open" style="border-right-color: transparent !important;border-left-color: transparent !important;padding-left: 2px;"></i><span style="padding-left: 6px;" class="sectiontitle">About the App</span>
+                </td>    
+                <td class="sectionicontd el ellipsis">
+                    <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+                </td>                         
+                <td class="sectionedittd">
+                    
+                </td>                                        
+            </tr>   
+              
+          <tr>  
+              <td colspan="3" style="position: relative;">
+                  <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;display: inline-grid;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);height: auto;">
+                    This is an web application and allows the user to organize tweets, youtube videos and weblinks.
+                    <br><span style="display: block;height: 8px;"></span>
+                    The user can add, change and organize these links and can browse them in very easy and intuitive way.
+                    <br><span style="display: block;height: 8px;"></span>
+                    At the moment there is no centralized storage for the user created links, so they will be stored in local browser cookies. It is recommendable to make frequent backups (Settings > Download Links).
+                      <br><span style="display: block;height: 8px;"></span>
+                      The application has an instructions page in settings and help icons throughout the application to make it easy to use.
+                      <br><span style="display: block;height: 8px;"></span>
+                  </div>  
+              </td>                                        
+          </tr>    
+        </tbody>
+      </table>    
+
+    <!-- xyz splash - inserido style="display: none;" -->
+    <table style="display: none;" class="sectiontitletable sectionexpandable">
+      <tbody>
+        <tr style="padding-bottom: 15px;">
+          <td class="sectionicontd" style="width: 48px;display: inline-block;white-space: nowrap;">
+              <i class="fa fa-credit-card-alt"></i><span style="padding-left: 6px;" class="sectiontitle">Donate</span>
+          </td>    
+          <td class="sectionicontd el ellipsis">
+              <span class="titletext" style="top: -1px;text-align: left;padding-left: 0px;"></span>
+          </td>                         
+          <td class="sectionedittd">
+
+          </td>                                        
+        </tr>   
+        
+        <tr>  
+            <td colspan="3" style="position: relative;">
+              <div class="splashtext aboutme" style="width: calc(100% - 2px);position: relative;top: 0px;display: inline-grid;padding-left: 4px;background-image: linear-gradient(to bottom, transparent 49%, var(--softdark-color) 80%);height: auto;">
+                To stop seeing the about screen make a donation above 1,5 Euros.
+                <br><span style="display: block;height: 8px;"></span>
+                Make a transfer to the IBAN and put your email in the transfer notes and you will receive a code to activate the Premium features forever.
+                <br><span style="display: block;height: 8px;"></span>
+                If you can't add your email to the transfer email me the transfer receipt.
+                  <br><span style="display: block;height: 8px;"></span>
+                <div>IBAN <a href="" style="color: var(--text-color);">PT50 0000 0000 0000 0000 0000 0</a></div>
+
+              </div>                
+            </td>                                        
+        </tr>    
+      </tbody>
+      </table> 
+      <div style="position: sticky;display: block;bottom: 17px;right: 16px;float: right;height: 0px;"><span id="splashbutton" style="display: none;" class="splashbutton" class="sectiontitle">
+        15
+      </span>
+      </div>
+    </div>
+</div>
+
+<div id="editinfodiv" style="background: var(--soft-transp-color);margin-top: 0px !important;position: fixed !important;display: none;" class="newLayout pobj" onclick="closeLinkText()">
+  <div>        
+      <table class="titletable buttonstable">
+          <tbody>
+            <tr class="cursordefault">
+                <td class="firsttd">
+                    <i class="fa fa-file-text" style="margin-right: 6px;font-size: 13px;top: 0px;"></i>
+                    <b style="position: relative;">edit text link</b>
+                    <i onclick="closeLinkText()" class="fa fa-window-close" style="position: relative;right: 22px; top: -2px;"></i>              
+                </td>
+            </tr>
+          </tbody>
+      </table>
+      <table class="sectiontitletable sectionexpandable" style="background: transparent;/* max-height: 18px; */padding: 0;width: 100%;margin-left: 0;display: table;height: 88px;">
+        <tbody>
+          <tr class="cursorpointer hover">
+            <td colspan="3" class="sectionicontd" style="white-space: nowrap;cursor: pointer;position: relative;padding: 0 !important;width: 100%;">
+              <textarea></textarea>
+              <i onclick="" class="fa fa-keyboard-o"></i>
+              <i onclick="" class="fa fa-angle-down"></i>
+              <i onclick="javascript: closeLinkText()" class="fa fa-times"></i>
+              <i onclick="javascript: saveLinkText()" class="fa fa-check"></i>
+            </td>                                                                 
+          </tr>   
+         </tbody>
+      </table>
+  </div>
+</div>
+
+<div id="tooltip" onclick="javascript: closeTooltip()" style="position: absolute;top: 4px;left: 176px;z-index: 2147483647;background: var(--high-color);padding: 2px 10px;border: 1px solid var(--dark-color);color: var(--dark-color);border-radius: 3px;transform: translate(-50%, 0px);left: calc(50% - 0px) !important;display: none;">
+</div>
+
+<div style="
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 9999999999;
+    background: var(--dark-color);
+    padding: 2px 10px;
+    border-top: 1px solid var(--soft-color);
+    color: var(--dark-color);
+    width: 100%;
+    height: 30px;
+    display: none;
+"><i class="fa fa-cog clicable" onclick="javascript: nextLink('bottom')" style="
+    display: block;
+    color: white;
+    position: relative;
+    right: 23px;
+    top: 1px;
+    float: right;
+"></i><i class="fa fa-cog clicable" onclick="javascript: nextLink('up')" style="
+    display: block;
+    color: white;
+    position: relative;
+    right: 43px;
+    top: 1px;
+    float: right;
+"></i></div>
+<div id="fsPopup" style="padding: 15px;position: fixed;top: 0px;z-index: 999999997; width: calc(100% - 30px); height: calc(100% - 30px); background: var(--soft-transp-color); display: none;">
+    <iframe cid="none" onload="iframeFSloadFunc(this)" scrolling="yes" frameborder="0" allowtransparency="true" style="position: relative;/* top: 0px; *//* z-index: 2147483647; */width: calc(100% - 4px);height: calc(100% - 31px);margin-left: -2px;border: 2px solid var(--high-color);border-radius: 5px;"></iframe>
+    <i onclick="javascript: expandCatPre()" class="logo fa fa-edit"></i>
+    <i onclick="javascript: externallinkCopyPre()" class="logo fa fa-files-o"></i>
+    <i onclick="javascript: externallinkopenPre()" class="logo fa fa-external-link"></i>
+    <i onclick="javascript: closeFSPopup()" class="logo fa fa-times-circle"></i>
+    <i onclick="javascript: moveFSPopup(this)" class="logo fa arrow fa-arrow-circle-up"></i>
+</div>
+<div id="hiddendiv" style="display: none;"></div>
+</body>
+
+</html>
