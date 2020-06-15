@@ -3266,7 +3266,7 @@ function showCalendar(month, year) {
         }
         else {
             if (value != undefined && value != "-") {
-                totalHours = totalHours + Number(value);
+                totalHours = totalHours + 1;
             }
         }
     }
@@ -3564,11 +3564,11 @@ function markDay8Hours(obj, day) {
     if (displayValue.attr("cvalue") == "V") {
         totalVacation--;
         globalVacationChanged = true;
-        totalHours = totalHours + 8;
+        totalHours = totalHours + 1;
         globalTotalHoursChanged = true;
     }
     else if (displayValue.attr("cvalue") != "8") {
-        totalHours = totalHours + 8;
+        totalHours = totalHours + 1;
         globalTotalHoursChanged = true;
 
         filledworkingdays++; 
@@ -3636,7 +3636,7 @@ function markRemoveDay(obj, day) {
         filledworkingdays--;
     }
     else if (displayValue.attr("cvalue") == "8") {
-        totalHours = totalHours - 8;
+        totalHours = totalHours - 1;
         globalTotalHoursChanged = true;
         
         filledworkingdays--;
@@ -3698,7 +3698,7 @@ function markDayVacations(obj, day) {
     globalVacationChanged = false;
 
     if (displayValue.attr("cvalue") == "8") {
-        totalHours = totalHours - 8;
+        totalHours = totalHours - 1;
         globalTotalHoursChanged = true;
         totalVacation++;
         globalVacationChanged = true;
