@@ -8265,15 +8265,17 @@ div.inmulti div.innerbuttons {
       border-color: #0ce00c; 
     }
 
-    .card .multidiv.inmulti > div > div span {
+    .card .multidiv.inmulti:not(.hasvalue) > div > div > span {
 
-    color: #00b700;
-    }
+color: #f9b25a;
 
-    .card .multidiv.inmulti > div:not(#selectall) > div i:not(.multiitems)  {
+}
 
-    color: #00b700;
-    }
+    .card .multidiv.inmulti:not(.hasvalue) > div:not(#selectall) > div i:not(.multiitems)  {
+
+color: #f9b25a;
+
+}
 }
 /********************************** FIM ************************************/
 /******************************* DESKTOP CSS *******************************/
