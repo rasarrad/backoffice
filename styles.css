@@ -7781,7 +7781,7 @@ body.ismobile .multidiv.hasvalue > div > div.innerbuttons {
 
 width: 93px;
 
-background: #929292 !important;
+/* background: #929292 !important; */
 }
 
 
@@ -7920,12 +7920,12 @@ padding-top: 0px;
 }
 
 .card > div {
-    right: 24px;
+    right: 17px;
     top: 46px;
 }
 
 .card > div:nth-of-type(2) {
-    right: 1px;
+    right: 4px;
     top: 39px;
 }
 
@@ -7942,8 +7942,8 @@ padding-top: 0px;
 
 .card select {
   width: 87px;
-  height: 18px !important;
-  padding-top: 0px !important;
+  height: 24px !important;
+  /* padding-top: 0px !important; */
 }
 
 .table-responsive-sm td .day {
@@ -7995,20 +7995,20 @@ div.value .fa-plane {font-size: 12px;}
 .vdlabel {font-weight: bold;text-transform: lowercase;margin-left: 7px;font-size: 14px;margin-right: 3px;transition: opacity .7s;padding-top: 1.5px;}
 
 .card .fa.fa-arrow-circle-right {
-  padding-left: 6px;
+  /* padding-left: 6px; */
   margin-right: 0px;
   display: block;
   font-size: 20px;
-  background: transparent;
+  /* background: transparent; */
 }
 
 
 .card > div:not(.multidiv) .fa.fa-arrow-circle-left {
-  padding-right: 6px;
-  margin-right: 0px;
+  /* padding-right: 6px; */
+  margin-right: 4px;
   display: block;
   font-size: 20px;
-  background: transparent;
+  /* background: transparent; */
 }
 
 .table-responsive-sm thead th {
@@ -8020,13 +8020,14 @@ div.value .fa-plane {font-size: 12px;}
 
 .card > div.multidiv > div {
   height: 29.5px;
-  background: #929292;
-  border: 1px solid #6d6d6d;
+  /* background: #929292; */
+  /* border: 1px solid #6d6d6d; */
+  margin-bottom: -11px;
 }
 .card > div.multidiv > div > div {
   /* height: 35px; */
   margin-left: 3px;
-  background: #cccccc !important;
+  /* background: #cccccc !important; */
   position: relative;
   left: 2px;
   top: -2px;
@@ -8048,14 +8049,14 @@ text-transform: uppercase;
     padding-top: 0px;
     padding-bottom: 4px;
     padding-left: 0px;
-    color: var(--text-color);
+    /* color: var(--text-color); */
 }
 
 div.inmulti.hasvalue div.innerbuttons {
 
 width: 121px !important;
 
-background: var(--high-color) !important;
+/* background: var(--high-color) !important; */
 }
 
 .innerbuttons {}
@@ -8072,7 +8073,7 @@ background: var(--high-color) !important;
   left: 10px !important;
   top: 6px;
   padding-bottom: 0 !important;
-  color: var(--text-color);
+  /* color: var(--text-color); */
 }
 
 .multidiv > div > div {
@@ -8086,7 +8087,7 @@ height: 23px;
   left: 83px !important;
 }
 body.ismobile .multidiv > div > div.innerbuttons {
-    background: #929292 !important;
+    /* background: #929292 !important; */
 }
 
 #backdiv .container {
