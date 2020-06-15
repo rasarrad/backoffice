@@ -3776,15 +3776,8 @@ function selectAll() {
     }
 
             
-    if (isMobile) 
-        $(".multidiv > div > div > span").text("Selected  0" );
-    else
-        $(".multidiv > div > div > span").text("Multi Select  0" );
-
     multiselectcounter = 0;
     
-    multiselectcounter++;
-
     $( ".table-responsive-sm td" ).each( function( index, element ){
         var elem = $(element);
 
@@ -3798,6 +3791,14 @@ function selectAll() {
     });
 
     multiselectcounter = filledworkingdays = allworkingdays; 
+
+    if (isMobile) 
+        $(".multidiv > div > div > span").text("Selected  " + multiselectcounter );
+    else
+        $(".multidiv > div > div > span").text("Multi Select  " + multiselectcounter );
+
+    if (!$(".multidiv").hasClass('hasvalue'))
+        $(".multidiv").addClass('hasvalue');
 }
 
 
