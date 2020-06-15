@@ -91,7 +91,7 @@ $( document ).ready(function() {
     if (isMobile) {
         $('body').addClass('ismobile');
         $( "table.table-responsive-sm" ).addClass('multiselect');
-        $(".multidiv > div > div > span").text("Selected (0)");
+        $(".multidiv > div > div > span").text("Selected  0");
         $(".multidiv").addClass('inmulti');
         configureMobileMultiselectMode();
     }
@@ -3023,6 +3023,8 @@ function next() {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
     currentMonth = (currentMonth + 1) % 12;
     
+    vibrateApp();
+
     var funcTorun = function() {
         showCalendar(currentMonth, currentYear)
     }; 
@@ -3033,6 +3035,8 @@ function next() {
 function previous() {
     currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
     currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
+
+    vibrateApp();
 
     var funcTorun = function() {
         showCalendar(currentMonth, currentYear)
@@ -3167,6 +3171,8 @@ function jump() {
     var funcTorun = function() {
         showCalendar(currentMonth, currentYear)
     }; 
+    vibrateApp();
+
     fadeObj("#calendar");
 }
 
@@ -3365,7 +3371,7 @@ function showCalendar(month, year) {
                 else {
                     elem.append("<div class='value novalue' cvalue='-'>-</div>");
                 }
-                
+
                 if (!isMobile) {
                     elem.append("<div class='buttons'>"
                     +
@@ -3422,11 +3428,13 @@ function cellClick(obj, e) {
             multiselectcounter--;
             $(obj).removeClass('cellselected');
             multiselectmap.set($(obj).attr("day"), null);
+            vibrateApp();
         }
         else {
             multiselectmap.set($(obj).attr("day"), $(obj).attr("day"));
             $(obj).addClass('cellselected');
             multiselectcounter++;
+            vibrateApp();
         }
 
         if (multiselectcounter > 0) {
@@ -3440,9 +3448,9 @@ function cellClick(obj, e) {
         }
 
         if (isMobile) 
-            $(".multidiv > div > div > span").text("Selected (" + multiselectcounter + ")" );
+            $(".multidiv > div > div > span").text("Selected  " + multiselectcounter );
         else
-            $(".multidiv > div > div > span").text("Multi Select (" + multiselectcounter + ")" );
+            $(".multidiv > div > div > span").text("Multi Select  " + multiselectcounter );
     }
     else {
         //alert($(obj).attr("day"));
@@ -3468,9 +3476,9 @@ function changeMultiselectMode(e, flag) {
             $(".multidiv").addClass('inmulti');
             
             if (isMobile) 
-                $(".multidiv > div > div > span").text("Selected (0)" );
+                $(".multidiv > div > div > span").text("Selected  0" );
             else
-                $(".multidiv > div > div > span").text("Multi Select (0)" );
+                $(".multidiv > div > div > span").text("Multi Select  0" );
         }
 
         fadeObj($(".multidiv"));
@@ -3496,7 +3504,7 @@ function cleanMultiselect() {
     if ($(".multidiv").hasClass('inmulti')) {
         $(".multidiv").removeClass('hasvalue');            
         if (isMobile) {
-            $(".multidiv > div > div > span").text("Selected (0)" );
+            $(".multidiv > div > div > span").text("Selected  0" );
 
         } 
         else {
@@ -3517,8 +3525,12 @@ function multiselectEightHours(obj, e) {
     if (e)
         e.stopPropagation();
 
-    if (multiselectcounter == 0)
+    if (multiselectcounter == 0) {
+        vibrateApp(600);
         return false;
+    }
+
+    vibrateApp();
 
     var localTotalHoursChanged = false;
     var localVacationChanged = false;
@@ -3581,8 +3593,12 @@ function multiselectRemoveDay(obj, e) {
     if (e)
         e.stopPropagation();
 
-    if (multiselectcounter == 0)
+    if (multiselectcounter == 0) {
+        vibrateApp(600);
         return false;
+    }
+
+    vibrateApp();
 
     var localTotalHoursChanged = false;
     var localVacationChanged = false;
@@ -3645,8 +3661,12 @@ function multiselectVacations(obj, e) {
     if (e)
         e.stopPropagation();
 
-    if (multiselectcounter == 0)
+    if (multiselectcounter == 0) {
+        vibrateApp(600);
         return false;
+    }
+
+    vibrateApp();
 
     var localTotalHoursChanged = false;
     var localVacationChanged = false;
@@ -3737,7 +3757,12 @@ function openTimesheet(obj, e) {
 }
 
 
-
+function vibrateApp(duration) {
+    var dur = 200;
+    if (duration)
+        dur = duration;
+    window.navigator.vibrate(dur);
+}
 
 
 
