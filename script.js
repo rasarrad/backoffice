@@ -90,7 +90,7 @@ $( document ).ready(function() {
     if (isMobile) {
         $('body').addClass('ismobile');
         $( "table.table-responsive-sm" ).addClass('multiselect');
-        $(".multidiv > div > div > span").text("Selected  0");
+        $(".multidiv > div > div > span").html("Selected<span>0</span>");
         $(".multidiv").addClass('inmulti');
         configureMobileMultiselectMode();
     }
@@ -3448,9 +3448,9 @@ function cellClick(obj, e) {
         }
 
         if (isMobile) 
-            $(".multidiv > div > div > span").text("Selected  " + multiselectcounter );
+            $(".multidiv > div > div > span").html("Selected<span>" + multiselectcounter + "</span>");
         else
-            $(".multidiv > div > div > span").text("Multi Select  " + multiselectcounter );
+            $(".multidiv > div > div > span").html("Multi Select<span>" + multiselectcounter + "</span>");
     }
     else {
         //alert($(obj).attr("day"));
@@ -3476,9 +3476,9 @@ function changeMultiselectMode(e, flag) {
             $(".multidiv").addClass('inmulti');
             
             if (isMobile) 
-                $(".multidiv > div > div > span").text("Selected  0" );
+                $(".multidiv > div > div > span").html("Selected<span>0</span>" );
             else
-                $(".multidiv > div > div > span").text("Multi Select  0" );
+                $(".multidiv > div > div > span").html("Multi Select<span>0</span>" );
         }
     }
 }
@@ -3502,11 +3502,11 @@ function cleanMultiselect() {
     if ($(".multidiv").hasClass('inmulti')) {
         $(".multidiv").removeClass('hasvalue');            
         if (isMobile) {
-            $(".multidiv > div > div > span").text("Selected  0" );
+            $(".multidiv > div > div > span").html("Selected<span>0</span>" );
 
         } 
         else {
-            $(".multidiv > div > div > span").text("Multi Select" );
+            $(".multidiv > div > div > span").html("Multi Select" );
 
             $(".multidiv").removeClass('inmulti');
         }
@@ -3791,9 +3791,9 @@ function selectAll() {
         multiselectcounter = allworkingdays; 
 
         if (isMobile) 
-            $(".multidiv > div > div > span").text("Selected  " + multiselectcounter );
+            $(".multidiv > div > div > span").html("Selected<span>" + multiselectcounter + "</span>");
         else
-            $(".multidiv > div > div > span").text("Multi Select  " + multiselectcounter );
+            $(".multidiv > div > div > span").html("Multi Select<span>" + multiselectcounter + "</span>" );
 
         if (!$(".multidiv").hasClass('hasvalue'))
             $(".multidiv").addClass('hasvalue');
@@ -3813,10 +3813,10 @@ function selectAll() {
         multiselectcounter = 0; 
 
         if (isMobile) {
-            $(".multidiv > div > div > span").text("Selected 0");
+            $(".multidiv > div > div > span").html("Selected<span>0</span>");
         }
         else {
-            $(".multidiv > div > div > span").text("Multi Select 0" );
+            $(".multidiv > div > div > span").html("Multi Select<span>0</span>" );
         }
         if (!$(".multidiv").hasClass('inmulti')) {
             $(".multidiv").addClass('inmulti');

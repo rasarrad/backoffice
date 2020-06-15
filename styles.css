@@ -7905,347 +7905,375 @@ div.inmulti div.innerbuttons {
       border: 1px solid #59af59;
 }
 
+/*****************************************************************************/
+/******************************* LANDSCAPE CSS *******************************/
+@media (max-width: 1024px) {
 
-  @media (max-width: 480px) {
+}
+/*********************************** FIM **************************************/
+/******************************* LANDSCAPE CSS *******************************/
 
-#monthh3.partial {
+
+/*****************************************************************************/
+/******************************** PORTRAIT CSS *******************************/
+@media (max-width: 480px) {
+
+    #monthh3.partial {
+        padding-top: 0px;
+        height: 28px;
+    }
+
+    #monthh3.complete {
     padding-top: 0px;
-    height: 28px;
-}
-
-#monthh3.complete {
-padding-top: 0px;
-    height: 28px;
-}
-
-.container.col-sm-4 h3 {
-    margin-left: 25px;
-    margin-top: 4px;
-    font-size: 26px;
-    /* font-size: 37px; */
-}
-
-.card > div {
-    right: 17px;
-    top: 46px;
-}
-
-.card > div:nth-of-type(2) {
-    right: 4px;
-    top: 39px;
-}
-
-.table-responsive-sm {
-    width: calc(100% - 20px);
-    padding: 12px 10px;
-}
-
-#calendar-body td {
-    height: 7vh;
-    max-height: 7vh;
-    min-height: 30px;
-}
-
-.card select {
-  width: 87px;
-  height: 24px !important;
-  /* line-height: 35px; */
-  padding-top: 2px !important;
-}
-
-.table-responsive-sm td .day {
-    font-size: 13px;
-    top: -6px !important;
-    left: calc(100% - 18px) !important;
-}
-
-.table-responsive-sm td.selected .day {
-    font-size: 13px;
-    color: var(--text-color) !important;
-    top: -6px !important;
-    left: calc(100% - 18px) !important;
-}
-
-.table-responsive-sm .value {
-  position: absolute;
-  transform: translate(0px, 5%);
-  top: calc(50% - 8px);
-  font-weight: bold;
-  font-size: 13px;
-  left: 3px;
-  width: 44px;
-}
-
-.table-responsive-sm .value[cvalue=V] {
-  top: calc(50% - 17px);
-}
-.card span {height: 25px;width: 24px;position: relative;top: -1px;font-size: 9px;}
-
-
-div.value .fa-plane {font-size: 12px;}
-.container.col-sm-4 h3#yearh3 {
-  font-size: 34px;
-}
-
-#workhours {
-  font-size: 35px;
-  position: relative;
-  top: -2px;
-  transition: opacity .7s;
-  color: var(--text-color);
-}
-
-.whlabel {font-weight: bold;text-transform: lowercase;margin-left: 7px;font-size: 14px;transition: opacity .7s;padding-top: 1.5px;}
-
-#vacationdays {font-size: 35px;position: relative;top: -2px;margin-left: 19px;color: var(--text-color);transition: opacity .7s;}
-
-.vdlabel {font-weight: bold;text-transform: lowercase;margin-left: 7px;font-size: 14px;margin-right: 3px;transition: opacity .7s;padding-top: 1.5px;}
-
-.card .fa.fa-arrow-circle-right {
-  /* padding-left: 6px; */
-  margin-right: 0px;
-  display: block;
-  font-size: 20px;
-  /* background: transparent; */
-}
-
-
-.card > div:not(.multidiv) .fa.fa-arrow-circle-left {
-  /* padding-right: 6px; */
-  margin-right: 4px;
-  display: block;
-  font-size: 20px;
-  /* background: transparent; */
-}
-
-.table-responsive-sm thead th {
-  padding-bottom: 1px;
-  padding-top: 4px;
-  text-transform: lowercase;
-  font-size: 14px;
-}
-
-.card > div.multidiv > div {
-  height: 29.5px;
-  /* background: #929292; */
-  /* border: 1px solid #6d6d6d; */
-  margin-bottom: -11px;
-}
-.card > div.multidiv > div > div {
-  /* height: 35px; */
-  margin-left: 3px;
-  /* background: #cccccc !important; */
-  position: relative;
-  left: 2px;
-  top: -2px;
-}
-
-.card .multidiv > div > div span {
-
-top: 0px;
-
-font-size: 15px;
-
-text-transform: uppercase;
-}
-
-.card .multidiv > div > div i {
-    position: relative;
-    top: 1.5px;
-    font-size: 17px;
-    padding-top: 0px;
-    padding-bottom: 4px;
-    padding-left: 0px;
-    /* color: var(--text-color); */
-}
-
-div.inmulti.hasvalue div.innerbuttons {
-
-width: 121px !important;
-
-/* background: var(--high-color) !important; */
-}
-
-.innerbuttons {}
-.card .multidiv i.multiitems {
-  display: block;
-  width: 0px;
-  height: 0;
-  margin: 0;
-  /* display: inline-flex !important; */
-  position: absolute;
-  transition: all 0.8s;
-  padding: 0;
-  font-size: 22px;
-  left: 10px !important;
-  top: 6px;
-  padding-bottom: 0 !important;
-  /* color: var(--text-color); */
-}
-
-.multidiv > div > div {
-height: 23px;
-}
-
-.card .multidiv i.multiitems:nth-of-type(2) {
-  left: 46px !important;
-}
-.card .multidiv i.multiitems:nth-of-type(3) {
-  left: 83px !important;
-}
-body.ismobile .multidiv > div > div.innerbuttons {
-    /* background: #929292 !important; */
-}
-
-#backdiv .container {
-      margin-top: 21px;
-}
-
-  }
-
-
-
-
-
-
-  @media (min-width: 1025px) {
-
-#calendar-body td:not(.weekend):hover {
-  background: var(--soft-color);
-  border-color: var(--high-color);
-}
-
-#calendar-body td.weekend:hover {
-  background: #9e9c9c;
-  background: var(--text-color);
-}
-
-
-.card .fa:not(.fa-th-large):hover {
-  color: var(--soft-color) !important;
-}
-
-
-.card .buttons .fa:not(.fa-th-large):hover {
-  background: transparent;
-}
-
-.card select:hover {
-  background: var(--text-color);
-}
-
-.table-responsive-sm:not(.multiselect) td:hover .buttons {
-  opacity: 1;
-  display: flex;
-  top: calc(50% - 19px);
-}
-
-
-.table-responsive-sm .buttons .fa:hover {color: #636363;/* transform: scale(1.05); */}
-
-.table-responsive-sm .buttons span:hover .fa {
-color: var(--text-color);
-}
-
-
-.table-responsive-sm:not(.multiselect) td:hover .value {
-  color: var(--high-color);
-  top: calc(50% - -2px);
-}
-
-
-.table-responsive-sm:not(.multiselect) td:hover .value.novalue {
-  color: var(--text-color);
-}
-
-
-.table-responsive-sm:not(.multiselect) td:hover .value.V {
-    top: calc(50% - -6px);
-}
-
-.table-responsive-sm:not(.multiselect) td:hover .value .fa-plane {
-   opacity: 0 !important;
-   display: none;
-}
-
-.table-responsive-sm td:not(.weekend):hover .day {
-color: var(--high-color);
-background: transparent;
-border-color: transparent;
-top: -4px;
-left: calc(100% - 22px);
-}
-
-
-.table-responsive-sm:not(.multiselect) td:not(.weekend):hover {
-  background: var(--softdark-color) !important;
-  height: calc(11vh - 4px) !important;
-}
-
-.table-responsive-sm.multiselect td:not(.weekend):hover {
-  border: 1px solid #ef7d11 !important;
-}
-
-.table-responsive-sm.multiselect td.cellselected:hover {
-background: var(--dark-color) !important;
-border: 1px solid #00a200 !important;
-}
-.card #previous:hover {
-  color: var(--text-color);
-}
-.card #next:hover {
-  color: var(--text-color);
+        height: 28px;
+    }
+
+    .container.col-sm-4 h3 {
+        margin-left: 25px;
+        margin-top: 4px;
+        font-size: 26px;
+        /* font-size: 37px; */
+    }
+
+    .card > div {
+        right: 17px;
+        top: 46px;
+    }
+
+    .card > div:nth-of-type(2) {
+        right: 4px;
+        top: 39px;
+    }
+
+    .table-responsive-sm {
+        width: calc(100% - 20px);
+        padding: 12px 10px;
+    }
+
+    #calendar-body td {
+        height: 7vh;
+        max-height: 7vh;
+        min-height: 30px;
+    }
+
+    .card select {
+      width: 87px;
+      height: 24px !important;
+      /* line-height: 35px; */
+      padding-top: 2px !important;
+    }
+
+    .table-responsive-sm td .day {
+        font-size: 13px;
+        top: -6px !important;
+        left: calc(100% - 18px) !important;
+    }
+
+    .table-responsive-sm td.selected .day {
+        font-size: 13px;
+        color: var(--text-color) !important;
+        top: -6px !important;
+        left: calc(100% - 18px) !important;
+    }
+
+    .table-responsive-sm .value {
+      position: absolute;
+      transform: translate(0px, 5%);
+      top: calc(50% - 8px);
+      font-weight: bold;
+      font-size: 13px;
+      left: 3px;
+      width: 44px;
+    }
+
+    .table-responsive-sm .value[cvalue=V] {
+      top: calc(50% - 17px);
+    }
+    .card span {height: 25px;width: 24px;position: relative;top: -1px;font-size: 9px;}
+
+
+    div.value .fa-plane {font-size: 12px;}
+    .container.col-sm-4 h3#yearh3 {
+      font-size: 34px;
+    }
+
+    #workhours {
+      font-size: 35px;
+      position: relative;
+      top: -2px;
+      transition: opacity .7s;
+      color: var(--text-color);
+    }
+
+    .whlabel {font-weight: bold;text-transform: lowercase;margin-left: 7px;font-size: 14px;transition: opacity .7s;padding-top: 1.5px;}
+
+    #vacationdays {font-size: 35px;position: relative;top: -2px;margin-left: 19px;color: var(--text-color);transition: opacity .7s;}
+
+    .vdlabel {font-weight: bold;text-transform: lowercase;margin-left: 7px;font-size: 14px;margin-right: 3px;transition: opacity .7s;padding-top: 1.5px;}
+
+    .card .fa.fa-arrow-circle-right {
+      /* padding-left: 6px; */
+      margin-right: 0px;
+      display: block;
+      font-size: 20px;
+      /* background: transparent; */
+    }
+
+
+    .card > div:not(.multidiv) .fa.fa-arrow-circle-left {
+      /* padding-right: 6px; */
+      margin-right: 4px;
+      display: block;
+      font-size: 20px;
+      /* background: transparent; */
+    }
+
+    .table-responsive-sm thead th {
+      padding-bottom: 1px;
+      padding-top: 4px;
+      text-transform: lowercase;
+      font-size: 14px;
+    }
+
+    .card > div.multidiv > div {
+      height: 29.5px;
+      /* background: #929292; */
+      /* border: 1px solid #6d6d6d; */
+      margin-bottom: -11px;
+    }
+    .card > div.multidiv > div > div {
+      /* height: 35px; */
+      margin-left: 3px;
+      /* background: #cccccc !important; */
+      position: relative;
+      left: 2px;
+      top: -2px;
+    }
+
+    .card .multidiv > div > div span > span {
+
+      margin-left: 3px;
+
+      padding-left: 5px;
+
+      font-size: 17px;
+
+      color: #00b700;
+
+      }
+
+    .card .multidiv > div > div span {
+
+    top: 0px;
+
+    font-size: 15px;
+
+    text-transform: uppercase;
+    }
+
+    .card .multidiv > div > div i {
+        position: relative;
+        top: 1.5px;
+        font-size: 17px;
+        padding-top: 0px;
+        padding-bottom: 4px;
+        padding-left: 0px;
+        /* color: var(--text-color); */
+    }
+    
+    .card .multidiv > div > div i.fa-check-square-o {
+        padding-top: 2px !important;
+    }
+
+    div.inmulti.hasvalue div.innerbuttons {
+
+    width: 121px !important;
+
+    /* background: var(--high-color) !important; */
+    }
+
+    .innerbuttons {}
+    .card .multidiv i.multiitems {
+      display: block;
+      width: 0px;
+      height: 0;
+      margin: 0;
+      /* display: inline-flex !important; */
+      position: absolute;
+      transition: all 0.8s;
+      padding: 0;
+      font-size: 22px;
+      left: 10px !important;
+      top: 6px;
+      padding-bottom: 0 !important;
+      /* color: var(--text-color); */
+    }
+
+    .multidiv > div > div {
+    height: 23px;
+    }
+
+    .card .multidiv i.multiitems:nth-of-type(2) {
+      left: 46px !important;
+    }
+    .card .multidiv i.multiitems:nth-of-type(3) {
+      left: 83px !important;
+    }
+    body.ismobile .multidiv > div > div.innerbuttons {
+        /* background: #929292 !important; */
+    }
+
+    #backdiv .container {
+          margin-top: 21px;
+    }
 
 }
+/************************************ FIM ************************************/
+/******************************** PORTRAIT CSS *******************************/
 
-.card #calendar-body td.cellselected:hover {
-  border: 1px solid #ef7d11 !important;
+
+
+
+/***************************************************************************/
+/******************************* DESKTOP CSS *******************************/
+@media (min-width: 1025px) {
+
+    #calendar-body td:not(.weekend):hover {
+      background: var(--soft-color);
+      border-color: var(--high-color);
+    }
+
+    #calendar-body td.weekend:hover {
+      background: #9e9c9c;
+      background: var(--text-color);
+    }
+
+
+    .card .fa:not(.fa-th-large):hover {
+      color: var(--soft-color) !important;
+    }
+
+
+    .card .buttons .fa:not(.fa-th-large):hover {
+      background: transparent;
+    }
+
+    .card select:hover {
+      background: var(--text-color);
+    }
+
+    .table-responsive-sm:not(.multiselect) td:hover .buttons {
+      opacity: 1;
+      display: flex;
+      top: calc(50% - 19px);
+    }
+
+
+    .table-responsive-sm .buttons .fa:hover {color: #636363;/* transform: scale(1.05); */}
+
+    .table-responsive-sm .buttons span:hover .fa {
+    color: var(--text-color);
+    }
+
+
+    .table-responsive-sm:not(.multiselect) td:hover .value {
+      color: var(--high-color);
+      top: calc(50% - -2px);
+    }
+
+
+    .table-responsive-sm:not(.multiselect) td:hover .value.novalue {
+      color: var(--text-color);
+    }
+
+
+    .table-responsive-sm:not(.multiselect) td:hover .value.V {
+        top: calc(50% - -6px);
+    }
+
+    .table-responsive-sm:not(.multiselect) td:hover .value .fa-plane {
+      opacity: 0 !important;
+      display: none;
+    }
+
+    .table-responsive-sm td:not(.weekend):hover .day {
+    color: var(--high-color);
+    background: transparent;
+    border-color: transparent;
+    top: -4px;
+    left: calc(100% - 22px);
+    }
+
+
+    .table-responsive-sm:not(.multiselect) td:not(.weekend):hover {
+      background: var(--softdark-color) !important;
+      height: calc(11vh - 4px) !important;
+    }
+
+    .table-responsive-sm.multiselect td:not(.weekend):hover {
+      border: 1px solid #ef7d11 !important;
+    }
+
+    .table-responsive-sm.multiselect td.cellselected:hover {
+    background: var(--dark-color) !important;
+    border: 1px solid #00a200 !important;
+    }
+    .card #previous:hover {
+      color: var(--text-color);
+    }
+    .card #next:hover {
+      color: var(--text-color);
+
+    }
+
+    .card #calendar-body td.cellselected:hover {
+      border: 1px solid #ef7d11 !important;
+    }
+
+    .multidiv > div > div:not(.innerbuttons):hover {
+        /* background: var(--soft-color); */
+        opacity: 0.72;
+    }
+
+
+    .multidiv > div > div.innerbuttons:hover {
+      background: transparent;
+    }
+    
+    .card .multidiv > div > div i:not(.fa-th-large):hover {
+      
+    }
+    .card .multidiv > div > div:hover span {
+
+    }
+
+
+        .card .multidiv.inmulti .multiitems:hover {
+      color: #f3f3f3;
+      /* background: transparent; */
+    }
+
+    #backdiv .container {
+          height: 780px;
+          margin-top: 16px;
+    }
+
+    .multidiv.inmulti > div > div {
+      border-color: #0ce00c; 
+    }
+
+    .card .multidiv.inmulti > div > div span {
+
+    color: #00b700;
+    }
+
+    .card .multidiv.inmulti > div:not(#selectall) > div i:not(.multiitems)  {
+
+    color: #00b700;
+    }
 }
-
-.multidiv > div > div:not(.innerbuttons):hover {
-    /* background: var(--soft-color); */
-    opacity: 0.72;
-}
-
-
-.multidiv > div > div.innerbuttons:hover {
-  background: transparent;
-}
- 
-.card .multidiv > div > div i:not(.fa-th-large):hover {
-  
-}
-.card .multidiv > div > div:hover span {
-
-}
-
-
-    .card .multidiv.inmulti .multiitems:hover {
-  color: #f3f3f3;
-  /* background: transparent; */
-}
-
-#backdiv .container {
-      height: 780px;
-      margin-top: 16px;
-}
-
-.multidiv.inmulti > div > div {
-  border-color: #0ce00c; 
-}
-
-.card .multidiv.inmulti > div > div span {
-
-color: #00b700;
-}
-
-.card .multidiv.inmulti > div:not(#selectall) > div i:not(.multiitems)  {
-
-color: #00b700;
-}
-
-  }
-
+/********************************** FIM ************************************/
+/******************************* DESKTOP CSS *******************************/
 
 body > div.logo {
     color: var(--high-color);
