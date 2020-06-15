@@ -7290,7 +7290,7 @@ body.big #editinfodiv.keyb .fa-angle-down {
 
 .table-responsive-sm {
   width: calc(100% - 52px);
-  padding: 1px 26px;
+  padding: 12px 26px;
   margin: 0px auto;
   border-radius: 4px;
   color: var(--soft-color);
@@ -7302,6 +7302,7 @@ body.big #editinfodiv.keyb .fa-angle-down {
   position: relative;
   left: 0px;
   top: 0px;
+  padding-top: 6px;
 }
 
 .table-responsive-sm thead {
@@ -7468,7 +7469,7 @@ color: var(--high-color) !important;
 
 .card > div.multidiv {
   text-align: center;
-  top: 14px;
+  top: 1px;
   position: initial;
   width: 100%;
   /* background: var(--soft-color); */
@@ -7477,7 +7478,7 @@ color: var(--high-color) !important;
   transition: opacity 1.2s;
   height: 28px;
   display: flex;
-  margin-top: 24px;
+  margin-top: 13px;
   align-items: center;
   /* overflow: hidden; */
   margin-bottom: 20px;
@@ -7910,7 +7911,7 @@ div.inmulti div.innerbuttons {
     margin-left: 3px;
     padding-left: 5px;
     font-size: 19px;
-    color: #00b700;
+    color: #00de00;
     position: relative;
     top: 1px;
 }
@@ -7918,7 +7919,10 @@ div.inmulti div.innerbuttons {
 .card .multidiv:not(.hasvalue) > div > div span > span {
   color: var(--softdark-color);
 }
-      
+     
+#backdiv .container {
+    margin-bottom: 187px;
+}      
 /*****************************************************************************/
 /******************************* LANDSCAPE CSS *******************************/
 @media (max-width: 1024px) {
@@ -7961,7 +7965,7 @@ div.inmulti div.innerbuttons {
 
     .table-responsive-sm {
         width: calc(100% - 20px);
-        padding: 12px 10px;
+        padding: 4px 10px;
     }
 
     #calendar-body td {
@@ -8128,6 +8132,7 @@ div.inmulti div.innerbuttons {
 
     #backdiv .container {
           margin-top: 21px;
+          margin-bottom: 0px;
     }
 
 }
