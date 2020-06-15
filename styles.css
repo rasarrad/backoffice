@@ -7905,6 +7905,20 @@ div.inmulti div.innerbuttons {
       border: 1px solid #59af59;
 }
 
+
+.card .multidiv > div > div span > span {
+    margin-left: 3px;
+    padding-left: 5px;
+    font-size: 19px;
+    color: #00b700;
+    position: relative;
+    top: 1px;
+}
+
+.card .multidiv:not(.hasvalue) > div > div span > span {
+  color: var(--softdark-color);
+}
+      
 /*****************************************************************************/
 /******************************* LANDSCAPE CSS *******************************/
 @media (max-width: 1024px) {
@@ -8050,17 +8064,6 @@ div.inmulti div.innerbuttons {
       top: -2px;
     }
 
-    .card .multidiv > div > div span > span {
-
-      margin-left: 3px;
-
-      padding-left: 5px;
-
-      font-size: 17px;
-
-      color: #00b700;
-
-      }
 
     .card .multidiv > div > div span {
 
