@@ -3758,7 +3758,7 @@ function openTimesheet(obj, e) {
 
 
 function vibrateApp(duration) {
-    var dur = 200;
+    var dur = 50;
     if (duration)
         dur = duration;
     window.navigator.vibrate(dur);
