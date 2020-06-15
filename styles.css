@@ -7753,7 +7753,13 @@ border: 0;
 background: transparent;
 }
 
+#selectall {
+  display: none;
+}
 
+.inmulti #selectall {
+  display: block;
+}
 
 .multidiv > div > div.innerbuttons {
 
@@ -7788,7 +7794,7 @@ width: 93px;
 
 .card .multidiv > div > div i {
     position: relative;
-    top: 1px;
+    top: 0px;
     font-size: 22px;
     padding-top: 0px;
     padding-bottom: 4px;
@@ -7798,7 +7804,7 @@ width: 93px;
 
 .card .multidiv > div > div span {
 
-top: -2px;
+top: -3px;
 
 margin-left: 3px;
 
@@ -8226,6 +8232,16 @@ border: 1px solid #00a200 !important;
 
 .multidiv.inmulti > div > div {
   border-color: #0ce00c; 
+}
+
+.card .multidiv.inmulti > div > div span {
+
+color: #00b700;
+}
+
+.card .multidiv.inmulti > div:not(#selectall) > div i:not(.multiitems)  {
+
+color: #00b700;
 }
 
   }

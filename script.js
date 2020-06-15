@@ -3775,10 +3775,7 @@ function selectAll() {
         if (!$(".multidiv").hasClass('inmulti')) {
             $(".multidiv").addClass('inmulti');
         }
-
                 
-        multiselectcounter = 0;
-        
         $( ".table-responsive-sm td" ).each( function( index, element ){
             var elem = $(element);
 
@@ -3791,7 +3788,7 @@ function selectAll() {
             }
         });
 
-        multiselectcounter = filledworkingdays = allworkingdays; 
+        multiselectcounter = allworkingdays; 
 
         if (isMobile) 
             $(".multidiv > div > div > span").text("Selected  " + multiselectcounter );
@@ -3802,13 +3799,8 @@ function selectAll() {
             $(".multidiv").addClass('hasvalue');
     }
     else {
-        $( "table.table-responsive-sm" ).removeClass('multiselect');
-
         multiselectmap = new Map();
-        multiselect = true;
                 
-        multiselectcounter = 0;
-        
         $( ".table-responsive-sm td" ).each( function( index, element ){
             var elem = $(element);
 
@@ -3818,19 +3810,17 @@ function selectAll() {
             }
         });
 
-        multiselectcounter = filledworkingdays = 0; 
+        multiselectcounter = 0; 
 
         if (isMobile) {
             $(".multidiv > div > div > span").text("Selected 0");
-
         }
         else {
-            $(".multidiv").removeClass('inmulti');
-
-            $(".multidiv > div > div > span").text("Multi Select" );
-
+            $(".multidiv > div > div > span").text("Multi Select 0" );
         }
-
+        if (!$(".multidiv").hasClass('inmulti')) {
+            $(".multidiv").addClass('inmulti');
+        }
         $(".multidiv").removeClass('hasvalue');
     }
 
