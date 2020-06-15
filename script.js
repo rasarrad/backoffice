@@ -2084,6 +2084,7 @@ function openmenu(obj, flag) {
     if (obj)
         fixfocus(obj);
 
+        vibrateApp();
     if ($('#mainmenu').css("display") == "none") {
         var setHeight = "26px";
         if ($('body').hasClass('big')) {
@@ -3225,7 +3226,7 @@ function executeCountersEffect(totalHoursChanged, totalVacationChanged) {
         }, 600); 
     }
 
-    //alert(allworkingdays + "-" + filledworkingdays);
+    console.log(allworkingdays + "-" + filledworkingdays);
     if (filledworkingdays > 0) {
         if (allworkingdays == filledworkingdays) {
             $("#monthh3").removeClass('partial');
@@ -3749,6 +3750,8 @@ function markDay(obj, e) {
 
 
 function openTimesheet(obj, e) {
+    vibrateApp();
+
     closeMenuPopup();
 
     $(".fa-folder-open.logo").fadeOut(700);
