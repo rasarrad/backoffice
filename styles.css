@@ -1090,6 +1090,7 @@ body.big .toptitle {
   opacity: 1 !important;
   cursor: default !important;
   text-transform: uppercase;
+  color: var(--text-color) !important;
 }
 #settings {
   font-size: 15px;
@@ -4891,6 +4892,7 @@ body.big .topoback2 {
     width: calc(100% - 131px);
     top: 11px;
     height: 47px;
+    background: var(--soft-color);
 }
 
 
@@ -7441,20 +7443,27 @@ color: var(--high-color) !important;
 
 
 .card .fa.fa-arrow-circle-right {
-  padding-left: 6px;
+  padding-left: 4px;
   margin-right: 0px;
   display: block;
-  font-size: 22px;
-  background: transparent;
+  padding-right: 4px;
+  margin-left: 4px;
+  font-size: 18px;
+  color: var(--softdark-color);
+  background: var(--high-color);
 }
 
 
 .card > div:not(.multidiv) .fa.fa-arrow-circle-left {
   padding-right: 6px;
-  margin-right: 0px;
+  margin-right: 4px;
   display: block;
-  font-size: 22px;
-  background: transparent;
+  padding-right: 4px;
+  margin-left: 4px;
+  padding-left: 4px;
+  font-size: 18px;
+  color: var(--softdark-color);
+  background: var(--high-color);
 }
 
 .card > div.multidiv {
@@ -7468,9 +7477,10 @@ color: var(--high-color) !important;
   transition: opacity 1.2s;
   height: 28px;
   display: flex;
-  margin-top: 10px;
+  margin-top: 24px;
   align-items: center;
   /* overflow: hidden; */
+  margin-bottom: 20px;
   opacity: 1;
   justify-content: center;
 }
@@ -7699,12 +7709,15 @@ transition: opacity .7s;
 
 .multidiv > div {
       display: inline-block;
-      background: var(--text-color);
       border-radius: 3px;
       padding: 4px 0px;
       padding-bottom: 4px;
       overflow: hidden;
       padding-top: 2px;
+      padding-right: 3px;
+      height: 38px;
+      color: var(--softdark-color);
+      background: var(--high-color);
 }
 
 .multidiv > div > div {
@@ -7717,7 +7730,7 @@ padding: 0px 5px;
 
 border-radius: 3px;
 
-margin-left: 4px;
+margin-left: 6px;
 
 padding-bottom: 1px;
 
@@ -7731,7 +7744,13 @@ border-color: #656565;
 
 transition: all 0.8s;
 
-height: 21px;
+height: 28px;
+
+color: var(--softdark-color);
+
+border: 0;
+
+background: transparent;
 }
 
 
@@ -7750,11 +7769,11 @@ border: 0;
 
 margin-left: 0px;
 
-background: var(--text-color) !important;
+background: var(--high-color) !important;
 }
 
 body .multidiv.hasvalue > div > div.innerbuttons {
-  width: 93px;
+  width: 115px;
 }
 
   
@@ -7769,12 +7788,12 @@ background: #929292 !important;
 
 .card .multidiv > div > div i {
     position: relative;
-    top: 0px;
-    font-size: 17px;
+    top: 1px;
+    font-size: 22px;
     padding-top: 0px;
     padding-bottom: 4px;
     padding-left: 0px;
-    color: var(--text-color);
+    color: var(--softdark-color);
 }
 
 .card .multidiv > div > div span {
@@ -7783,7 +7802,7 @@ top: -2px;
 
 margin-left: 3px;
 
-font-size: 14px;
+font-size: 15px;
 
 transition: all 0.6s;
 
@@ -7793,7 +7812,7 @@ text-transform: uppercase;
 
 cursor: pointer;
 
-color: var(--text-color);
+color: var(--softdark-color);
 }
 
 
@@ -7820,7 +7839,7 @@ margin-left: 2px;
   position: absolute;
   transition: all 0.8s;
   padding: 0;
-  top: 5px;
+  top: 8px;
   padding-bottom: 0 !important;
   color: var(--softdark-color);
 }
@@ -8095,7 +8114,7 @@ body.ismobile .multidiv > div > div.innerbuttons {
 
 
 .card .fa:not(.fa-th-large):hover {
-  background: var(--text-color);
+  color: var(--soft-color) !important;
 }
 
 
@@ -8175,8 +8194,9 @@ border: 1px solid #00a200 !important;
   border: 1px solid #ef7d11 !important;
 }
 
-.multidiv > div > div:hover {
-    background: var(--soft-color);
+.multidiv > div > div:not(.innerbuttons):hover {
+    /* background: var(--soft-color); */
+    opacity: 0.72;
 }
 
 
@@ -8194,7 +8214,7 @@ border: 1px solid #00a200 !important;
 
     .card .multidiv.inmulti .multiitems:hover {
   color: #f3f3f3;
-  background: transparent;
+  /* background: transparent; */
 }
 
 #backdiv .container {
@@ -8234,3 +8254,4 @@ body > div.logo {
     /* border: 1px solid red !important; */
     border-right-width: 0px !important;
 }
+
