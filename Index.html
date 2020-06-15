@@ -118,7 +118,26 @@
             </select>
             <i class="fa fa-arrow-circle-right" id="next" onclick="next()"></i>
           </form>
-        </div>       
+        </div>   
+        <div class="multidiv">
+          <div>
+            <div title="Toggle multi select mode" onclick="changeMultiselectMode(event)">
+                <i class="fa fa-th-large" id="changemultiselect">
+                </i>
+                <span>Multi Select</span>
+            </div>
+            <div class="innerbuttons">
+                <i class="fa fa-calendar-check-o multiitems" title="Add an 8 hours working day on the selected days" id="add8" onclick="multiselectEightHours(this, event)" style="display: inline; left: 10px;">
+                </i>
+                <i class="fa fa fa-calendar-o multiitems" title="Add vacation day on selected the days" id="addVac" onclick="multiselectVacations(this, event)" style="display: inline; left: 46px;">
+                </i>
+                <i class="fa fa fa-calendar-times-o multiitems" title="Remove time from the selected days" id="remDay" onclick="multiselectRemoveDay(this, event)" style="display: inline; left: 82px;">
+                </i>
+            </div>
+            <!-- <i class="fa fa-times multiitems" title="Cancel multi select" id="closeMultiselect" onclick="cleanMultiselect(this, event)">
+            </i> -->
+          </div>
+        </div>    
         <table class="table table-bordered table-responsive-sm" id="calendar">
             <thead>
             <tr>
@@ -136,25 +155,7 @@
 
             </tbody>
         </table>
-        <div class="multidiv">
-          <div>
-            <div title="Toggle multi select mode" onclick="changeMultiselectMode(event)">
-                <i class="fa fa-th-large" id="changemultiselect">
-                </i>
-                <span>Multi Select</span>
-            </div>
-            <div class="innerbuttons">
-                <i class="fa fa-calendar-check-o multiitems" title="Add an 8 hours working day on the selected days" id="add8" onclick="multiselectEightHours(this, event)" style="display: inline; left: 10px;">
-                </i>
-                <i class="fa fa fa-calendar-o multiitems" title="Add vacation day on selected the days" id="addVac" onclick="multiselectVacations(this, event)" style="display: inline; left: 37px;">
-                </i>
-                <i class="fa fa fa-calendar-times-o multiitems" title="Remove time from the selected days" id="remDay" onclick="multiselectRemoveDay(this, event)" style="display: inline; left: 64px;">
-                </i>
-            </div>
-            <!-- <i class="fa fa-times multiitems" title="Cancel multi select" id="closeMultiselect" onclick="cleanMultiselect(this, event)">
-            </i> -->
-          </div>
-        </div>
+
 
     </div>
 </div>
@@ -1715,7 +1716,7 @@
     float: right;
 "></i><i class="fa fa-cog clicable" onclick="javascript: nextLink('up')" style="
     display: block;
-    color: white; 
+    color: white;
     position: relative;
     right: 43px;
     top: 1px;
