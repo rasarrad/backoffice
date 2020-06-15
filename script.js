@@ -133,7 +133,7 @@ $( document ).ready(function() {
     showCalendar(currentMonth, currentYear);
 
 
-    //openTimesheet();
+    openTimesheet();
  /* 
  localStorage.clear();
 
@@ -3421,7 +3421,7 @@ var multiselectcounter = 0;
 
 function cellClick(obj, e) {
     e.stopPropagation();
-    console.log(isMobile)
+
     if (multiselect || isMobile) {
         
         if ($(obj).hasClass('cellselected')) {
@@ -3453,6 +3453,7 @@ function cellClick(obj, e) {
             $(".multidiv > div > div > span").html("Multi Select<span>" + multiselectcounter + "</span>");
     }
     else {
+        showCalPopup(e);
         //alert($(obj).attr("day"));
     }
 }
@@ -3827,5 +3828,24 @@ function selectAll() {
 }
 
 
+    
+function showCalPopup(event) {
+    var calpopup = $("#calpopup");
+
+    if (calpopup.hasClass("customhours"))
+        calpopup.removeClass("customhours")
+    
+    calpopup.css("top", (event.pageY - 45) + "px");
+    calpopup.css("left", (event.pageX - 100) + "px");
+
+    calpopup.fadeIn(700);
+
+/*     setTimeout(function(){
+        closeCalpopup();
+    }, 5000); */
+}
 
 
+function closeCalpopup() {
+    $("#calpopup").fadeOut(700);
+}

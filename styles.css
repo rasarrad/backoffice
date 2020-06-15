@@ -7923,6 +7923,121 @@ div.inmulti div.innerbuttons {
 #backdiv .container {
     margin-bottom: 187px;
 }      
+
+#calpopup {
+    position: absolute;
+    top: 722px;
+    left: 176px;
+    z-index: 2147483647;
+    background: var(--soft-color);
+    padding: 8px 10px;
+    border: 1px solid var(--high-color);
+    color: var(--dark-color);
+    border-radius: 3px;
+    /* transform: translate(-50%, 0px); */
+    /* left: calc(50% - 0px) !important; */
+    max-width: 500px;
+    display: flex;
+}
+
+#calpopup > div:nth-child(1) {
+    max-width: 102px;
+}
+
+#calpopup > div:nth-child(2) {
+    width: 80px;
+}
+
+#calpopup > div > select {
+    transition: all 0.6s;
+    padding: 2px;
+    border-radius: 3px;
+    color: var(--softdark-color);
+    background: var(--high-color);
+    margin-left: 1px;
+    margin-right: 1px;
+    font-weight: bold !important;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    top: 0px;
+    width: 116px;
+}
+
+#calpopup > div > input {
+    display: none;
+}
+
+#calpopup > div > i:nth-child(1) {
+    display: block;
+    background: var(--dark-color);
+    font-size: 18px;
+    right: 7px;
+    position: absolute;
+    top: 8px;
+    color: var(--high-color);
+    border-radius: 3px;
+    padding: 2px;
+}
+
+#calpopup > div > i:nth-child(2) {
+    display: block;
+    font-size: 18px;
+    right: 37px;
+    position: absolute;
+    top: 8px;
+    color: var(--high-color);
+    border-radius: 3px;
+    background: var(--dark-color);
+    padding: 2px 4px;
+}
+
+
+#calpopup.customhours {
+  height: 49px;
+}
+
+#calpopup.customhours > div:nth-child(1) {
+  max-width: 102px;
+}
+
+#calpopup.customhours > div:nth-child(2) {
+  width: 16px;
+}
+
+#calpopup.customhours > div > select {
+  width: 116px;
+}
+
+#calpopup.customhours > div > input {
+  display: block;
+  transition: all 0.6s;
+  padding: 2px;
+  border-radius: 3px;
+  color: var(--softdark-color);
+  background: var(--high-color);
+  margin-right: 1px;
+  font-weight: bold !important;
+  cursor: pointer;
+  text-align: center;
+  height: 15px;
+  position: relative;
+  width: 46px;
+  top: 6px;
+  border: 1px solid var(--text-color);
+}
+
+#calpopup.customhours > div > i:nth-child(1) {
+  right: 11px;
+  top: 35px;
+}
+
+#calpopup.customhours > div > i:nth-child(2) {
+  right: 41px;
+  top: 35px;
+}
+
+
 /*****************************************************************************/
 /******************************* LANDSCAPE CSS *******************************/
 @media (max-width: 1024px) {

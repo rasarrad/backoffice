@@ -79,16 +79,14 @@
 <input type="hidden" id="selectedcattext" value="All Links">
 <input type="hidden" id="recordspersearch" value="500000000"> 
 <div id="backdiv" class="pobj" style="position: fixed;width: 100%;height: calc(100% - 52px);background: #00000099;top: 52px;z-index: -1;background-image: linear-gradient(to bottom, #00a1ff , #00000099);background: transparent;background-image: linear-gradient(rgb(0, 104, 165), rgb(0, 139, 222));overflow: auto;top: 15px;">
-  <div class="container col-sm-4 col-md-7 col-lg-4 mt-5" style="
-  display: none;
-">
+  <div class="container col-sm-4 col-md-7 col-lg-4 mt-5" style="display: none;">
     <div class="card" style="max-width: 997px;position: relative;margin: auto;">
         <h3 class="card-header" id="monthh3"></h3>
         <h3 class="card-header" id="yearh3"></h3>
         <div class="div2">
           <form class="form-inline" style="display: flex;align-items: unset;justify-content: flex-end;">
             <div id="workhours">0</div>
-            <div class="whlabel">Worked<br>Days</div>
+            <div class="whlabel">Work<br>Days</div>
             <div id="vacationdays">0</div>
             <div class="vdlabel">vacation<br>days</div>
           </form>
@@ -1695,6 +1693,24 @@
           </tr>   
          </tbody>
       </table>
+  </div>
+</div>
+
+<div id="calpopup" style="display:none;" onclick="javascript: closeCalpopup()">
+  <div>
+    <select class="form-control col-sm-4" name="calpopupselect" id="calpopupselect" onchange="calpopupselectonchange()">
+      <option value="0">Vacations</option>
+      <option value="1">Parental Leave</option>
+      <option value="2">Custom Hours</option>
+    </select>
+  
+    <input type="text">
+  </div>
+  <div>
+    <i class="fa fa-check" title="" id="calpopupadd" onclick="calPopupaddTime(this, event)">
+    </i>
+    <i class="fa fa-times" title="" id="calpopupclose" onclick="closeCalpopup(this, event)">
+    </i>
   </div>
 </div>
 
