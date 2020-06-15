@@ -8131,7 +8131,7 @@ body.ismobile .multidiv > div > div.innerbuttons {
 .table-responsive-sm:not(.multiselect) td:hover .buttons {
   opacity: 1;
   display: flex;
-  top: 28px;
+  top: calc(50% - 19px);
 }
 
 
