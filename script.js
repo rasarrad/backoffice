@@ -85,7 +85,7 @@ $( document ).ready(function() {
 
     isMobile = window.mobileAndTabletCheck();
 
-    
+    alert(123)
     //isMobile = true;
 
     if (isMobile) {
