@@ -7978,6 +7978,7 @@ div.inmulti div.innerbuttons {
     color: var(--high-color);
     border-radius: 3px;
     padding: 2px;
+    cursor: pointer;
 }
 
 #calpopup > div > i:nth-child(2) {
@@ -7990,6 +7991,7 @@ div.inmulti div.innerbuttons {
     border-radius: 3px;
     background: var(--dark-color);
     padding: 2px 4px;
+    cursor: pointer;
 }
 
 
@@ -8266,6 +8268,11 @@ div.inmulti div.innerbuttons {
       border-color: var(--high-color);
     }
 
+    #calendar-body td:not(.weekend).popupopen {
+      background: var(--softdark-color);
+      border-color: var(--high-color);
+    }
+
     #calendar-body td.weekend:hover {
       background: #9e9c9c;
       background: var(--text-color);
@@ -8291,6 +8298,12 @@ div.inmulti div.innerbuttons {
       top: calc(50% - 19px);
     }
 
+    .table-responsive-sm:not(.multiselect) td.popupopen .buttons {
+      opacity: 1;
+      display: flex;
+      top: calc(50% - 19px);
+    }
+
 
     .table-responsive-sm .buttons .fa:hover {color: #636363;/* transform: scale(1.05); */}
 
@@ -8300,6 +8313,12 @@ div.inmulti div.innerbuttons {
 
 
     .table-responsive-sm:not(.multiselect) td:hover .value {
+      color: var(--high-color);
+      top: calc(50% - -2px);
+    }
+
+
+    .table-responsive-sm:not(.multiselect) td.popupopen .value {
       color: var(--high-color);
       top: calc(50% - -2px);
     }
@@ -8329,6 +8348,11 @@ div.inmulti div.innerbuttons {
 
 
     .table-responsive-sm:not(.multiselect) td:not(.weekend):hover {
+      background: var(--softdark-color) !important;
+      height: calc(11vh - 4px) !important;
+    }
+
+   .table-responsive-sm:not(.multiselect) td:not(.weekend):popupopen {
       background: var(--softdark-color) !important;
       height: calc(11vh - 4px) !important;
     }

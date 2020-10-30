@@ -82,7 +82,7 @@ var globalTotalHoursChanged = false;
 var globalVacationChanged = false;
 
 $( document ).ready(function() { 
-
+alert(1234)
     isMobile = window.mobileAndTabletCheck();
 
     //isMobile = true;
@@ -122,6 +122,11 @@ $( document ).ready(function() {
     $('body').addClass('big');
     
     changetheme("gray", true);
+
+        
+    $("#calpopupselect").bind( "change", function( event ) {
+        calpopupselectonchange(this, event); 
+    });
 
     selectYear = document.getElementById("year");
     selectMonth = document.getElementById("month");
@@ -3453,7 +3458,7 @@ function cellClick(obj, e) {
             $(".multidiv > div > div > span").html("Multi Select<span>" + multiselectcounter + "</span>");
     }
     else {
-        showCalPopup(e);
+        showCalPopup(e, obj);
         //alert($(obj).attr("day"));
     }
 }
@@ -3765,7 +3770,6 @@ function vibrateApp(duration) {
 
 
 function selectAll() {
-
     if (multiselectcounter != allworkingdays) {
         if (!$( "table.table-responsive-sm" ).hasClass('multiselect'))
             $( "table.table-responsive-sm" ).addClass('multiselect');
@@ -3829,8 +3833,12 @@ function selectAll() {
 
 
     
-function showCalPopup(event) {
+function showCalPopup(event, obj) {
     var calpopup = $("#calpopup");
+
+    if ($(obj).is( "td")) {
+        $(obj).addClass("popupopen");
+    }
 
     if (calpopup.hasClass("customhours"))
         calpopup.removeClass("customhours")
@@ -3838,14 +3846,36 @@ function showCalPopup(event) {
     calpopup.css("top", (event.pageY - 45) + "px");
     calpopup.css("left", (event.pageX - 100) + "px");
 
-    calpopup.fadeIn(700);
+    calpopup.parent().fadeIn(700);
 
-/*     setTimeout(function(){
+/*  setTimeout(function(){
         closeCalpopup();
     }, 5000); */
 }
 
 
 function closeCalpopup() {
-    $("#calpopup").fadeOut(700);
+    $( ".table-responsive-sm td" ).each( function( index, element ){
+        $(element).removeClass("popupopen");
+    });
+    $("#calpopup").parent().fadeOut(700);
+}
+
+
+function calpopupselectonchange(obj) {
+    if ($(obj).val() == "2") {
+        if (!$("#calpopup").hasClass("customhours"))
+            $("#calpopup").addClass("customhours");
+    }
+    else {
+        $("#calpopup").removeClass("customhours");
+    }
+}
+
+function calPopupaddTime(e) {
+    $("#calpopupselect")
+}
+
+function stopPropagFunc(e) {
+    e.stopPropagation();
 }

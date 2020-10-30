@@ -1696,21 +1696,23 @@
   </div>
 </div>
 
-<div id="calpopup" style="display:none;" onclick="javascript: closeCalpopup()">
-  <div>
-    <select class="form-control col-sm-4" name="calpopupselect" id="calpopupselect" onchange="calpopupselectonchange()">
-      <option value="0">Vacations</option>
-      <option value="1">Parental Leave</option>
-      <option value="2">Custom Hours</option>
-    </select>
-  
-    <input type="text">
-  </div>
-  <div>
-    <i class="fa fa-check" title="" id="calpopupadd" onclick="calPopupaddTime(this, event)">
-    </i>
-    <i class="fa fa-times" title="" id="calpopupclose" onclick="closeCalpopup(this, event)">
-    </i>
+<div onclick="javascript: closeCalpopup()" style="background: #00000047;width: 100%; height: 100%; position: fixed; display: block;top: 0px; z-index: 9999999999;display: none;">
+  <div id="calpopup" onclick="javascript: stopPropagFunc(event)" style="top: 391px; left: 233px;">
+    <div>
+      <select class="form-control col-sm-4" name="calpopupselect" id="calpopupselect">
+        <option value="0">Vacations</option>
+        <option value="1">Parental Leave</option>
+        <option value="2">Custom Hours</option>
+      </select>
+    
+      <input type="text" spellcheck="false" autocomplete="none" additionalattributes="{autocomplete: 'none'}">
+    </div>
+    <div>
+      <i class="fa fa-check" title="" id="calpopupadd" onclick="calPopupaddTime(this, event)">
+      </i>
+      <i class="fa fa-times" title="" id="calpopupclose" onclick="closeCalpopup(this, event)">
+      </i>
+    </div>
   </div>
 </div>
 
