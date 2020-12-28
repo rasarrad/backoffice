@@ -84,7 +84,7 @@ var globalVacationChanged = false;
 $( document ).ready(function() { 
 
     isMobile = window.mobileAndTabletCheck();
-
+    alert(window.location.href);
     //isMobile = true;
 
     if (isMobile) {
