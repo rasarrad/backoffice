@@ -82,7 +82,7 @@ var globalTotalHoursChanged = false;
 var globalVacationChanged = false;
 
 $( document ).ready(function() { 
-alert(123466666333)
+
     isMobile = window.mobileAndTabletCheck();
 
     //isMobile = true;
